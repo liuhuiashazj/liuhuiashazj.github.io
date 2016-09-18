@@ -235,6 +235,710 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/14/8/" itemprop="url">
+                  css层叠（cascade）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-14T17:44:07+08:00" content="2016-09-14">
+              2016-09-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>css层叠（cascade）</p>
+<ul>
+<li>找出所有对这个元素或者属性的样式声明</li>
+<li>通过important和origin对其进行排序（第一个权重最低）<ul>
+<li>user agent样式</li>
+<li>user样式</li>
+<li>author样式</li>
+<li>author中带有!important的样式</li>
+<li>user中带有!important的样式</li>
+</ul>
+</li>
+<li><p>对同一important和来源进行排序。</p>
+<ul>
+<li>更多具体选择器的高于普通选择器的权重</li>
+<li>伪类元素和伪类等同于普通元素</li>
+<li>ice计算原则<ul>
+<li>选择符如果有个i(id),就在i的位置加1</li>
+<li>选择符如果有个c(class),就在c的位置加1</li>
+<li>选择符如果有个e(element),接在e的位置加1</li>
+</ul>
+</li>
+<li><p>demo</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/*但是，千万得知道 0-1-12 与 0-2-0 相比，仍然是 0-2-0 的特指度更高。*/</div><div class="line">p&#123;&#125;                                   //0-0-1 特指度=1</div><div class="line">p.largetext&#123;&#125;                         //0-1-1 特指度=11</div><div class="line">p#largetext&#123;&#125;                         //1-0-1 特指度=101</div><div class="line">body p#largetext&#123;&#125;                    //1-0-2 特指度=102</div><div class="line">body p#largetext ul.mylist&#123;&#125;          //1-1-3 特指度=113</div><div class="line">body p#largetext ul.mylist li&#123;&#125;       //1-1-4 特指度=114</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>对所有权重进行排序，如果有两个地方有相同的权重，则后面的覆盖前面的，</p>
+</li>
+</ul>
+<p>定义</p>
+<ul>
+<li>author：来自文档的样式，也就是我们平时所写的代码</li>
+<li>user:用户指定的样式文件，一些ua允许用户导入自定义样式表，例如ie（Internet 选项 -&gt; 外观 -&gt; 辅助功能 -&gt; 用户样式表）</li>
+<li>user agent :一些ua 例如浏览器自定义的某些样式</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/09/7/" itemprop="url">
+                  日常小坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T17:10:58+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>input，如果不给input设置背景颜色的话，input没有内阴影，但是，如果设置一个背景，就会产生阴影，解决办法，设置一个border</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/05/6/" itemprop="url">
+                  electron
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T18:00:35+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="什么是Electron"><a href="#什么是Electron" class="headerlink" title="什么是Electron"></a>什么是Electron</h1><ul>
+<li>Electron是一个可以使用js、html、css创建桌面应用的库</li>
+<li>可以创建mac、window、linux等应用</li>
+<li>atom基于electron开发，以前叫atom-shell</li>
+</ul>
+<h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><ul>
+<li><p>Electron安装不上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error: EACCES: permission denied, rename <span class="string">'/var/folders/v4/wr5tmnkx2_g45db_xjr78_fw0000gn/T/electron-tmp-download-2363-1473215672128/electron-v1.3.5-darwin-x64.zip'</span> -&gt; <span class="string">'/Users/liuhui/.electron/electron-v1.3.5-darwin-x64.zip'</span></div></pre></td></tr></table></figure>
+<p>  解决方案：<br>  直接sudo没用，要先改下/Users/liuhui/.electron的读写权限<br>  然后sudo安装</p>
+</li>
+</ul>
+<h1 id="为什么重要"><a href="#为什么重要" class="headerlink" title="为什么重要"></a>为什么重要</h1><ul>
+<li>使用web语言就可以轻松写出跨平台的app</li>
+<li>而且只需要兼容最新的chrome浏览器就可以，es2015的90%的功能都能用</li>
+<li>node的300000多的模块都可以用</li>
+<li></li>
+</ul>
+<h1 id="怎么做？"><a href="#怎么做？" class="headerlink" title="怎么做？"></a>怎么做？</h1><ul>
+<li>electron合并了chromium和node.js</li>
+<li>提供了一系列的api进行native开发，例如file dialogs,notifications,icons更多</li>
+</ul>
+<p><img src="/images/6.1.png" alt=""></p>
+<h1 id="两个进程"><a href="#两个进程" class="headerlink" title="两个进程"></a>两个进程</h1><ul>
+<li>主进程（app的入口js),控制整个app的生命周期<ul>
+<li>可以用的api<ul>
+<li>node.js apis</li>
+<li>electron main process modules</li>
+</ul>
+</li>
+<li>用处<ul>
+<li>创建渲染进程</li>
+<li>调用native 元素</li>
+<li>启动和退出app</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>渲染进程（类似于浏览器的一个窗口，可以有多个，相互独立）<ul>
+<li>可以用的api<ul>
+<li>node.js apis</li>
+<li>dom apis</li>
+<li>electron renderer process module</li>
+</ul>
+</li>
+<li>用处<ul>
+<li>设计网页，使用html和css</li>
+<li>js交互</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="一个形象的比喻"><a href="#一个形象的比喻" class="headerlink" title="一个形象的比喻"></a>一个形象的比喻</h1><ul>
+<li>主进程相当于chrome</li>
+<li>渲染进程相当于chrome中的每个进程</li>
+</ul>
+<h1 id="两个进程之间的通信"><a href="#两个进程之间的通信" class="headerlink" title="两个进程之间的通信"></a>两个进程之间的通信</h1><p>两个之间可以通过IPC通信，如下图<br><img src="/images/6.2.png" alt=""></p>
+<h1 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h1><ul>
+<li>electron使用和node apps同样的文件package.json</li>
+<li>electron通过这个文件来判断从哪个文件启动你的app<br><img src="/images/6.3.png" alt=""><br>-通过electron .启动</li>
+</ul>
+<h1 id="如何打包"><a href="#如何打包" class="headerlink" title="如何打包"></a>如何打包</h1><ul>
+<li>使用electron-packager来进行linux/mac/window的打包</li>
+<li>electron-packager ./ MyApp    –version=1.3.4</li>
+</ul>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><ul>
+<li><a href="http://electron.atom.io/docs/" target="_blank" rel="external">Full Electron docs</a></li>
+</ul>
+<h1 id="api"><a href="#api" class="headerlink" title="api"></a>api</h1><ul>
+<li><a href="http://electron.atom.io/docs/api/" target="_blank" rel="external">api汇总</a></li>
+<li>clipboard 剪切板</li>
+<li></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/23/5/" itemprop="url">
+                  资源检索
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-23T16:44:50+08:00" content="2016-08-23">
+              2016-08-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th>问题</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>outlook对css和html支持情况</td>
+<td><a href="https://www.campaignmonitor.com/css/" target="_blank" rel="external">https://www.campaignmonitor.com/css/</a></td>
+</tr>
+<tr>
+<td>outlook对css和html支持情况</td>
+<td><a href="https://msdn.microsoft.com/en-us/library/aa338201(v=office.12).aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/aa338201(v=office.12).aspx</a></td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/17/4/" itemprop="url">
+                  Git忽略规则及.gitignore不生效的解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T17:39:32+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 此为注释 – 将被 Git 忽略</span></div><div class="line">*.a       <span class="comment"># 忽略所有 .a 结尾的文件</span></div><div class="line">!lib.a    <span class="comment"># 但 lib.a 除外</span></div><div class="line">/TODO     <span class="comment"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span></div><div class="line">build/    <span class="comment"># 忽略 build/ 目录下的所有文件</span></div><div class="line">doc/*.txt <span class="comment"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></div><div class="line">``` </div><div class="line">规则很简单，不做过多解释，但是有时候在项目开发过程中，突然心血来潮想把之前的某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，为什么呢？</div><div class="line">gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</div><div class="line"></div><div class="line">```bash</div><div class="line">git rm -r --cached .</div><div class="line">git add .</div><div class="line">git commit -m <span class="string">'update .gitignore'</span></div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/17/3/" itemprop="url">
+                  提高工作效率的cli工具
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T16:39:45+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://github.com/sourcegraph/thyme" target="_blank" rel="external">原文地址</a></p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>如何有效的改进我们的开发效率，首先得监控我们的时间都浪费在哪里了</p>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
+<li>通过cli即可跟踪和分析应用使用情况</li>
+<li>详细的图表显示时间如何花掉的</li>
+<li>数据存储在本地（控制权和隐私）</li>
+<li>开源、文档健全、轻松扩展</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>安装GO(brew install go)</li>
+<li>安装完GO后配置环境变量<br>如果是zsh，则添加以下两行即可</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> GOPATH=<span class="string">"<span class="variable">$HOME</span>/mywork/"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOPATH</span>/bin</div><div class="line">``` </div><div class="line"></div><div class="line">- go get -u github.com/sourcegraph/thyme/cmd/thyme</div><div class="line">- 安装watch(brew install watch)</div><div class="line"></div><div class="line"><span class="comment">### 使用</span></div><div class="line">- 记录每30s使用的应用到thyme.json</div><div class="line">	``` bash</div><div class="line">	watch -n 30 thyme track -o thyme.json</div><div class="line">	<span class="comment">#watch替换方案如下</span></div><div class="line">	<span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span> thyme track -o thyme.json; sleep 30s; <span class="keyword">done</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>将json文件解析为html图表查看  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">thyme show -i thyme.json -w stats &gt; thyme.html</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="/images/3.1.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/16/2/" itemprop="url">
                   Backbone的mvc架构
                 </a>
@@ -502,7 +1206,7 @@ d.setTime(b);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -512,7 +1216,7 @@ d.setTime(b);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
