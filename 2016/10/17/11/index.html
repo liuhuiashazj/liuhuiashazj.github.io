@@ -86,16 +86,16 @@
 
 <meta name="description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应如下代码12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green;    &amp;#125;    @medi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="（translate）SVG和media queries">
+<meta property="og:title" content="（翻译）SVG和media queries">
 <meta property="og:url" content="http://yoursite.com/2016/10/17/11/index.html">
 <meta property="og:site_name" content="Sunlife">
 <meta property="og:description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应如下代码12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green;    &amp;#125;    @medi">
-<meta property="og:image" content="http://yoursite.com/images/11.1.jpg">
-<meta property="og:updated_time" content="2016-10-17T06:22:21.000Z">
+<meta property="og:image" content="http://yoursite.com/images/11.1.png">
+<meta property="og:updated_time" content="2016-11-22T08:25:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="（translate）SVG和media queries">
+<meta name="twitter:title" content="（翻译）SVG和media queries">
 <meta name="twitter:description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应如下代码12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green;    &amp;#125;    @medi">
-<meta name="twitter:image" content="http://yoursite.com/images/11.1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/images/11.1.png">
 
 
 
@@ -118,7 +118,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/10/17/11/"/>
 
-  <title> （translate）SVG和media queries | Sunlife </title>
+  <title> （翻译）SVG和media queries | Sunlife </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -238,7 +238,7 @@
             
             
               
-                （translate）SVG和media queries
+                （翻译）SVG和media queries
               
             
           </h1>
@@ -288,12 +288,9 @@
 <li>img上面的width/height属性</li>
 <li>img的layout</li>
 </ul>
-<p>实际结果如下<br><img src="/images/11.1.jpg" alt=""></p>
-<h1 id="大多数浏览器会这样解析"><a href="#大多数浏览器会这样解析" class="headerlink" title="大多数浏览器会这样解析"></a>大多数浏览器会这样解析</h1><p>对于<img>,svg会scale到图片大小，svg的viewport就是img的大小<br>所以第一个图片使用的viewport是50<em>50，所以第一个是绿色的<br>第二个图片使用的viewport是100</em>100，因此第二个是蓝色的</p>
-<p>对于<iframe>，svg的viewport是iframe的大小<br>所以第三个是绿色，第四个是蓝色</iframe></p>
-<p>对于<svg>,svg没有它自己的viewport，这是父级的一部分，这意味着style是被父级拥有的，作用域不是SVG。</svg></p>
-<h1 id="firefox怎么解析的呢"><a href="#firefox怎么解析的呢" class="headerlink" title="firefox怎么解析的呢"></a>firefox怎么解析的呢</h1><p>对于<img>,viewport,是device pixels里面的渲染大小，意味着，页面的viewport</p>
-<h1 id="draw-svg到canvas"><a href="#draw-svg到canvas" class="headerlink" title="draw svg到canvas"></a>draw svg到canvas</h1><p>可以draw<img>标签里面的内容到<canvas><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">canvas2dContext.drawImage(img, x, y, width, height);</div></pre></td></tr></table></figure></canvas></p>
+<p>实际结果如下<br><img src="/images/11.1.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 大多数浏览器会这样解析</div><div class="line"></div><div class="line">对于<span class="tag">&lt;<span class="name">img</span>&gt;</span>,svg会scale到图片大小，svg的viewport就是img的大小</div><div class="line">所以第一个图片使用的viewport是50*50，所以第一个是绿色的</div><div class="line">第二个图片使用的viewport是100*100，因此第二个是蓝色的</div><div class="line"></div><div class="line">对于<span class="tag">&lt;<span class="name">iframe</span>&gt;</span>，svg的viewport是iframe的大小</div><div class="line">所以第三个是绿色，第四个是蓝色</div><div class="line"></div><div class="line">对于<span class="tag">&lt;<span class="name">svg</span>&gt;</span>,svg没有它自己的viewport，这是父级的一部分，这意味着style是被父级拥有的，作用域不是SVG。</div><div class="line"></div><div class="line"># firefox怎么解析的呢</div><div class="line">对于<span class="tag">&lt;<span class="name">img</span>&gt;</span>,viewport,是device pixels里面的渲染大小，意味着，页面的viewport</div><div class="line"></div><div class="line"></div><div class="line"># draw svg到canvas</div><div class="line">可以draw<span class="tag">&lt;<span class="name">img</span>&gt;</span>标签里面的内容到<span class="tag">&lt;<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">canvas2dContext.drawImage(img, x, y, width, height);</div></pre></td></tr></table></figure>
 <p>那么这种情况下，什么时候circle应该是蓝色的呢</p>
 <ul>
 <li>主窗口的css大小</li>
@@ -449,7 +446,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#大多数浏览器会这样解析"><span class="nav-number">1.</span> <span class="nav-text">大多数浏览器会这样解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#firefox怎么解析的呢"><span class="nav-number">2.</span> <span class="nav-text">firefox怎么解析的呢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#draw-svg到canvas"><span class="nav-number">3.</span> <span class="nav-text">draw svg到canvas</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
