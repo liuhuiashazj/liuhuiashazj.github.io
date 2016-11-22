@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="preventDefault," />
 
 
 
@@ -84,13 +84,22 @@
 
 
 
+<meta name="description" content="如果一个元素为draggable的，mousedown的时候如果不阻止默认行为，你会发现，mousemove的时候offsetx和offsety都不是你预想的那样，如下demodrag demo
+
+默认点击body上的任何地方都会触发input的blur事件，但实际并非如此input blur demo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="14">
+<meta property="og:title" content="preventDefault的一些坑">
 <meta property="og:url" content="http://yoursite.com/2016/11/18/14/index.html">
 <meta property="og:site_name" content="Sunlife">
-<meta property="og:updated_time" content="2016-11-18T08:54:58.000Z">
+<meta property="og:description" content="如果一个元素为draggable的，mousedown的时候如果不阻止默认行为，你会发现，mousemove的时候offsetx和offsety都不是你预想的那样，如下demodrag demo
+
+默认点击body上的任何地方都会触发input的blur事件，但实际并非如此input blur demo">
+<meta property="og:updated_time" content="2016-11-22T08:22:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="14">
+<meta name="twitter:title" content="preventDefault的一些坑">
+<meta name="twitter:description" content="如果一个元素为draggable的，mousedown的时候如果不阻止默认行为，你会发现，mousemove的时候offsetx和offsety都不是你预想的那样，如下demodrag demo
+
+默认点击body上的任何地方都会触发input的blur事件，但实际并非如此input blur demo">
 
 
 
@@ -113,7 +122,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/11/18/14/"/>
 
-  <title> 14 | Sunlife </title>
+  <title> preventDefault的一些坑 | Sunlife </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -233,7 +242,7 @@
             
             
               
-                14
+                preventDefault的一些坑
               
             
           </h1>
@@ -273,7 +282,13 @@
       
 
       
-        
+        <ul>
+<li><p>如果一个元素为draggable的，mousedown的时候如果不阻止默认行为，你会发现，mousemove的时候offsetx和offsety都不是你预想的那样，如下demo<br><a href="https://jsfiddle.net/liuhuiashazj/2r3atLn5/" target="_blank" rel="external">drag demo</a></p>
+</li>
+<li><p>默认点击body上的任何地方都会触发input的blur事件，但实际并非如此<br><a href="https://jsfiddle.net/liuhuiashazj/un18p1cx/" target="_blank" rel="external">input blur demo</a></p>
+</li>
+</ul>
+
       
     </div>
 
@@ -292,6 +307,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/preventDefault/" rel="tag">#preventDefault</a>
+          
+        </div>
       
 
       
@@ -386,7 +407,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -435,7 +435,7 @@
               
                 
                 <a class="post-title-link" href="/2016/11/18/14/" itemprop="url">
-                  14
+                  preventDefault的一些坑
                 </a>
               
             
@@ -478,7 +478,13 @@
       
         
           
-            
+            <ul>
+<li><p>如果一个元素为draggable的，mousedown的时候如果不阻止默认行为，你会发现，mousemove的时候offsetx和offsety都不是你预想的那样，如下demo<br><a href="https://jsfiddle.net/liuhuiashazj/2r3atLn5/" target="_blank" rel="external">drag demo</a></p>
+</li>
+<li><p>默认点击body上的任何地方都会触发input的blur事件，但实际并非如此<br><a href="https://jsfiddle.net/liuhuiashazj/un18p1cx/" target="_blank" rel="external">input blur demo</a></p>
+</li>
+</ul>
+
           
         
       
@@ -667,6 +673,7 @@
         
           
             <p>尾递归：<br>nodejs是否支持tco（tail call optimation）<br><a href="http://stackoverflow.com/questions/23260390/node-js-tail-call-optimization-possible-or-not" target="_blank" rel="external">http://stackoverflow.com/questions/23260390/node-js-tail-call-optimization-possible-or-not</a></p>
+<p>nodejs 6.6.0是支持伪递归优化的，如下代码所示</p>
 
           
         
@@ -1465,7 +1472,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
