@@ -84,22 +84,70 @@
 
 
 
-<meta name="description" content="input，如果不给input设置背景颜色的话，input没有内阴影，但是，如果设置一个背景，就会产生阴影，解决办法，设置一个border
-jquery $(‘#test input’).select().focus();safari如果选择器结果有多个，会导致每个的input都会触发blur，而chrome不会
-https://jsfiddle.net/liuhuiashazj/c5rw0gpc">
-<meta property="og:type" content="article">
-<meta property="og:title" content="日常小坑">
-<meta property="og:url" content="http://yoursite.com/2016/09/09/7/index.html">
+<meta name="description" content="svg&amp;media queries
+
+
+
+    
+
+    
+
+    
+    
+    
+        
+        circle {
+            fill: green;
+        }
+        
+        @media (min-width: 100px) {
+            circle {">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sunlife">
+<meta property="og:url" content="http://yoursite.com/demo/svg/index.html">
 <meta property="og:site_name" content="Sunlife">
-<meta property="og:description" content="input，如果不给input设置背景颜色的话，input没有内阴影，但是，如果设置一个背景，就会产生阴影，解决办法，设置一个border
-jquery $(‘#test input’).select().focus();safari如果选择器结果有多个，会导致每个的input都会触发blur，而chrome不会
-https://jsfiddle.net/liuhuiashazj/c5rw0gpc">
-<meta property="og:updated_time" content="2016-10-12T06:54:46.000Z">
+<meta property="og:description" content="svg&amp;media queries
+
+
+
+    
+
+    
+
+    
+    
+    
+        
+        circle {
+            fill: green;
+        }
+        
+        @media (min-width: 100px) {
+            circle {">
+<meta property="og:image" content="http://yoursite.com/circle.svg">
+<meta property="og:image" content="http://yoursite.com/circle.svg">
+<meta property="og:updated_time" content="2016-10-17T06:09:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="日常小坑">
-<meta name="twitter:description" content="input，如果不给input设置背景颜色的话，input没有内阴影，但是，如果设置一个背景，就会产生阴影，解决办法，设置一个border
-jquery $(‘#test input’).select().focus();safari如果选择器结果有多个，会导致每个的input都会触发blur，而chrome不会
-https://jsfiddle.net/liuhuiashazj/c5rw0gpc">
+<meta name="twitter:title" content="Sunlife">
+<meta name="twitter:description" content="svg&amp;media queries
+
+
+
+    
+
+    
+
+    
+    
+    
+        
+        circle {
+            fill: green;
+        }
+        
+        @media (min-width: 100px) {
+            circle {">
+<meta name="twitter:image" content="http://yoursite.com/circle.svg">
 
 
 
@@ -120,9 +168,15 @@ https://jsfiddle.net/liuhuiashazj/c5rw0gpc">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/09/7/"/>
+  <link rel="canonical" href="http://yoursite.com/demo/svg/"/>
 
-  <title> 日常小坑 | Sunlife </title>
+  <title>
+  
+
+  
+     | Sunlife
+  
+</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +197,7 @@ https://jsfiddle.net/liuhuiashazj/c5rw0gpc">
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -223,119 +277,41 @@ https://jsfiddle.net/liuhuiashazj/c5rw0gpc">
 
   <div id="posts" class="posts-expand">
     
+    
+      <html>
 
-  
-  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, user-scalable=no">
+    <title>svg&media queries</title>
+</head>
 
-  
-  
-  
+<body>
+    <img src="circle.svg" width="30" height="30">
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <img src="circle.svg" width="100" height="100">
+
+    <iframe src="circle.svg" width="50" height="50"></iframe>
+    <iframe src="circle.svg" width="100" height="100"></iframe>
+    <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+        <style>
+        circle {
+            fill: green;
+        }
+        
+        @media (min-width: 100px) {
+            circle {
+                fill: blue;
+            }
+        }
+        </style>
+        <circle cx="50" cy="50" r="50"/>
+    </svg>
+</body>
+
+</html>
 
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                日常小坑
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T17:10:58+08:00" content="2016-09-09">
-              2016-09-09
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>input，如果不给input设置背景颜色的话，input没有内阴影，但是，如果设置一个背景，就会产生阴影，解决办法，设置一个border</p>
-<p>jquery $(‘#test input’).select().focus();<br>safari如果选择器结果有多个，会导致每个的input都会触发blur，而chrome不会</p>
-<p><a href="https://jsfiddle.net/liuhuiashazj/c5rw0gpc/" target="_blank" rel="external">https://jsfiddle.net/liuhuiashazj/c5rw0gpc/</a></p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/09/05/6/" rel="next" title="electron">
-                <i class="fa fa-chevron-left"></i> electron
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/14/8/" rel="prev" title="css层叠（cascade）">
-                css层叠（cascade） <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
@@ -367,17 +343,8 @@ https://jsfiddle.net/liuhuiashazj/c5rw0gpc">
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -420,17 +387,6 @@ https://jsfiddle.net/liuhuiashazj/c5rw0gpc">
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -534,10 +490,6 @@ https://jsfiddle.net/liuhuiashazj/c5rw0gpc">
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
