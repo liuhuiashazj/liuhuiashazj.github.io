@@ -1,0 +1,668 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="背景技术沉淀对前端来说非常重要，总是有些东西时间久了容易忘记，那么就需要对平时学习掌握的东西进行总结和记录
+一般做法
+onenote
+印象笔记
+
+问题:
+是共享性比较差，基本只有自己能看，不能和别人交流，万一总结的是错的还不能被发现。
+
+一些程序员的做法
+markdown问题：
+写普通的文本代码什么的非常轻松，但是要插入图片很麻烦（首先要保存图片到本地，或者将本地的图片上传到某个图片服务器，然后再">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sublime添加markdown粘贴图片功能">
+<meta property="og:url" content="http://yoursite.com/2016/12/06/17/index.html">
+<meta property="og:site_name" content="Sunlife">
+<meta property="og:description" content="背景技术沉淀对前端来说非常重要，总是有些东西时间久了容易忘记，那么就需要对平时学习掌握的东西进行总结和记录
+一般做法
+onenote
+印象笔记
+
+问题:
+是共享性比较差，基本只有自己能看，不能和别人交流，万一总结的是错的还不能被发现。
+
+一些程序员的做法
+markdown问题：
+写普通的文本代码什么的非常轻松，但是要插入图片很麻烦（首先要保存图片到本地，或者将本地的图片上传到某个图片服务器，然后再">
+<meta property="og:image" content="http://yoursite.com/../images/test/17.mdilxJcp3n.png">
+<meta property="og:updated_time" content="2016-12-20T08:25:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sublime添加markdown粘贴图片功能">
+<meta name="twitter:description" content="背景技术沉淀对前端来说非常重要，总是有些东西时间久了容易忘记，那么就需要对平时学习掌握的东西进行总结和记录
+一般做法
+onenote
+印象笔记
+
+问题:
+是共享性比较差，基本只有自己能看，不能和别人交流，万一总结的是错的还不能被发现。
+
+一些程序员的做法
+markdown问题：
+写普通的文本代码什么的非常轻松，但是要插入图片很麻烦（首先要保存图片到本地，或者将本地的图片上传到某个图片服务器，然后再">
+<meta name="twitter:image" content="http://yoursite.com/../images/test/17.mdilxJcp3n.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/06/17/"/>
+
+  <title> sublime添加markdown粘贴图片功能 | Sunlife </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Sunlife</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                sublime添加markdown粘贴图片功能
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-06T15:10:38+08:00" content="2016-12-06">
+              2016-12-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>技术沉淀对前端来说非常重要，总是有些东西时间久了容易忘记，那么就需要对平时学习掌握的东西进行总结和记录</p>
+<h2 id="一般做法"><a href="#一般做法" class="headerlink" title="一般做法"></a>一般做法</h2><ul>
+<li>onenote</li>
+<li>印象笔记</li>
+</ul>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h3><ul>
+<li>是共享性比较差，基本只有自己能看，不能和别人交流，万一总结的是错的还不能被发现。</li>
+</ul>
+<h2 id="一些程序员的做法"><a href="#一些程序员的做法" class="headerlink" title="一些程序员的做法"></a>一些程序员的做法</h2><ul>
+<li>markdown<h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3></li>
+<li>写普通的文本代码什么的非常轻松，但是要插入图片很麻烦（首先要保存图片到本地，或者将本地的图片上传到某个图片服务器，然后再引用）</li>
+<li>粘贴网上的一些链接、列表什么的很麻烦，粘贴后需要按照markdown的语法修改</li>
+</ul>
+<h2 id="我的做法"><a href="#我的做法" class="headerlink" title="我的做法"></a>我的做法</h2><ul>
+<li>markdown</li>
+<li>使用github服务，自动部署到github上</li>
+</ul>
+<h3 id="痛点"><a href="#痛点" class="headerlink" title="痛点"></a>痛点</h3><ul>
+<li>通上，markdown的图片插入问题</li>
+</ul>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
+<li>用electron做了一个markdown编辑器（已解决图片插入，html代码复制的一些问题）<ul>
+<li>编辑器太多不统一</li>
+<li>功能没有sublime强大，继续开发浪费精力</li>
+</ul>
+</li>
+<li>sublime插件<ul>
+<li>sublime已经有了markdown的插件，支持语法高亮、预览、自动格式等等功能</li>
+<li>缺少很重要的图片插入功能</li>
+</ul>
+</li>
+</ul>
+<h2 id="sublime图片插入功能开发"><a href="#sublime图片插入功能开发" class="headerlink" title="sublime图片插入功能开发"></a>sublime图片插入功能开发</h2><ul>
+<li>第一步非常简单<br>tools-new plugin</li>
+<li>第二步ctrl+` 进行插件调试</li>
+<li>快捷键配置<ul>
+<li>创建文件 Default (OSX).sublime-keymap</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;<span class="attr">"keys"</span>:[<span class="string">"alt+v"</span>],<span class="attr">"command"</span>:<span class="string">"copy_to_markdown"</span>&#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="开发过程中的坑"><a href="#开发过程中的坑" class="headerlink" title="开发过程中的坑"></a>开发过程中的坑</h2><ul>
+<li>sublime text 3和sublime text2有非常多的不同点<ul>
+<li>使用python3.3(语法与python2.6差别也很大)</li>
+<li>osx中的sublime用的是单独的python编译环境，而不是系统自带的</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://www.sublimetext.com/docs/3/porting_guide.html" target="_blank" rel="external">更多区别</a></p>
+<p>python有个模块Pil提供了剪切板里面图片操作的办法，如果是sublime text2安装python模块非常方便，系统直接安装即可，但是sublime 3的话就是用不到</p>
+<h2 id="python模块包安装方式"><a href="#python模块包安装方式" class="headerlink" title="python模块包安装方式"></a>python模块包安装方式</h2><p><a href="http://zengrong.net/post/2169.htm" target="_blank" rel="external">关于python包的各种安装方式</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pip install -U richxerox</div><div class="line">pip3.5 install Pillow</div><div class="line">python3.3 -m easy_install --upgrade richxerox</div></pre></td></tr></table></figure>
+<p>python2.6，2.7等版本的通过pip或者easyinstall安装的模块路径如下：<br>/Library/Python/2.7/site-packages</p>
+<p>python3.5等版本通过pip安装的模块路径如下：<br>/usr/local/lib/python3.5/site-packages/</p>
+<h2 id="sublime-3是自带的python环境，如何添加模块呢"><a href="#sublime-3是自带的python环境，如何添加模块呢" class="headerlink" title="sublime 3是自带的python环境，如何添加模块呢"></a>sublime 3是自带的python环境，如何添加模块呢</h2><h3 id="找到模块所在的地方"><a href="#找到模块所在的地方" class="headerlink" title="找到模块所在的地方"></a>找到模块所在的地方</h3><p>python 查看模块安装地址<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> amodule</div><div class="line"><span class="keyword">import</span> os</div><div class="line">path = os.path.dirname(amodule.__file__)</div></pre></td></tr></table></figure></p>
+<h3 id="将路径添加到sys-path"><a href="#将路径添加到sys-path" class="headerlink" title="将路径添加到sys.path"></a>将路径添加到sys.path</h3><p>通过sys.path里面添加，可以是的sublime3的编译环境可以指到我们想要的地方</p>
+<p>方法如下：</p>
+<h4 id="sublime中python环境变量配置查看"><a href="#sublime中python环境变量配置查看" class="headerlink" title="sublime中python环境变量配置查看"></a>sublime中python环境变量配置查看</h4><p>sublime的python中访问不到普通的python包，怎么办呢？<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys </div><div class="line"><span class="keyword">import</span> os</div><div class="line">  <span class="comment"># 这样就可以访问到request了</span></div><div class="line">sys.path.append(os.path.join(os.path.dirname(__file__), <span class="string">"/usr/local/lib/python3.5/site-packages"</span>))</div><div class="line"></div><div class="line"><span class="keyword">import</span> requests</div></pre></td></tr></table></figure></p>
+<p>现在可以引用到PIL库了<br>但是PIL中有些模块是.so格式的，sublime里的python环境引用不到<br>.so模块是c语言写的，属于动态库<br><a href="http://blog.chinaunix.net/uid-25979788-id-3828375.html" target="_blank" rel="external">.so模块的写法</a></p>
+<h3 id="终极解决办法"><a href="#终极解决办法" class="headerlink" title="终极解决办法"></a>终极解决办法</h3><p>python中执行python脚本</p>
+<p>需要注意的点，这里需要使用到python的绝对路径，sublime中，package存放路径和执行路径不一样</p>
+<ul>
+<li>插件存放路径：<br>/Users/liuhui/Library/Application Support/Sublime Text 3/Packages</li>
+<li>执行路径：<br>/Applications/Sublime Text.app/Contents/MacOS</li>
+</ul>
+<h3 id="插件初始化配置"><a href="#插件初始化配置" class="headerlink" title="插件初始化配置"></a>插件初始化配置</h3><ul>
+<li>python 中安装pillow模块</li>
+<li>安装插件</li>
+<li>配置文件copyimagetomarkdown.sublime-settings里面添加一个图片保存路径即可<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    </div><div class="line">    <span class="attr">"imageAbsolutePath"</span>:<span class="string">"/Users/liuhui/Desktop/mylab/blog/blog/source/images/test"</span></div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><ul>
+<li>截屏</li>
+<li>在需要使用这张图片的地方张贴alt+v</li>
+</ul>
+<h3 id="效果演示"><a href="#效果演示" class="headerlink" title="效果演示"></a>效果演示</h3><p><img src="../images/test/17.mdilxJcp3n.png" alt=""></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://www.sublimetext.com/docs/3/index.html" target="_blank" rel="external">sublime 插件开发参考地址</a><br><a href="https://www.sublimetext.com/docs/3/api_reference.html#sublime" target="_blank" rel="external">sublime插件开发api地址</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/01/19/" rel="next" title="sublime的snippet设置">
+                <i class="fa fa-chevron-left"></i> sublime的snippet设置
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/27/22/" rel="prev" title="markdown语法说明">
+                markdown语法说明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="liuhuiashazj" />
+          <p class="site-author-name" itemprop="name">liuhuiashazj</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一般做法"><span class="nav-number">1.1.</span> <span class="nav-text">一般做法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">1.1.1.</span> <span class="nav-text">问题:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些程序员的做法"><span class="nav-number">1.2.</span> <span class="nav-text">一些程序员的做法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题："><span class="nav-number">1.2.1.</span> <span class="nav-text">问题：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的做法"><span class="nav-number">1.3.</span> <span class="nav-text">我的做法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#痛点"><span class="nav-number">1.3.1.</span> <span class="nav-text">痛点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">1.4.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sublime图片插入功能开发"><span class="nav-number">1.5.</span> <span class="nav-text">sublime图片插入功能开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发过程中的坑"><span class="nav-number">1.6.</span> <span class="nav-text">开发过程中的坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python模块包安装方式"><span class="nav-number">1.7.</span> <span class="nav-text">python模块包安装方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sublime-3是自带的python环境，如何添加模块呢"><span class="nav-number">1.8.</span> <span class="nav-text">sublime 3是自带的python环境，如何添加模块呢</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#找到模块所在的地方"><span class="nav-number">1.8.1.</span> <span class="nav-text">找到模块所在的地方</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将路径添加到sys-path"><span class="nav-number">1.8.2.</span> <span class="nav-text">将路径添加到sys.path</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sublime中python环境变量配置查看"><span class="nav-number">1.8.2.1.</span> <span class="nav-text">sublime中python环境变量配置查看</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终极解决办法"><span class="nav-number">1.8.3.</span> <span class="nav-text">终极解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件初始化配置"><span class="nav-number">1.8.4.</span> <span class="nav-text">插件初始化配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方式"><span class="nav-number">1.8.5.</span> <span class="nav-text">使用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果演示"><span class="nav-number">1.8.6.</span> <span class="nav-text">效果演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">1.8.7.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuhuiashazj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
