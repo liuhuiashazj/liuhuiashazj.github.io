@@ -84,18 +84,20 @@
 
 
 
-<meta name="description" content="简要介绍+ Electron是一个可以使用js、html、css创建桌面应用的库
-+ 可以创建mac、window、linux等应用
-+ atom基于electron开发，以前叫atom-shell
-如何开发你的desktop应用+  一个简单的 [demo](https://github.com/sindresorhus/electron-boilerplate/tree/master/boil">
+<meta name="description" content="简要介绍- Electron是一个可以使用js、html、css创建桌面应用的库
+- 可以创建mac、window、linux等应用
+- atom基于electron开发，以前叫atom-shell
+如何开发你的desktop应用-  一个简单的 
+    [demo](https://github.com/sindresorhus/electron-boilerplate/tree/master">
 <meta property="og:type" content="article">
 <meta property="og:title" content="electron在企业云盘中的应用">
 <meta property="og:url" content="http://yoursite.com/2017/05/17/28/index.html">
 <meta property="og:site_name" content="Sunlife">
-<meta property="og:description" content="简要介绍+ Electron是一个可以使用js、html、css创建桌面应用的库
-+ 可以创建mac、window、linux等应用
-+ atom基于electron开发，以前叫atom-shell
-如何开发你的desktop应用+  一个简单的 [demo](https://github.com/sindresorhus/electron-boilerplate/tree/master/boil">
+<meta property="og:description" content="简要介绍- Electron是一个可以使用js、html、css创建桌面应用的库
+- 可以创建mac、window、linux等应用
+- atom基于electron开发，以前叫atom-shell
+如何开发你的desktop应用-  一个简单的 
+    [demo](https://github.com/sindresorhus/electron-boilerplate/tree/master">
 <meta property="og:image" content="http://yoursite.com/../images/test/28.md0uZGp9DO.png">
 <meta property="og:image" content="http://yoursite.com/../images/test/28.mdFssiOOjv.png">
 <meta property="og:image" content="http://yoursite.com/../images/test/28.mdI503ErtM.png">
@@ -105,13 +107,14 @@
 <meta property="og:image" content="http://yoursite.com/../images/test/28.mdc16yuk4H.png">
 <meta property="og:image" content="http://yoursite.com/../images/6.1.png">
 <meta property="og:image" content="http://yoursite.com/../images/test/28.mdEjTOVah6.png">
-<meta property="og:updated_time" content="2017-06-02T05:20:53.000Z">
+<meta property="og:updated_time" content="2017-06-02T05:23:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="electron在企业云盘中的应用">
-<meta name="twitter:description" content="简要介绍+ Electron是一个可以使用js、html、css创建桌面应用的库
-+ 可以创建mac、window、linux等应用
-+ atom基于electron开发，以前叫atom-shell
-如何开发你的desktop应用+  一个简单的 [demo](https://github.com/sindresorhus/electron-boilerplate/tree/master/boil">
+<meta name="twitter:description" content="简要介绍- Electron是一个可以使用js、html、css创建桌面应用的库
+- 可以创建mac、window、linux等应用
+- atom基于electron开发，以前叫atom-shell
+如何开发你的desktop应用-  一个简单的 
+    [demo](https://github.com/sindresorhus/electron-boilerplate/tree/master">
 <meta name="twitter:image" content="http://yoursite.com/../images/test/28.md0uZGp9DO.png">
 
 
@@ -295,12 +298,13 @@
       
 
       
-        <h1 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h1><pre><code>+ Electron是一个可以使用js、html、css创建桌面应用的库
-+ 可以创建mac、window、linux等应用
-+ atom基于electron开发，以前叫atom-shell
-</code></pre><h1 id="如何开发你的desktop应用"><a href="#如何开发你的desktop应用" class="headerlink" title="如何开发你的desktop应用"></a>如何开发你的desktop应用</h1><pre><code>+  一个简单的 [demo](https://github.com/sindresorhus/electron-boilerplate/tree/master/boilerplate)
-+  一个入口main.js（mainProcess）+ 一个index.html（renderProcess）
-+  执行 electron main.js
+        <h1 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h1><pre><code>- Electron是一个可以使用js、html、css创建桌面应用的库
+- 可以创建mac、window、linux等应用
+- atom基于electron开发，以前叫atom-shell
+</code></pre><h1 id="如何开发你的desktop应用"><a href="#如何开发你的desktop应用" class="headerlink" title="如何开发你的desktop应用"></a>如何开发你的desktop应用</h1><pre><code>-  一个简单的 
+    [demo](https://github.com/sindresorhus/electron-boilerplate/tree/master/boilerplate)
+-  一个入口main.js（mainProcess）+ 一个index.html（renderProcess）
+-  执行 electron main.js
 </code></pre><h1 id="企业云盘的整体结构"><a href="#企业云盘的整体结构" class="headerlink" title="企业云盘的整体结构"></a>企业云盘的整体结构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">├── build(app打包资源)</div><div class="line">├── readme.md</div><div class="line">├── release(发布路径)</div><div class="line">├── renderProcess（渲染进程）</div><div class="line">├── mainProcess（主进程）</div><div class="line">├── plugin(插件)</div><div class="line">├── certs(证书)</div><div class="line">├── build.sh(自动发版脚本)</div><div class="line">├── config.js(全局配置项)</div><div class="line">├── package.json</div><div class="line">└── windowinstall.js（window安装包生成脚本）</div></pre></td></tr></table></figure>
 <ul>
 <li>整体的结构就是按照两个进程来划分</li>
@@ -319,7 +323,7 @@
 <p>关于electron中与oc app的通信方式。目前采用的是shell里面的open命令，以及web server方式<br>mainProcess中创建webserver服务，oc中通过发起http请求进行通信<br>mainProcess和oc通信采用open方式</p>
 <p>md5计算，采用md5-file</p>
 <p>分片：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fs.createReadStream(filePath, &#123;</div><div class="line">    start : i * limit,</div><div class="line">    end   : (i * limit + limit - <span class="number">1</span>) &gt; lastByte? lastByte: i * limit + limit - <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>系统通知：<br>mac采用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/notification" target="_blank" rel="external">notification</a><br>window采用nodejs的node-notifier模块</p>
+<h4 id="系统通知："><a href="#系统通知：" class="headerlink" title="系统通知："></a>系统通知：</h4><p>mac采用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/notification" target="_blank" rel="external">notification</a><br>window采用nodejs的node-notifier模块</p>
 <h4 id="自动更新客户端（mainProcess-checkUpdate）"><a href="#自动更新客户端（mainProcess-checkUpdate）" class="headerlink" title="自动更新客户端（mainProcess/checkUpdate）"></a>自动更新客户端（mainProcess/checkUpdate）</h4><p><a href="https://electron.atom.io/docs/api/auto-updater/" target="_blank" rel="external">官方文档</a></p>
 <p>官方提供了几个自动更新的项目，nuts/electron-release-server/squirrel-updates-server/squirrel-release-server,这几个项目中其中2个都是采用github来进行发布，不符合我国国情</p>
 <p>企业云采用了electron-release-server这个项目来搭建自动升级服务</p>
@@ -553,7 +557,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简要介绍"><span class="nav-number">1.</span> <span class="nav-text">简要介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何开发你的desktop应用"><span class="nav-number">2.</span> <span class="nav-text">如何开发你的desktop应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#企业云盘的整体结构"><span class="nav-number">3.</span> <span class="nav-text">企业云盘的整体结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mainProces"><span class="nav-number">3.0.1.</span> <span class="nav-text">mainProces:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库采用nodejs库-nedb-mainProcess-database"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">数据库采用nodejs库 nedb(mainProcess/database)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#登录认证-mainProcess-uuap"><span class="nav-number">3.0.1.2.</span> <span class="nav-text">登录认证 (mainProcess/uuap)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器中直接调起客户端，urlScheme-mainProcess-urlProtocol"><span class="nav-number">3.0.1.3.</span> <span class="nav-text">浏览器中直接调起客户端，urlScheme(mainProcess/urlProtocol)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#窗口管理器（mainProcess-windowManage）"><span class="nav-number">3.0.1.4.</span> <span class="nav-text">窗口管理器（mainProcess/windowManage）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#traymenu控制（mainProcess-trayMenu）"><span class="nav-number">3.0.1.5.</span> <span class="nav-text">traymenu控制（mainProcess/trayMenu）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传输控制（mainProcess-transfile-、-mainProcess-watcher）"><span class="nav-number">3.0.1.6.</span> <span class="nav-text">传输控制（mainProcess/transfile 、 mainProcess/watcher）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动更新客户端（mainProcess-checkUpdate）"><span class="nav-number">3.0.1.7.</span> <span class="nav-text">自动更新客户端（mainProcess/checkUpdate）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flash的支持"><span class="nav-number">3.0.1.8.</span> <span class="nav-text">flash的支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络检测-mainProcess-network"><span class="nav-number">3.0.1.9.</span> <span class="nav-text">网络检测(mainProcess/network)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#renderProcess"><span class="nav-number">3.0.2.</span> <span class="nav-text">renderProcess</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个进程"><span class="nav-number">3.1.</span> <span class="nav-text">两个进程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打包方式"><span class="nav-number">4.</span> <span class="nav-text">打包方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调试技巧"><span class="nav-number">5.</span> <span class="nav-text">调试技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关资源"><span class="nav-number">6.</span> <span class="nav-text">相关资源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简要介绍"><span class="nav-number">1.</span> <span class="nav-text">简要介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何开发你的desktop应用"><span class="nav-number">2.</span> <span class="nav-text">如何开发你的desktop应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#企业云盘的整体结构"><span class="nav-number">3.</span> <span class="nav-text">企业云盘的整体结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mainProces"><span class="nav-number">3.0.1.</span> <span class="nav-text">mainProces:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库采用nodejs库-nedb-mainProcess-database"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">数据库采用nodejs库 nedb(mainProcess/database)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#登录认证-mainProcess-uuap"><span class="nav-number">3.0.1.2.</span> <span class="nav-text">登录认证 (mainProcess/uuap)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器中直接调起客户端，urlScheme-mainProcess-urlProtocol"><span class="nav-number">3.0.1.3.</span> <span class="nav-text">浏览器中直接调起客户端，urlScheme(mainProcess/urlProtocol)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#窗口管理器（mainProcess-windowManage）"><span class="nav-number">3.0.1.4.</span> <span class="nav-text">窗口管理器（mainProcess/windowManage）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#traymenu控制（mainProcess-trayMenu）"><span class="nav-number">3.0.1.5.</span> <span class="nav-text">traymenu控制（mainProcess/trayMenu）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传输控制（mainProcess-transfile-、-mainProcess-watcher）"><span class="nav-number">3.0.1.6.</span> <span class="nav-text">传输控制（mainProcess/transfile 、 mainProcess/watcher）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统通知："><span class="nav-number">3.0.1.7.</span> <span class="nav-text">系统通知：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动更新客户端（mainProcess-checkUpdate）"><span class="nav-number">3.0.1.8.</span> <span class="nav-text">自动更新客户端（mainProcess/checkUpdate）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flash的支持"><span class="nav-number">3.0.1.9.</span> <span class="nav-text">flash的支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络检测-mainProcess-network"><span class="nav-number">3.0.1.10.</span> <span class="nav-text">网络检测(mainProcess/network)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#renderProcess"><span class="nav-number">3.0.2.</span> <span class="nav-text">renderProcess</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个进程"><span class="nav-number">3.1.</span> <span class="nav-text">两个进程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打包方式"><span class="nav-number">4.</span> <span class="nav-text">打包方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调试技巧"><span class="nav-number">5.</span> <span class="nav-text">调试技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关资源"><span class="nav-number">6.</span> <span class="nav-text">相关资源</span></a></li></ol></div>
             
           </div>
         </section>
