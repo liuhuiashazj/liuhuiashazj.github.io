@@ -567,14 +567,17 @@
       
         
           
-            <h1 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h1><pre><code>- Electron是一个可以使用js、html、css创建桌面应用的库
-- 可以创建mac、window、linux等应用
-- atom基于electron开发，以前叫atom-shell
-</code></pre><h1 id="如何开发你的desktop应用"><a href="#如何开发你的desktop应用" class="headerlink" title="如何开发你的desktop应用"></a>如何开发你的desktop应用</h1><pre><code>-  一个简单的 
-    [demo](https://github.com/sindresorhus/electron-boilerplate/tree/master/boilerplate)
--  一个入口main.js（mainProcess）+ 一个index.html（renderProcess）
--  执行 electron main.js
-</code></pre><h1 id="企业云盘的整体结构"><a href="#企业云盘的整体结构" class="headerlink" title="企业云盘的整体结构"></a>企业云盘的整体结构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">├── build(app打包资源)</div><div class="line">├── readme.md</div><div class="line">├── release(发布路径)</div><div class="line">├── renderProcess（渲染进程）</div><div class="line">├── mainProcess（主进程）</div><div class="line">├── plugin(插件)</div><div class="line">├── certs(证书)</div><div class="line">├── build.sh(自动发版脚本)</div><div class="line">├── config.js(全局配置项)</div><div class="line">├── package.json</div><div class="line">└── windowinstall.js（window安装包生成脚本）</div></pre></td></tr></table></figure>
+            <h1 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h1><ul>
+<li>Electron是一个可以使用js、html、css创建桌面应用的库</li>
+<li>可以创建mac、window、linux等应用</li>
+<li>atom基于electron开发，以前叫atom-shell</li>
+</ul>
+<h1 id="如何开发你的desktop应用"><a href="#如何开发你的desktop应用" class="headerlink" title="如何开发你的desktop应用"></a>如何开发你的desktop应用</h1><ul>
+<li>一个简单的<br> <a href="https://github.com/sindresorhus/electron-boilerplate/tree/master/boilerplate" target="_blank" rel="external">demo</a></li>
+<li>一个入口main.js（mainProcess）+ 一个index.html（renderProcess）</li>
+<li>执行 electron main.js</li>
+</ul>
+<h1 id="企业云盘的整体结构"><a href="#企业云盘的整体结构" class="headerlink" title="企业云盘的整体结构"></a>企业云盘的整体结构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">├── build(app打包资源)</div><div class="line">├── readme.md</div><div class="line">├── release(发布路径)</div><div class="line">├── renderProcess（渲染进程）</div><div class="line">├── mainProcess（主进程）</div><div class="line">├── plugin(插件)</div><div class="line">├── certs(证书)</div><div class="line">├── build.sh(自动发版脚本)</div><div class="line">├── config.js(全局配置项)</div><div class="line">├── package.json</div><div class="line">└── windowinstall.js（window安装包生成脚本）</div></pre></td></tr></table></figure>
 <ul>
 <li>整体的结构就是按照两个进程来划分</li>
 <li>renderProcess中可以使用任何你想用的架构，企业云盘采用的是react+redux+router结构</li>
