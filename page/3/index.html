@@ -1,0 +1,1374 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sunlife">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Sunlife">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sunlife">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/3/"/>
+
+  <title> Sunlife </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Sunlife</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/14/8/" itemprop="url">
+                  css层叠（cascade）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-14T17:44:07+08:00" content="2016-09-14">
+              2016-09-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>css层叠（cascade）</p>
+<ul>
+<li>找出所有对这个元素或者属性的样式声明</li>
+<li>通过important和origin对其进行排序（第一个权重最低）<ul>
+<li>user agent样式</li>
+<li>user样式</li>
+<li>author样式</li>
+<li>author中带有!important的样式</li>
+<li>user中带有!important的样式</li>
+</ul>
+</li>
+<li><p>对同一important和来源进行排序。</p>
+<ul>
+<li>更多具体选择器的高于普通选择器的权重</li>
+<li>伪类元素和伪类等同于普通元素</li>
+<li>ice计算原则<ul>
+<li>选择符如果有个i(id),就在i的位置加1</li>
+<li>选择符如果有个c(class),就在c的位置加1</li>
+<li>选择符如果有个e(element),接在e的位置加1</li>
+</ul>
+</li>
+<li><p>demo</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/*但是，千万得知道 0-1-12 与 0-2-0 相比，仍然是 0-2-0 的特指度更高。*/</div><div class="line">p&#123;&#125;                                   //0-0-1 特指度=1</div><div class="line">p.largetext&#123;&#125;                         //0-1-1 特指度=11</div><div class="line">p#largetext&#123;&#125;                         //1-0-1 特指度=101</div><div class="line">body p#largetext&#123;&#125;                    //1-0-2 特指度=102</div><div class="line">body p#largetext ul.mylist&#123;&#125;          //1-1-3 特指度=113</div><div class="line">body p#largetext ul.mylist li&#123;&#125;       //1-1-4 特指度=114</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>对所有权重进行排序，如果有两个地方有相同的权重，则后面的覆盖前面的，</p>
+</li>
+</ul>
+<p>定义</p>
+<ul>
+<li>author：来自文档的样式，也就是我们平时所写的代码</li>
+<li>user:用户指定的样式文件，一些ua允许用户导入自定义样式表，例如ie（Internet 选项 -&gt; 外观 -&gt; 辅助功能 -&gt; 用户样式表）</li>
+<li>user agent :一些ua 例如浏览器自定义的某些样式</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/09/7/" itemprop="url">
+                  日常小坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T17:10:58+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>input，如果不给input设置背景颜色的话，input没有内阴影，但是，如果设置一个背景，就会产生阴影，解决办法，设置一个border</p>
+<p>jquery $(‘#test input’).select().focus();<br>safari如果选择器结果有多个，会导致每个的input都会触发blur，而chrome不会</p>
+<p><a href="https://jsfiddle.net/liuhuiashazj/c5rw0gpc/" target="_blank" rel="external">https://jsfiddle.net/liuhuiashazj/c5rw0gpc/</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/05/6/" itemprop="url">
+                  electron
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T18:00:35+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="什么是Electron"><a href="#什么是Electron" class="headerlink" title="什么是Electron"></a>什么是Electron</h1><ul>
+<li>Electron是一个可以使用js、html、css创建桌面应用的库</li>
+<li>可以创建mac、window、linux等应用</li>
+<li>atom基于electron开发，以前叫atom-shell</li>
+</ul>
+<h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><ul>
+<li><p>Electron安装不上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error: EACCES: permission denied, rename <span class="string">'/var/folders/v4/wr5tmnkx2_g45db_xjr78_fw0000gn/T/electron-tmp-download-2363-1473215672128/electron-v1.3.5-darwin-x64.zip'</span> -&gt; <span class="string">'/Users/liuhui/.electron/electron-v1.3.5-darwin-x64.zip'</span></div></pre></td></tr></table></figure>
+<p>  解决方案：<br>  直接sudo没用，要先改下/Users/liuhui/.electron的读写权限<br>  然后sudo安装</p>
+</li>
+</ul>
+<h1 id="为什么重要"><a href="#为什么重要" class="headerlink" title="为什么重要"></a>为什么重要</h1><ul>
+<li>使用web语言就可以轻松写出跨平台的app</li>
+<li>而且只需要兼容最新的chrome浏览器就可以，es2015的90%的功能都能用</li>
+<li>node的300000多的模块都可以用</li>
+<li></li>
+</ul>
+<h1 id="怎么做？"><a href="#怎么做？" class="headerlink" title="怎么做？"></a>怎么做？</h1><ul>
+<li>electron合并了chromium和node.js</li>
+<li>提供了一系列的api进行native开发，例如file dialogs,notifications,icons更多</li>
+</ul>
+<p><img src="/images/6.1.png" alt=""></p>
+<h1 id="两个进程"><a href="#两个进程" class="headerlink" title="两个进程"></a>两个进程</h1><ul>
+<li>主进程（app的入口js),控制整个app的生命周期<ul>
+<li>可以用的api<ul>
+<li>node.js apis</li>
+<li>electron main process modules</li>
+</ul>
+</li>
+<li>用处<ul>
+<li>创建渲染进程</li>
+<li>调用native 元素</li>
+<li>启动和退出app</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>渲染进程（类似于浏览器的一个窗口，可以有多个，相互独立）<ul>
+<li>可以用的api<ul>
+<li>node.js apis</li>
+<li>dom apis</li>
+<li>electron renderer process module</li>
+</ul>
+</li>
+<li>用处<ul>
+<li>设计网页，使用html和css</li>
+<li>js交互</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="一个形象的比喻"><a href="#一个形象的比喻" class="headerlink" title="一个形象的比喻"></a>一个形象的比喻</h1><ul>
+<li>主进程相当于chrome</li>
+<li>渲染进程相当于chrome中的每个进程</li>
+</ul>
+<h1 id="两个进程之间的通信"><a href="#两个进程之间的通信" class="headerlink" title="两个进程之间的通信"></a>两个进程之间的通信</h1><p>两个之间可以通过IPC通信，如下图<br><img src="/images/6.2.png" alt=""></p>
+<h1 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h1><ul>
+<li>electron使用和node apps同样的文件package.json</li>
+<li>electron通过这个文件来判断从哪个文件启动你的app<br><img src="/images/6.3.png" alt=""><br>-通过electron .启动</li>
+</ul>
+<h1 id="如何打包"><a href="#如何打包" class="headerlink" title="如何打包"></a>如何打包</h1><ul>
+<li>使用electron-packager来进行linux/mac/window的打包</li>
+<li>electron-packager ./ MyApp    –version=1.3.4</li>
+</ul>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><ul>
+<li><a href="http://electron.atom.io/docs/" target="_blank" rel="external">Full Electron docs</a></li>
+</ul>
+<h1 id="api列表"><a href="#api列表" class="headerlink" title="api列表"></a>api列表</h1><h2 id="main-progress"><a href="#main-progress" class="headerlink" title="main progress"></a>main progress</h2><p>打开file选择器，支持过滤，回调|dialog.showOpenDialog([browserWindow, ]options[, callback])<br>自动升级,提供调用squirrel插件|autoUpdater<br>控制远程下载,will-download事件中绑定updated/done|DownloadItem<br>支持电脑重启事件|powerMonitor<br>系统通知|notifications</p>
+<h1 id="api"><a href="#api" class="headerlink" title="api"></a>api</h1><ul>
+<li><a href="http://electron.atom.io/docs/api/" target="_blank" rel="external">api汇总</a></li>
+<li>clipboard 剪切板</li>
+<li></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/23/0/" itemprop="url">
+                  资源检索
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-23T16:44:50+08:00" content="2016-08-23">
+              2016-08-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th>问题</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>outlook对css和html支持情况|<a href="https://www.campaignmonitor.com/css/" target="_blank" rel="external">https://www.campaignmonitor.com/css/</a><br>outlook对css和html支持情况|<a href="https://msdn.microsoft.com/en-us/library/aa338201(v=office.12).aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/aa338201(v=office.12).aspx</a><br>ES5/ES6/ES7兼容性|<a href="http://kangax.github.io/compat-table/es5/" target="_blank" rel="external">http://kangax.github.io/compat-table/es5/</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/17/4/" itemprop="url">
+                  Git忽略规则及.gitignore不生效的解决办法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T17:39:32+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 此为注释 – 将被 Git 忽略</span></div><div class="line">*.a       <span class="comment"># 忽略所有 .a 结尾的文件</span></div><div class="line">!lib.a    <span class="comment"># 但 lib.a 除外</span></div><div class="line">/TODO     <span class="comment"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span></div><div class="line">build/    <span class="comment"># 忽略 build/ 目录下的所有文件</span></div><div class="line">doc/*.txt <span class="comment"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></div><div class="line">``` </div><div class="line">规则很简单，不做过多解释，但是有时候在项目开发过程中，突然心血来潮想把之前的某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，为什么呢？</div><div class="line">gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</div><div class="line"></div><div class="line">```bash</div><div class="line">git rm -r --cached .</div><div class="line">git add .</div><div class="line">git commit -m <span class="string">'update .gitignore'</span></div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/17/3/" itemprop="url">
+                  提高工作效率的cli工具
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T16:39:45+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://github.com/sourcegraph/thyme" target="_blank" rel="external">原文地址</a></p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>如何有效的改进我们的开发效率，首先得监控我们的时间都浪费在哪里了</p>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
+<li>通过cli即可跟踪和分析应用使用情况</li>
+<li>详细的图表显示时间如何花掉的</li>
+<li>数据存储在本地（控制权和隐私）</li>
+<li>开源、文档健全、轻松扩展</li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>安装GO(brew install go)</li>
+<li>安装完GO后配置环境变量<br>如果是zsh，则添加以下两行即可</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> GOPATH=<span class="string">"<span class="variable">$HOME</span>/mywork/"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOPATH</span>/bin</div><div class="line">``` </div><div class="line"></div><div class="line">- go get -u github.com/sourcegraph/thyme/cmd/thyme</div><div class="line">- 安装watch(brew install watch)</div><div class="line"></div><div class="line"><span class="comment">### 使用</span></div><div class="line">- 记录每30s使用的应用到thyme.json</div><div class="line">	``` bash</div><div class="line">	watch -n 30 thyme track -o thyme.json</div><div class="line">	<span class="comment">#watch替换方案如下</span></div><div class="line">	<span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span> thyme track -o thyme.json; sleep 30s; <span class="keyword">done</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>将json文件解析为html图表查看  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">thyme show -i thyme.json -w stats &gt; thyme.html</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="/images/3.1.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/16/2/" itemprop="url">
+                  Backbone的mvc架构
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-16T15:49:34+08:00" content="2016-08-16">
+              2016-08-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="页面的html结构"><a href="#页面的html结构" class="headerlink" title="页面的html结构"></a>页面的html结构</h3><p><img src="/images/2.1.png" alt=""></p>
+<h4 id="整个页面可以打开两种模式的窗口"><a href="#整个页面可以打开两种模式的窗口" class="headerlink" title="整个页面可以打开两种模式的窗口"></a>整个页面可以打开两种模式的窗口</h4><ul>
+<li>文件浏览窗口(id为wrapper)<br><img src="/images/2.2.png" alt=""></li>
+<li>新建会议窗口(id为newmeet)<br><img src="/images/2.3.png" alt=""></li>
+</ul>
+<h3 id="页面的目录结构"><a href="#页面的目录结构" class="headerlink" title="页面的目录结构"></a>页面的目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">├── common  (通用的css、img、js、tpl)</div><div class="line">│   ├── css</div><div class="line">│   ├── imgs</div><div class="line">│   ├── js</div><div class="line">│   └── tpl</div><div class="line">├── libs    (基本库)</div><div class="line">└── views   (页面所有view集合)</div><div class="line">    ├── detail   （会议详情头部）</div><div class="line">    ├── dir      （目录详情页）</div><div class="line">    ├── doclist  （会议文档列表）</div><div class="line">    ├── edit     （会议详情编辑）</div><div class="line">    ├── file     （文件详情页）</div><div class="line">    ├── fnav     （左侧导航一）</div><div class="line">    ├── head     （头部）</div><div class="line">    ├── help     （帮助页）</div><div class="line">    ├── iboxdocs （个人文档列表）</div><div class="line">    ├── iboxleft （个人左侧目录树）</div><div class="line">    ├── items    （会议列表）</div><div class="line">    ├── lead	 （引导页）</div><div class="line">    ├── nav      （左侧导航二）</div><div class="line">    ├── searchtab（搜索切换）</div><div class="line">    ├── team	 （云盘文档列表）</div><div class="line">    └── teamleft （云盘左侧目录树）</div></pre></td></tr></table></figure>
+<h3 id="路由信息"><a href="#路由信息" class="headerlink" title="路由信息"></a>路由信息</h3><ul>
+<li>‘meeting/:cate/:role/:product/:page’: ‘meeting’</li>
+<li>‘detail/:cate/:role/:mid’: ‘detailmeet’</li>
+<li>‘editmeet/:mid/:copy’: ‘editmeet’</li>
+<li>‘newmeet’: ‘newmeet’</li>
+<li>‘search/:tab/:word’: ‘search’</li>
+<li>‘file/:fid’: ‘file’</li>
+<li>‘dir/:fid’: ‘dir’</li>
+<li>‘help/(:index)’: ‘help’</li>
+<li>‘myfile/:fid’: ‘myfile’</li>
+<li>‘ibox’: ‘ibox’</li>
+<li>‘team/:fid’: ‘team’</li>
+</ul>
+<h3 id="路由与view对应关系"><a href="#路由与view对应关系" class="headerlink" title="路由与view对应关系"></a>路由与view对应关系</h3><p><img src="/images/2.4.png" alt=""><br>飘绿部分为大量通用的view（head、lead、fnav、nav）<br>剩余非通用的view，分别组成各自的页面</p>
+<h3 id="view之间继承关系"><a href="#view之间继承关系" class="headerlink" title="view之间继承关系"></a>view之间继承关系</h3><p><img src="/images/2.5.png" alt=""></p>
+<h3 id="页面产出通用组件"><a href="#页面产出通用组件" class="headerlink" title="页面产出通用组件"></a>页面产出通用组件</h3><ul>
+<li>dropdown.js(搜索下拉提示组件，事件代理等)</li>
+<li>leanModal.js(模态框组件，支持样式定义，回调函数，事件代理等)</li>
+<li>tree.js(目录树组件，支持远程数据增删改拖拽移动，支持右键菜单，事件代理等)</li>
+<li>build.sh(自动化构建脚本，版本号等，支持代码直接远程部署带测试机)</li>
+</ul>
+<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><ul>
+<li>backbone.js</li>
+<li>requirejs</li>
+<li>zepto.js</li>
+<li>shell</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/15/1/" itemprop="url">
+                  关于js Date的那些坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-15T16:53:21+08:00" content="2016-08-15">
+              2016-08-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="ie8中var-t1-new-Date-‘2015-04-07’-报错"><a href="#ie8中var-t1-new-Date-‘2015-04-07’-报错" class="headerlink" title="ie8中var t1=new Date(‘2015-04-07’)报错"></a>ie8中var t1=new Date(‘2015-04-07’)报错</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="external">翻查官方文档</a></p>
+<h4 id="new-Date-支持以下几种参数形式"><a href="#new-Date-支持以下几种参数形式" class="headerlink" title="new Date()支持以下几种参数形式"></a>new Date()支持以下几种参数形式</h4><pre><code class="javascript"><span class="keyword">new</span> <span class="built_in">Date</span>();
+<span class="keyword">new</span> <span class="built_in">Date</span>(value);
+<span class="keyword">new</span> <span class="built_in">Date</span>(dateString);
+<span class="keyword">new</span> <span class="built_in">Date</span>(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);
+</code></pre>
+<h4 id="2015-04-07相当于第三种-datestring"><a href="#2015-04-07相当于第三种-datestring" class="headerlink" title="2015-04-07相当于第三种 datestring"></a>2015-04-07相当于第三种 datestring</h4><p><img src="/images/1.1.png" alt=""></p>
+<h4 id="就是说datestring得支持parse解析"><a href="#就是说datestring得支持parse解析" class="headerlink" title="就是说datestring得支持parse解析"></a>就是说datestring得支持parse解析</h4><p><img src="/images/1.2.png" alt=""></p>
+<h4 id="同时提到了，ie8不支持iso8601-时间表示法"><a href="#同时提到了，ie8不支持iso8601-时间表示法" class="headerlink" title="同时提到了，ie8不支持iso8601 时间表示法"></a>同时提到了，ie8不支持iso8601 时间表示法</h4><p><img src="/images/1.3.png" alt=""></p>
+<h4 id="如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区"><a href="#如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区" class="headerlink" title="如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区"></a>如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区</h4><p><img src="/images/1.4.png" alt=""></p>
+<pre><code class="javascript"><span class="keyword">var</span> a=<span class="built_in">Date</span>.parse(<span class="string">"March 7, 2014"</span>);
+<span class="keyword">var</span> b=<span class="built_in">Date</span>.parse(<span class="string">"2014-03-07"</span>);
+<span class="keyword">var</span> c=<span class="keyword">new</span> <span class="built_in">Date</span>()
+c.setTime(a);
+<span class="keyword">var</span> d=<span class="keyword">new</span> <span class="built_in">Date</span>()
+d.setTime(b);
+<span class="built_in">console</span>.log(c,c.getMonth(),c.getDate(),c.getHours());
+<span class="built_in">console</span>.log(d,d.getMonth(),d.getDate(),d.getHours());
+</code></pre>
+<h4 id="chrome中结果"><a href="#chrome中结果" class="headerlink" title="chrome中结果"></a>chrome中结果</h4><p><img src="/images/1.5.png" alt=""></p>
+<h4 id="火狐中结果"><a href="#火狐中结果" class="headerlink" title="火狐中结果"></a>火狐中结果</h4><p><img src="/images/1.6.png" alt=""></p>
+<h4 id="同理"><a href="#同理" class="headerlink" title="同理"></a>同理</h4><pre><code class="javascript"><span class="keyword">var</span> c=<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"March 7, 2014"</span>);
+<span class="keyword">var</span> d=<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2014-03-07"</span>);
+<span class="built_in">console</span>.log(c,c.getMonth(),c.getDate(),c.getHours());
+<span class="built_in">console</span>.log(d,d.getMonth(),d.getDate(),d.getHours());
+</code></pre>
+<p><img src="/images/1.7.png" alt=""></p>
+<h4 id="分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符"><a href="#分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符" class="headerlink" title="分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符"></a>分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符</h4><p>第二种初始化时，会假设当前设置的时区为utc标准时区，而北京时区比实际快8个小时，所以转化为当地时区后就是8点</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="liuhuiashazj" />
+          <p class="site-author-name" itemprop="name">liuhuiashazj</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuhuiashazj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
