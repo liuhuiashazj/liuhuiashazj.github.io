@@ -572,6 +572,7 @@
 <li>可以创建mac、window、linux等应用</li>
 <li>atom基于electron开发，以前叫atom-shell</li>
 </ul>
+<p><img src="/images/6.1.png" alt=""></p>
 <h1 id="如何开发你的desktop应用"><a href="#如何开发你的desktop应用" class="headerlink" title="如何开发你的desktop应用"></a>如何开发你的desktop应用</h1><ul>
 <li>一个简单的 demo<br> <a href="https://github.com/sindresorhus/electron-boilerplate/tree/master/boilerplate" target="_blank" rel="external">demo</a></li>
 <li>一个入口main.js（mainProcess）+ 一个index.html（renderProcess）</li>
@@ -655,16 +656,15 @@
 <h4 id="网络检测-mainProcess-network"><a href="#网络检测-mainProcess-network" class="headerlink" title="网络检测(mainProcess/network)"></a>网络检测(mainProcess/network)</h4><p>网络监测刚开始采用的 <a href="https://developer.mozilla.org/en-US/docs/Online_and_offline_events" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Online_and_offline_events</a><br>监测很准确，这种检测仅仅针对lan是否有连接，实际情况是很多时候网络是连着的，但是不能上网<br>后面换成nodejs的方案</p>
 <h3 id="renderProcess"><a href="#renderProcess" class="headerlink" title="renderProcess"></a>renderProcess</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">├── bin</div><div class="line">│   ├── compile.js</div><div class="line">│   └── server.js</div><div class="line">├── build</div><div class="line">│   ├── dll</div><div class="line">│   ├── package.json</div><div class="line">│   ├── webpack-compiler.js</div><div class="line">│   ├── webpack.config.js</div><div class="line">│   └── webpack.dll.config.js</div><div class="line">├── config</div><div class="line">│   └── index.js</div><div class="line">├── package.json</div><div class="line">├── server</div><div class="line">│   └── main.js</div><div class="line">└── src</div><div class="line">    ├── components 组件</div><div class="line">    ├── containers 容器</div><div class="line">    ├── index.html 入口html</div><div class="line">    ├── ipcCenter.js 消息中心</div><div class="line">    ├── layouts 布局</div><div class="line">    ├── main.js 入口js</div><div class="line">    ├── routes 路由</div><div class="line">    ├── static 静态js</div><div class="line">    ├── statichtml 其他入口html</div><div class="line">    ├── store 通用的store</div><div class="line">    └── styles 样式</div></pre></td></tr></table></figure>
 <h2 id="两个进程"><a href="#两个进程" class="headerlink" title="两个进程"></a>两个进程</h2><pre><code>[官方网站](https://electron.atom.io/docs/)
-+ electron合并了chromium和node.js
-+ 提供了一系列的api进行native开发，例如file dialogs,notifications,icons更多
-
-### 中间的坑：
-+ 可以看到官方网站提供了mainProcess和renderProcess区分了接口，但是这两个api并不是完全独立的，renderProces提供的remote模块可以获取到mainProcess到所有的api，详细见接口 [接口文档](https://electron.atom.io/docs/api/remote/)
-+ 企业云盘在mainProcess里面定义了整个app通用的全局变量：
-![](/images/test/28.md0lkNZKGr.png)
-+ 虽然renderProcess中可以访问到mainProcess里面的全局变量，但是renderProcess里面修改并不会影响到mainPorcess里面的变量
-![](/images/test/28.md9dJCVX6I.png)
-</code></pre><p><img src="/images/6.1.png" alt=""></p>
+</code></pre><ul>
+<li>electron合并了chromium和node.js</li>
+<li>提供了一系列的api进行native开发，例如file dialogs,notifications,icons更多</li>
+</ul>
+<h3 id="中间的坑："><a href="#中间的坑：" class="headerlink" title="中间的坑："></a>中间的坑：</h3><ul>
+<li>可以看到官方网站提供了mainProcess和renderProcess区分了接口，但是这两个api并不是完全独立的，renderProces提供的remote模块可以获取到mainProcess到所有的api，详细见接口 <a href="https://electron.atom.io/docs/api/remote/" target="_blank" rel="external">接口文档</a></li>
+<li>企业云盘在mainProcess里面定义了整个app通用的全局变量：<br><img src="/images/test/28.md0lkNZKGr.png" alt=""></li>
+<li>虽然renderProcess中可以访问到mainProcess里面的全局变量，但是renderProcess里面修改并不会影响到mainPorcess里面的变量<br><img src="/images/test/28.md9dJCVX6I.png" alt=""></li>
+</ul>
 <h1 id="打包方式"><a href="#打包方式" class="headerlink" title="打包方式"></a>打包方式</h1><p>打包方式，企业云盘用过2种</p>
 <ul>
 <li><a href="https://github.com/electron-userland/electron-packager" target="_blank" rel="external">electron-package</a></li>
@@ -686,10 +686,12 @@
 <ul>
 <li><p>调试mainProcess<br>console.log直接会在terminal中打出，另外全局有写一个小工具debugInRender,这个工具会将mainProcess的调试信息打印在renderProcess的控制台中</p>
 </li>
-<li><p>调试用户的电脑<br>企业云盘-显示包内容-contents-resources-app里面，修改代码重启可生效</p>
+<li><p>调试用户的电脑<br>企业云盘-显示包内容-contents-resources-app里面，修改代码重启可生效，<br>当然云盘在打包的时候可以压缩所有代码为asar格式的，只需要在package的配置中添加</p>
 </li>
-<li><p>官方给出的调试方案<br><a href="https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md" target="_blank" rel="external">https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md</a></p>
-</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">"asar": true</div></pre></td></tr></table></figure>
+<ul>
+<li>官方给出的调试方案<br><a href="https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md" target="_blank" rel="external">https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md</a></li>
 </ul>
 <h1 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h1><p><a href="https://electron.atom.io/docs/" target="_blank" rel="external">https://electron.atom.io/docs/</a><br><a href="https://github.com/electron-userland/electron-builder" target="_blank" rel="external">https://github.com/electron-userland/electron-builder</a><br><a href="https://github.com/electron/windows-installer" target="_blank" rel="external">https://github.com/electron/windows-installer</a><br><a href="https://github.com/ArekSredzki/electron-release-server" target="_blank" rel="external">https://github.com/ArekSredzki/electron-release-server</a></p>
 <p><a href="https://github.com/electron/electron/blob/master/docs/development/atom-shell-vs-node-webkit.md" target="_blank" rel="external">https://github.com/electron/electron/blob/master/docs/development/atom-shell-vs-node-webkit.md</a></p>
