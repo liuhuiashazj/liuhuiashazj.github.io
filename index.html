@@ -587,9 +587,9 @@
 <h4 id="登录认证-mainProcess-uuap"><a href="#登录认证-mainProcess-uuap" class="headerlink" title="登录认证 (mainProcess/uuap)"></a>登录认证 (mainProcess/uuap)</h4><p>浏览器向server发起请求,server端进行登录，并且在head中set-cookie</p>
 <p>mainProcess通过该有效cookie发起后续所有请求</p>
 <p>renderProcess中的请求通过ipc通信方式使用nodejs的request模块来进行通信</p>
-<h4 id="浏览器中直接调起客户端，urlScheme-mainProcess-urlProtocol"><a href="#浏览器中直接调起客户端，urlScheme-mainProcess-urlProtocol" class="headerlink" title="浏览器中直接调起客户端，urlScheme(mainProcess/urlProtocol)"></a>浏览器中直接调起客户端，urlScheme(mainProcess/urlProtocol)</h4><p>1.代码如下<br>    <img src="../images/test/28.md0uZGp9DO.png" alt=""><br>2.配置info.plist<br>    <img src="../images/test/28.mdFssiOOjv.png" alt=""><br>3.打包过程中也需要配置下，否则mac中不生效<br>    <img src="../images/test/28.mdI503ErtM.png" alt=""></p>
+<h4 id="浏览器中直接调起客户端，urlScheme-mainProcess-urlProtocol"><a href="#浏览器中直接调起客户端，urlScheme-mainProcess-urlProtocol" class="headerlink" title="浏览器中直接调起客户端，urlScheme(mainProcess/urlProtocol)"></a>浏览器中直接调起客户端，urlScheme(mainProcess/urlProtocol)</h4><p>1.代码如下<br>    <img src="../images/28.md0uZGp9DO.png" alt=""><br>2.配置info.plist<br>    <img src="../images/28.mdFssiOOjv.png" alt=""><br>3.打包过程中也需要配置下，否则mac中不生效<br>    <img src="../images/28.mdI503ErtM.png" alt=""></p>
 <h4 id="窗口管理器（mainProcess-windowManage）"><a href="#窗口管理器（mainProcess-windowManage）" class="headerlink" title="窗口管理器（mainProcess/windowManage）"></a>窗口管理器（mainProcess/windowManage）</h4><pre><code>1.企业云盘总共有三个window（主页、设置页、预览页、反馈页、二次确认页）   
-</code></pre><h4 id="traymenu控制（mainProcess-trayMenu）"><a href="#traymenu控制（mainProcess-trayMenu）" class="headerlink" title="traymenu控制（mainProcess/trayMenu）"></a>traymenu控制（mainProcess/trayMenu）</h4><p>参考官方api写即可<br><img src="../images/test/28.mdVNSa2xBo.png" alt=""></p>
+</code></pre><h4 id="traymenu控制（mainProcess-trayMenu）"><a href="#traymenu控制（mainProcess-trayMenu）" class="headerlink" title="traymenu控制（mainProcess/trayMenu）"></a>traymenu控制（mainProcess/trayMenu）</h4><p>参考官方api写即可<br><img src="../images/28.mdVNSa2xBo.png" alt=""></p>
 <h4 id="传输控制（mainProcess-transfile-、-mainProcess-watcher）"><a href="#传输控制（mainProcess-transfile-、-mainProcess-watcher）" class="headerlink" title="传输控制（mainProcess/transfile 、 mainProcess/watcher）"></a>传输控制（mainProcess/transfile 、 mainProcess/watcher）</h4><p>本地文件增删改查检测（使用nodejs库chokidar，目前mac已迁移到Object-c的app中）</p>
 <p>关于electron中与oc app的通信方式。目前采用的是shell里面的open命令，以及web server方式<br>mainProcess中创建webserver服务，oc中通过发起http请求进行通信<br>mainProcess和oc通信采用open方式</p>
 <p>md5计算，采用md5-file</p>
@@ -620,13 +620,13 @@
 <ul>
 <li><p>必须要有证书</p>
 <ul>
-<li>mac通过开发者账号生成,公司苹果开发者团队，可以通过权限申请加入，地址：<a href="http://appdev.baidu.com/" target="_blank" rel="external">http://appdev.baidu.com/</a><br><img src="../images/test/28.mdQQtjgulk.png" alt=""></li>
+<li>mac通过开发者账号生成,公司苹果开发者团队，可以通过权限申请加入，地址：<a href="http://appdev.baidu.com/" target="_blank" rel="external">http://appdev.baidu.com/</a><br><img src="../images/28.mdQQtjgulk.png" alt=""></li>
 <li>window证书<br>ecloud.pfx,带秘钥的证书，具体可以参考 <a href="https://www.npmjs.com/package/electron-installer-windows" target="_blank" rel="external">如何生成pfx的证书</a></li>
 </ul>
 </li>
 <li><p>具体方案可以参考 <a href="https://medium.com/@svilen/auto-updating-apps-for-windows-and-osx-using-electron-the-complete-guide-4aa7a50b904c" target="_blank" rel="external">Auto-updating apps for Windows and OSX using Electron: The complete guide</a></p>
 </li>
-<li><p>自动更新提示如下<br><img src="../images/test/28.mdjmQL57oN.png" alt=""><br><img src="../images/test/28.mdc16yuk4H.png" alt=""></p>
+<li><p>自动更新提示如下<br><img src="../images/28.mdjmQL57oN.png" alt=""><br><img src="../images/28.mdc16yuk4H.png" alt=""></p>
 </li>
 <li><p>遇到坑<br>autoUpdater.quitAndInstall(); 没有自动重启应用<br>window中采用squirrel安装方式后很多问题，安装过程中应用就被打开，需要处理下squirrel事件,可以参考 <a href="https://github.com/electron/windows-installer" target="_blank" rel="external">https://github.com/electron/windows-installer</a></p>
 </li>
@@ -653,9 +653,9 @@
 ### 中间的坑：
 + 可以看到官方网站提供了mainProcess和renderProcess区分了接口，但是这两个api并不是完全独立的，renderProces提供的remote模块可以获取到mainProcess到所有的api，详细见接口 [接口文档](https://electron.atom.io/docs/api/remote/)
 + 企业云盘在mainProcess里面定义了整个app通用的全局变量：
-![](../images/test/28.md0lkNZKGr.png)
+![](../images/28.md0lkNZKGr.png)
 + 虽然renderProcess中可以访问到mainProcess里面的全局变量，但是renderProcess里面修改并不会影响到mainPorcess里面的变量
-![](../images/test/28.md9dJCVX6I.png)
+![](../images/28.md9dJCVX6I.png)
 </code></pre><p><img src="../images/6.1.png" alt=""></p>
 <h1 id="打包方式"><a href="#打包方式" class="headerlink" title="打包方式"></a>打包方式</h1><p>打包方式，企业云盘用过2种</p>
 <ul>
@@ -668,7 +668,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&quot;build&quot;: &#123;</div><div class="line">    &quot;appId&quot;: &quot;com.electron.ecloud&quot;,</div><div class="line">    &quot;productName&quot;: &quot;ecloud&quot;,</div><div class="line">    &quot;mac&quot;: &#123;</div><div class="line">      &quot;extendInfo&quot;: &quot;build/info.plist&quot;</div><div class="line">    &#125;,</div><div class="line">    // ...</div></pre></td></tr></table></figure>
 <p>这两种打包方式的区别：<br>electron-package 仅能打出应用程序，无法打出安装包，配置项没有electron-builder那么灵活</p>
 <p>electron-builder 支持非常强大的配置，可以参考 <a href="https://github.com/electron-userland/electron-builder/wiki/Options" target="_blank" rel="external">官网</a></p>
-<p>需要注意的是自动更新需要打出nupkg的包，electron-builder也是支持的<br><img src="../images/test/28.mdEjTOVah6.png" alt=""></p>
+<p>需要注意的是自动更新需要打出nupkg的包，electron-builder也是支持的<br><img src="../images/28.mdEjTOVah6.png" alt=""></p>
 <p>自动更新依赖于squirrel模块，这个模块决定了window的打包方式必须是squirrel的安装包，从而决定了不一样的window安装包（nsis或者squirrel）</p>
 <p>squirrel安装包依赖于net 4.5</p>
 <h1 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h1><ul>
