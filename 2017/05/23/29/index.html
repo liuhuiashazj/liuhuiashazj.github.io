@@ -96,16 +96,16 @@ Node.js is a platform built on Chrome’s JavaScript r">
  关于node.js究竟是什么，大家的问题在于
 node.js是不是一门语言？node.js是不是一个JavaScript库函数？node.js是不是一个JavaScript框架？ 很遗憾，这三个问题的答案都是NO，看看官方对自己的描述
 Node.js is a platform built on Chrome’s JavaScript r">
-<meta property="og:image" content="http://yoursite.com/../images/test/29.mddHFUETR8.png">
-<meta property="og:image" content="http://yoursite.com/../images/test/29.mdyW6KLL6S.png">
-<meta property="og:updated_time" content="2017-06-02T11:33:29.000Z">
+<meta property="og:image" content="http://yoursite.com/images/test/29.mddHFUETR8.png">
+<meta property="og:image" content="http://yoursite.com/images/test/29.mdyW6KLL6S.png">
+<meta property="og:updated_time" content="2017-08-28T03:16:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs 与javascript 关系">
 <meta name="twitter:description" content="node.js是什么？和JavaScript有什么关系？
  关于node.js究竟是什么，大家的问题在于
 node.js是不是一门语言？node.js是不是一个JavaScript库函数？node.js是不是一个JavaScript框架？ 很遗憾，这三个问题的答案都是NO，看看官方对自己的描述
 Node.js is a platform built on Chrome’s JavaScript r">
-<meta name="twitter:image" content="http://yoursite.com/../images/test/29.mddHFUETR8.png">
+<meta name="twitter:image" content="http://yoursite.com/images/test/29.mddHFUETR8.png">
 
 
 
@@ -296,9 +296,9 @@ Node.js is a platform built on Chrome’s JavaScript r">
 <p>core JavaScript<br>client JavaScript（DOM、BOM）<br>而只有core JavaScript可以在node.js上运行，所以node.js借用了JavaScript的语法，但并不能用来处理浏览器对象（BOM）及文档对象（DOM），所以node.js并不是设计为在服务器端运行解析html文档的（当然有module可以做此事），所以“在服务器端运行的JavaScript”在一定程度上误导了初学者。</p>
 <p>同时node.js并不仅仅运行core JavaScript，node.js中还有文件系统、模块包、操作系统API、网络通信、二进制类型处理等core JavaScript不具备的功能。</p>
 <p>nodejs 底层*nix 与window的区别</p>
-<p><img src="../images/test/29.mddHFUETR8.png" alt=""></p>
+<p><img src="/images/test/29.mddHFUETR8.png" alt=""></p>
 <p>node w3c js关系</p>
-<p><img src="../images/test/29.mdyW6KLL6S.png" alt=""></p>
+<p><img src="/images/test/29.mdyW6KLL6S.png" alt=""></p>
 <p>在nodejs中引入模块，需要经历3个步骤：<br>1 路径分析<br>2 文件定位<br>3 编译执行</p>
 <p>node中分为核心模块（http/fs/path）与文件模块<br>在node进程启动过程中，部分核心模块被直接加载进内存中，所以这部分核心模块引入时，文件定位及编译执行这两个步骤可以省略掉，并且在路径分析中优先判断，所以他们的加载速度是最快的。</p>
 <p>每个模块文件中都存在require、exports、module这三个变量,甚至还有<strong>filename、</strong>dirname<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.paths);</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">require</span>.extensions);</div><div class="line"><span class="built_in">console</span>.log(__filename);</div><div class="line"><span class="built_in">console</span>.log(__dirname);</div><div class="line"></div><div class="line"><span class="comment">/* *</span></div><div class="line">[ '/Users/liuhui/Desktop/mylab/pkg/node_modules',</div><div class="line">  '/Users/liuhui/Desktop/mylab/node_modules',</div><div class="line">  '/Users/liuhui/Desktop/node_modules',</div><div class="line">  '/Users/liuhui/node_modules',</div><div class="line">  '/Users/node_modules',</div><div class="line">  '/node_modules' ]</div><div class="line">&#123; '.js': [Function], '.json': [Function], '.node': [Function] &#125;</div><div class="line">/Users/liuhui/Desktop/mylab/pkg/module_path.js</div><div class="line">/Users/liuhui/Desktop/mylab/pkg</div><div class="line">*/</div></pre></td></tr></table></figure></p>

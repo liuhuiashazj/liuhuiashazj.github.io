@@ -94,14 +94,14 @@
 <meta property="og:description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。
 如下
 12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStuff&apos;)        .addEv">
-<meta property="og:image" content="http://yoursite.com/../images/test/33.mdNRSFCoGT.png">
-<meta property="og:updated_time" content="2017-07-18T08:41:01.000Z">
+<meta property="og:image" content="http://yoursite.com/images/test/33.mdNRSFCoGT.png">
+<meta property="og:updated_time" content="2017-08-28T03:16:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件、并发、js（翻译）">
 <meta name="twitter:description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。
 如下
 12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStuff&apos;)        .addEv">
-<meta name="twitter:image" content="http://yoursite.com/../images/test/33.mdNRSFCoGT.png">
+<meta name="twitter:image" content="http://yoursite.com/images/test/33.mdNRSFCoGT.png">
 
 
 
@@ -287,7 +287,7 @@
         <p>现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。</p>
 <p>如下</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"doStuff"</span>&gt;</span>Do Stuff<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'doStuff'</span>)</div><div class="line">        .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'Do Stuff'</span>);</div><div class="line">            &#125;</div><div class="line">        );</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>事件模型大概如下图<br><img src="../images/test/33.mdNRSFCoGT.png" alt=""><br>From Philip Robert’s diagram</p>
+<p>事件模型大概如下图<br><img src="/images/test/33.mdNRSFCoGT.png" alt=""><br>From Philip Robert’s diagram</p>
 <p>以下几个点：<br>1.用户界面：用户点击do stuff按钮，很简单<br>2.Web APIS:<br>    DOM API的事件中心，Web APIS是多线程区域，允许一次触发多个事件，他们在页面加载完毕后通过window全局对象可以访问到，DOM以外的的例子就是AJAX的XMLHttpRequest,和timer的setTimeout函数<br>3.Event Queue:<br>    event的回调函数的下一步就是将其push到很多的events queues(也叫task queues)中,因为有很多的web api，浏览器有很多的event queues，比如network request，dom events、rendering更多</p>
 <pre><code>关于 [event-loop](https://www.w3.org/TR/html5/webappapis.html#event-loop)
 </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">For example, a user agent could have one task queue for mouse and key events (the user interaction task source), and another for everything else. The user agent could then give keyboard and mouse events preference over other tasks three quarters of the time, keeping the interface responsive but not starving other task queues, and never processing events from any one task source out of order.</div><div class="line"></div><div class="line">用户代理会把3/4的时间给keyboard和mouse事件，以保持用户界面的响应</div></pre></td></tr></table></figure>

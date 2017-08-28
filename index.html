@@ -375,7 +375,7 @@
             <p>现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。</p>
 <p>如下</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"doStuff"</span>&gt;</span>Do Stuff<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'doStuff'</span>)</div><div class="line">        .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'Do Stuff'</span>);</div><div class="line">            &#125;</div><div class="line">        );</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>事件模型大概如下图<br><img src="../images/test/33.mdNRSFCoGT.png" alt=""><br>From Philip Robert’s diagram</p>
+<p>事件模型大概如下图<br><img src="/images/test/33.mdNRSFCoGT.png" alt=""><br>From Philip Robert’s diagram</p>
 <p>以下几个点：<br>1.用户界面：用户点击do stuff按钮，很简单<br>2.Web APIS:<br>    DOM API的事件中心，Web APIS是多线程区域，允许一次触发多个事件，他们在页面加载完毕后通过window全局对象可以访问到，DOM以外的的例子就是AJAX的XMLHttpRequest,和timer的setTimeout函数<br>3.Event Queue:<br>    event的回调函数的下一步就是将其push到很多的events queues(也叫task queues)中,因为有很多的web api，浏览器有很多的event queues，比如network request，dom events、rendering更多</p>
 <pre><code>关于 [event-loop](https://www.w3.org/TR/html5/webappapis.html#event-loop)
 </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">For example, a user agent could have one task queue for mouse and key events (the user interaction task source), and another for everything else. The user agent could then give keyboard and mouse events preference over other tasks three quarters of the time, keeping the interface responsive but not starving other task queues, and never processing events from any one task source out of order.</div><div class="line"></div><div class="line">用户代理会把3/4的时间给keyboard和mouse事件，以保持用户界面的响应</div></pre></td></tr></table></figure>
@@ -485,17 +485,17 @@
         
           
             <p><a href="https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn</a><br>内存泄漏的几种检测方式</p>
-<h2 id="按-Shift-Esc-或者转到-Chrome-主菜单并选择-More-tools-gt-Task-manager，打开任务管理器。"><a href="#按-Shift-Esc-或者转到-Chrome-主菜单并选择-More-tools-gt-Task-manager，打开任务管理器。" class="headerlink" title="按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。"></a>按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。</h2><p><img src="../images/test/32.mdHqYNETTT.png" alt=""></p>
-<h2 id="Timeline记录可视化内存泄漏"><a href="#Timeline记录可视化内存泄漏" class="headerlink" title="Timeline记录可视化内存泄漏"></a>Timeline记录可视化内存泄漏</h2><p><img src="../images/test/32.md3bUgYRQd.png" alt=""></p>
+<h2 id="按-Shift-Esc-或者转到-Chrome-主菜单并选择-More-tools-gt-Task-manager，打开任务管理器。"><a href="#按-Shift-Esc-或者转到-Chrome-主菜单并选择-More-tools-gt-Task-manager，打开任务管理器。" class="headerlink" title="按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。"></a>按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。</h2><p><img src="/images/test/32.mdHqYNETTT.png" alt=""></p>
+<h2 id="Timeline记录可视化内存泄漏"><a href="#Timeline记录可视化内存泄漏" class="headerlink" title="Timeline记录可视化内存泄漏"></a>Timeline记录可视化内存泄漏</h2><p><img src="/images/test/32.md3bUgYRQd.png" alt=""></p>
 <p>上图可以看到jsheap越来越大，在实际使用过程中，如果您看到这种 JS 堆大小或节点大小不断增大的模式，则可能存在内存泄漏。</p>
 <p>代码如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> detachedTree1;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.createElement(<span class="string">'ul'</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">        <span class="keyword">var</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</div><div class="line">        ul.appendChild(li);</div><div class="line">    &#125;</div><div class="line">    detachedTree1 = ul;</div><div class="line">&#125;</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'grow'</span>).addEventListener(<span class="string">'click'</span>, create);</div></pre></td></tr></table></figure>
-<h2 id="使用堆快照发现已分离的dom树内存泄漏"><a href="#使用堆快照发现已分离的dom树内存泄漏" class="headerlink" title="使用堆快照发现已分离的dom树内存泄漏"></a>使用堆快照发现已分离的dom树内存泄漏</h2><p>还是上述代码<br><img src="../images/test/32.mdLCZRkQTO.png" alt=""></p>
+<h2 id="使用堆快照发现已分离的dom树内存泄漏"><a href="#使用堆快照发现已分离的dom树内存泄漏" class="headerlink" title="使用堆快照发现已分离的dom树内存泄漏"></a>使用堆快照发现已分离的dom树内存泄漏</h2><p>还是上述代码<br><img src="/images/test/32.mdLCZRkQTO.png" alt=""></p>
 <p>快照可能需要一些时间处理和加载。完成后，请从左侧面板（名称为 HEAP SNAPSHOTS）中选择该快照。</p>
 <p>在 Class filter 文本框中键入 Detached，搜索已分离的 DOM 树。</p>
 <p>以黄色突出显示的节点具有 JavaScript 代码对它们的直接引用。 以红色突出显示的节点则没有直接引用。只有属于黄色节点的树时，它们才处于活动状态。 一般而言，您需要将注意力放在黄色节点上。 修复代码，使黄色节点处于活动状态的时间不长于需要的时间，您也需要消除属于黄色节点树的红色节点。</p>
-<p>点击黄色节点对其进行进一步调查。在 Object 窗格中，您可以看到与正在引用该节点的代码相关的更多信息。 例如，在下面的屏幕截图中，您可以看到 detachedTree 变量正在引用该节点。要解决这一特定的内存泄漏，您需要研究使用 detachedTree 的代码并确保在不需要时，此代码可以移除其对节点的引用。<br><img src="../images/test/32.mdu5sawPGR.png" alt=""></p>
-<h2 id="使用内存分配来查看"><a href="#使用内存分配来查看" class="headerlink" title="使用内存分配来查看"></a>使用内存分配来查看</h2><p><img src="../images/test/32.mdcHJUtoaZ.png" alt=""></p>
+<p>点击黄色节点对其进行进一步调查。在 Object 窗格中，您可以看到与正在引用该节点的代码相关的更多信息。 例如，在下面的屏幕截图中，您可以看到 detachedTree 变量正在引用该节点。要解决这一特定的内存泄漏，您需要研究使用 detachedTree 的代码并确保在不需要时，此代码可以移除其对节点的引用。<br><img src="/images/test/32.mdu5sawPGR.png" alt=""></p>
+<h2 id="使用内存分配来查看"><a href="#使用内存分配来查看" class="headerlink" title="使用内存分配来查看"></a>使用内存分配来查看</h2><p><img src="/images/test/32.mdcHJUtoaZ.png" alt=""></p>
 <h2 id="使用函数调用查看内存分配"><a href="#使用函数调用查看内存分配" class="headerlink" title="使用函数调用查看内存分配"></a>使用函数调用查看内存分配</h2>
           
         
@@ -691,11 +691,11 @@
         
           
             <p>正常的http请求</p>
-<p><img src="../images/test/30.mdb2H0W2dg.png" alt=""></p>
+<p><img src="/images/test/30.mdb2H0W2dg.png" alt=""></p>
 <p>问题在哪呢？</p>
 <p>100kb非常大，实际上html是非常冗余的，html,table,div标签都有结束标签，实际上内容都一样，大量的单词是重复的，不管你怎样切分，html都不是精简的</p>
 <p>解决方案：zip</p>
-<p><img src="../images/test/30.mdj40gcEGi.png" alt=""></p>
+<p><img src="/images/test/30.mdj40gcEGi.png" alt=""></p>
 <p>yahoo主页通过压缩从101kb到15kb</p>
 <p>更多细节</p>
 <p>这个交换的关键点就在于浏览器和服务器端知道发送zipped文件是ok的，这个约点有两个部分</p>
@@ -809,9 +809,9 @@
 <p>core JavaScript<br>client JavaScript（DOM、BOM）<br>而只有core JavaScript可以在node.js上运行，所以node.js借用了JavaScript的语法，但并不能用来处理浏览器对象（BOM）及文档对象（DOM），所以node.js并不是设计为在服务器端运行解析html文档的（当然有module可以做此事），所以“在服务器端运行的JavaScript”在一定程度上误导了初学者。</p>
 <p>同时node.js并不仅仅运行core JavaScript，node.js中还有文件系统、模块包、操作系统API、网络通信、二进制类型处理等core JavaScript不具备的功能。</p>
 <p>nodejs 底层*nix 与window的区别</p>
-<p><img src="../images/test/29.mddHFUETR8.png" alt=""></p>
+<p><img src="/images/test/29.mddHFUETR8.png" alt=""></p>
 <p>node w3c js关系</p>
-<p><img src="../images/test/29.mdyW6KLL6S.png" alt=""></p>
+<p><img src="/images/test/29.mdyW6KLL6S.png" alt=""></p>
 <p>在nodejs中引入模块，需要经历3个步骤：<br>1 路径分析<br>2 文件定位<br>3 编译执行</p>
 <p>node中分为核心模块（http/fs/path）与文件模块<br>在node进程启动过程中，部分核心模块被直接加载进内存中，所以这部分核心模块引入时，文件定位及编译执行这两个步骤可以省略掉，并且在路径分析中优先判断，所以他们的加载速度是最快的。</p>
 <p>每个模块文件中都存在require、exports、module这三个变量,甚至还有<strong>filename、</strong>dirname<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.paths);</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">require</span>.extensions);</div><div class="line"><span class="built_in">console</span>.log(__filename);</div><div class="line"><span class="built_in">console</span>.log(__dirname);</div><div class="line"></div><div class="line"><span class="comment">/* *</span></div><div class="line">[ '/Users/liuhui/Desktop/mylab/pkg/node_modules',</div><div class="line">  '/Users/liuhui/Desktop/mylab/node_modules',</div><div class="line">  '/Users/liuhui/Desktop/node_modules',</div><div class="line">  '/Users/liuhui/node_modules',</div><div class="line">  '/Users/node_modules',</div><div class="line">  '/node_modules' ]</div><div class="line">&#123; '.js': [Function], '.json': [Function], '.node': [Function] &#125;</div><div class="line">/Users/liuhui/Desktop/mylab/pkg/module_path.js</div><div class="line">/Users/liuhui/Desktop/mylab/pkg</div><div class="line">*/</div></pre></td></tr></table></figure></p>
@@ -1146,12 +1146,12 @@
           
             <h1 id="一样的使用charles进行抓包"><a href="#一样的使用charles进行抓包" class="headerlink" title="一样的使用charles进行抓包"></a>一样的使用charles进行抓包</h1><p>charles中配置:</p>
 <p>http代理地址为:<a href="http://127.0.0.1:8888" target="_blank" rel="external">http://127.0.0.1:8888</a><br>https代理地址为:<a href="http://127.0.0.1:8989" target="_blank" rel="external">http://127.0.0.1:8989</a></p>
-<p>如下图<br><img src="../images/test/27.mdg6qrDWBh.png" alt=""></p>
+<p>如下图<br><img src="/images/test/27.mdg6qrDWBh.png" alt=""></p>
 <h1 id="node里面需要使用代理的时候添加"><a href="#node里面需要使用代理的时候添加" class="headerlink" title="node里面需要使用代理的时候添加"></a>node里面需要使用代理的时候添加</h1><p>process.env.https_proxy = “<a href="http://127.0.0.1:8888" target="_blank" rel="external">http://127.0.0.1:8888</a>“;<br>process.env.http_proxy = “<a href="http://127.0.0.1:8989" target="_blank" rel="external">http://127.0.0.1:8989</a>“;<br>process.env.NODE_TLS_REJECT_UNAUTHORIZED = “0”;</p>
 <h1 id="补充下charles如何抓包https"><a href="#补充下charles如何抓包https" class="headerlink" title="补充下charles如何抓包https"></a>补充下charles如何抓包https</h1><p>安装证书</p>
-<p><img src="../images/test/27.mdvta3eTXD.png" alt=""></p>
+<p><img src="/images/test/27.mdvta3eTXD.png" alt=""></p>
 <p>信任证书</p>
-<p><img src="../images/test/27.mdkQfW8PwO.png" alt=""></p>
+<p><img src="/images/test/27.mdkQfW8PwO.png" alt=""></p>
 <p>关于手机中配置charles的https代理，步骤如下</p>
 <ul>
 <li>真机测试在 iOS 使用电脑上的http代理(172.23.12.7:8888)</li>
@@ -1159,7 +1159,7 @@
 </ul>
 <p>如果是ios10.3以下，这个时候 你可以看到已经可以抓包解析了，但是10.3以上还需在设置下</p>
 <p>设置-&gt;通用-&gt;关于本机-&gt;证书信任设置-&gt; 找到charles proxy custom root certificate然后信任该证书即可.</p>
-<p><img src="../images/test/27.mdCe15b7A0.png" alt=""></p>
+<p><img src="/images/test/27.mdCe15b7A0.png" alt=""></p>
 <h1 id="js正则"><a href="#js正则" class="headerlink" title="js正则"></a>js正则</h1><p>前瞻断言<br>(?=exp) 顺序肯定环视，表示所在位置右侧能够匹配exp<br>(?!exp) 顺序否定环视，表示所在位置右侧不能匹配exp<br>后瞻断言<br>(?&lt;=exp) 逆序肯定环视，表示所在位置左侧能够匹配exp<br>(? &lt; !exp)  逆序否定环视，表示所在位置左侧不能匹配exp</p>
 <p>例子：<br>/[^\s]+(?=ing)/g.exec(‘downing to do’);<br>[“down”, index: 0, input: “downing to do”]</p>
 <h1 id="htmlCollection"><a href="#htmlCollection" class="headerlink" title="htmlCollection"></a>htmlCollection</h1><p>简言之：<br>var a = document.getElementsByClassName(‘test’)<br>var b = document.querySelectorAll(‘.test’)</p>
@@ -1170,7 +1170,7 @@
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll" target="_blank" rel="external">querySelectorAll</a></p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList" target="_blank" rel="external">nodelist</a></p>
 <p>附带：</p>
-<p>children和childNode区别<br>children是Element的属性，childNodes是Node的属性<br><img src="../images/test/27.mdwp8Kk3Se.png" alt=""><br>element继承了node类，element是node多种类型中的一种，即当NodeType为1时Node即为ElementNode，另外Element扩展了Node，Element拥有id、class、children等属性。</p>
+<p>children和childNode区别<br>children是Element的属性，childNodes是Node的属性<br><img src="/images/test/27.mdwp8Kk3Se.png" alt=""><br>element继承了node类，element是node多种类型中的一种，即当NodeType为1时Node即为ElementNode，另外Element扩展了Node，Element拥有id、class、children等属性。</p>
 
           
         

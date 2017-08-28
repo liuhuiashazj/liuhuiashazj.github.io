@@ -96,19 +96,19 @@ Timeline记录可视化内存泄漏
 按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &amp;gt; Task manager，打开任务管理器。
 Timeline记录可视化内存泄漏
 上图可以看到jsheap越来越大，在实际">
-<meta property="og:image" content="http://yoursite.com/../images/test/32.mdHqYNETTT.png">
-<meta property="og:image" content="http://yoursite.com/../images/test/32.md3bUgYRQd.png">
-<meta property="og:image" content="http://yoursite.com/../images/test/32.mdLCZRkQTO.png">
-<meta property="og:image" content="http://yoursite.com/../images/test/32.mdu5sawPGR.png">
-<meta property="og:image" content="http://yoursite.com/../images/test/32.mdcHJUtoaZ.png">
-<meta property="og:updated_time" content="2017-07-11T06:49:39.000Z">
+<meta property="og:image" content="http://yoursite.com/images/test/32.mdHqYNETTT.png">
+<meta property="og:image" content="http://yoursite.com/images/test/32.md3bUgYRQd.png">
+<meta property="og:image" content="http://yoursite.com/images/test/32.mdLCZRkQTO.png">
+<meta property="og:image" content="http://yoursite.com/images/test/32.mdu5sawPGR.png">
+<meta property="og:image" content="http://yoursite.com/images/test/32.mdcHJUtoaZ.png">
+<meta property="og:updated_time" content="2017-08-28T03:16:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端内存泄漏分析">
 <meta name="twitter:description" content="https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn内存泄漏的几种检测方式
 按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &amp;gt; Task manager，打开任务管理器。
 Timeline记录可视化内存泄漏
 上图可以看到jsheap越来越大，在实际">
-<meta name="twitter:image" content="http://yoursite.com/../images/test/32.mdHqYNETTT.png">
+<meta name="twitter:image" content="http://yoursite.com/images/test/32.mdHqYNETTT.png">
 
 
 
@@ -292,17 +292,17 @@ Timeline记录可视化内存泄漏
 
       
         <p><a href="https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn</a><br>内存泄漏的几种检测方式</p>
-<h2 id="按-Shift-Esc-或者转到-Chrome-主菜单并选择-More-tools-gt-Task-manager，打开任务管理器。"><a href="#按-Shift-Esc-或者转到-Chrome-主菜单并选择-More-tools-gt-Task-manager，打开任务管理器。" class="headerlink" title="按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。"></a>按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。</h2><p><img src="../images/test/32.mdHqYNETTT.png" alt=""></p>
-<h2 id="Timeline记录可视化内存泄漏"><a href="#Timeline记录可视化内存泄漏" class="headerlink" title="Timeline记录可视化内存泄漏"></a>Timeline记录可视化内存泄漏</h2><p><img src="../images/test/32.md3bUgYRQd.png" alt=""></p>
+<h2 id="按-Shift-Esc-或者转到-Chrome-主菜单并选择-More-tools-gt-Task-manager，打开任务管理器。"><a href="#按-Shift-Esc-或者转到-Chrome-主菜单并选择-More-tools-gt-Task-manager，打开任务管理器。" class="headerlink" title="按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。"></a>按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。</h2><p><img src="/images/test/32.mdHqYNETTT.png" alt=""></p>
+<h2 id="Timeline记录可视化内存泄漏"><a href="#Timeline记录可视化内存泄漏" class="headerlink" title="Timeline记录可视化内存泄漏"></a>Timeline记录可视化内存泄漏</h2><p><img src="/images/test/32.md3bUgYRQd.png" alt=""></p>
 <p>上图可以看到jsheap越来越大，在实际使用过程中，如果您看到这种 JS 堆大小或节点大小不断增大的模式，则可能存在内存泄漏。</p>
 <p>代码如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> detachedTree1;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.createElement(<span class="string">'ul'</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">        <span class="keyword">var</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</div><div class="line">        ul.appendChild(li);</div><div class="line">    &#125;</div><div class="line">    detachedTree1 = ul;</div><div class="line">&#125;</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'grow'</span>).addEventListener(<span class="string">'click'</span>, create);</div></pre></td></tr></table></figure>
-<h2 id="使用堆快照发现已分离的dom树内存泄漏"><a href="#使用堆快照发现已分离的dom树内存泄漏" class="headerlink" title="使用堆快照发现已分离的dom树内存泄漏"></a>使用堆快照发现已分离的dom树内存泄漏</h2><p>还是上述代码<br><img src="../images/test/32.mdLCZRkQTO.png" alt=""></p>
+<h2 id="使用堆快照发现已分离的dom树内存泄漏"><a href="#使用堆快照发现已分离的dom树内存泄漏" class="headerlink" title="使用堆快照发现已分离的dom树内存泄漏"></a>使用堆快照发现已分离的dom树内存泄漏</h2><p>还是上述代码<br><img src="/images/test/32.mdLCZRkQTO.png" alt=""></p>
 <p>快照可能需要一些时间处理和加载。完成后，请从左侧面板（名称为 HEAP SNAPSHOTS）中选择该快照。</p>
 <p>在 Class filter 文本框中键入 Detached，搜索已分离的 DOM 树。</p>
 <p>以黄色突出显示的节点具有 JavaScript 代码对它们的直接引用。 以红色突出显示的节点则没有直接引用。只有属于黄色节点的树时，它们才处于活动状态。 一般而言，您需要将注意力放在黄色节点上。 修复代码，使黄色节点处于活动状态的时间不长于需要的时间，您也需要消除属于黄色节点树的红色节点。</p>
-<p>点击黄色节点对其进行进一步调查。在 Object 窗格中，您可以看到与正在引用该节点的代码相关的更多信息。 例如，在下面的屏幕截图中，您可以看到 detachedTree 变量正在引用该节点。要解决这一特定的内存泄漏，您需要研究使用 detachedTree 的代码并确保在不需要时，此代码可以移除其对节点的引用。<br><img src="../images/test/32.mdu5sawPGR.png" alt=""></p>
-<h2 id="使用内存分配来查看"><a href="#使用内存分配来查看" class="headerlink" title="使用内存分配来查看"></a>使用内存分配来查看</h2><p><img src="../images/test/32.mdcHJUtoaZ.png" alt=""></p>
+<p>点击黄色节点对其进行进一步调查。在 Object 窗格中，您可以看到与正在引用该节点的代码相关的更多信息。 例如，在下面的屏幕截图中，您可以看到 detachedTree 变量正在引用该节点。要解决这一特定的内存泄漏，您需要研究使用 detachedTree 的代码并确保在不需要时，此代码可以移除其对节点的引用。<br><img src="/images/test/32.mdu5sawPGR.png" alt=""></p>
+<h2 id="使用内存分配来查看"><a href="#使用内存分配来查看" class="headerlink" title="使用内存分配来查看"></a>使用内存分配来查看</h2><p><img src="/images/test/32.mdcHJUtoaZ.png" alt=""></p>
 <h2 id="使用函数调用查看内存分配"><a href="#使用函数调用查看内存分配" class="headerlink" title="使用函数调用查看内存分配"></a>使用函数调用查看内存分配</h2>
       
     </div>
