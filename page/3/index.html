@@ -278,35 +278,12 @@
 
       
         
-          
-            <p>关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应<br>如下代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">    circle &#123;</div><div class="line">      fill: green;</div><div class="line">    &#125;</div><div class="line">    @media (min-width: 100px) &#123;</div><div class="line">      circle &#123;</div><div class="line">        fill: blue;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"50"</span> <span class="attr">cy</span>=<span class="string">"50"</span> <span class="attr">r</span>=<span class="string">"50"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>但是什么情况下这个圈应该是蓝色的呢，规范说min-width必须是viewport的宽度，但是…</p>
-<p>#哪个viewport<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span></div><div class="line">  …as above…</div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>如上，哪个圆是蓝色的圆（有可能被裁剪的）,如上，哪个viewport会被使用<br>会是以下的么：</p>
-<ul>
-<li>主document的大小</li>
-<li>svg上面的width/height/viewBox属性</li>
-<li>img上面的width/height属性</li>
-<li>img的layout</li>
-</ul>
-<p>实际结果如下<br><img src="/images/11.1.png" alt=""></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 大多数浏览器会这样解析</div><div class="line"></div><div class="line">对于<span class="tag">&lt;<span class="name">img</span>&gt;</span>,svg会scale到图片大小，svg的viewport就是img的大小</div><div class="line">所以第一个图片使用的viewport是50*50，所以第一个是绿色的</div><div class="line">第二个图片使用的viewport是100*100，因此第二个是蓝色的</div><div class="line"></div><div class="line">对于<span class="tag">&lt;<span class="name">iframe</span>&gt;</span>，svg的viewport是iframe的大小</div><div class="line">所以第三个是绿色，第四个是蓝色</div><div class="line"></div><div class="line">对于<span class="tag">&lt;<span class="name">svg</span>&gt;</span>,svg没有它自己的viewport，这是父级的一部分，这意味着style是被父级拥有的，作用域不是SVG。</div><div class="line"></div><div class="line"># firefox怎么解析的呢</div><div class="line">对于<span class="tag">&lt;<span class="name">img</span>&gt;</span>,viewport,是device pixels里面的渲染大小，意味着，页面的viewport</div><div class="line"></div><div class="line"></div><div class="line"># draw svg到canvas</div><div class="line">可以draw<span class="tag">&lt;<span class="name">img</span>&gt;</span>标签里面的内容到<span class="tag">&lt;<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">canvas2dContext.drawImage(img, x, y, width, height);</div></pre></td></tr></table></figure>
-<p>那么这种情况下，什么时候circle应该是蓝色的呢</p>
-<ul>
-<li>主窗口的css大小</li>
-<li>svg的width/height/viewBox属性</li>
-<li>img的width/height</li>
-<li>img 的css layout</li>
-<li>canvas 的像素大小</li>
-<li>canvas的 css layout</li>
-<li>drawImage调用时指定的width/height</li>
-<li>drawImage调用时指定的width/height,乘以transfrom的倍数</li>
-</ul>
-<p><a href="/demo/svg/index.html">svg demo</a></p>
-<p><a href="https://jakearchibald.com/2016/svg-media-queries/" target="_blank" rel="external">https://jakearchibald.com/2016/svg-media-queries/</a></p>
-
-          
+          <p>关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/17/11/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -397,24 +374,12 @@
 
       
         
-          
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* oloo 对象链接其他对象*/</span></div><div class="line"><span class="keyword">var</span> Animal=&#123;</div><div class="line">    val:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</div><div class="line">    setVal:<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.val=val;</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Mankey=<span class="built_in">Object</span>.create(a);</div><div class="line">Mankey.val[<span class="number">0</span>]=<span class="number">3</span>;</div><div class="line"></div><div class="line"><span class="comment">/*原型继承*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">    getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line">Man.prototype=<span class="keyword">new</span> Person();</div><div class="line"></div><div class="line"><span class="keyword">var</span> man1=<span class="keyword">new</span> Man(<span class="string">'tom'</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Woman</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line">Woman.prototype=<span class="built_in">Object</span>.create(Person.prototype);</div><div class="line"><span class="keyword">var</span> woman1=<span class="keyword">new</span> Woman(<span class="string">'july'</span>);</div></pre></td></tr></table></figure>
-<p>再看个栗子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> ;<span class="comment">//true</span></div><div class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span>; <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
-<p>为啥呢<br>instanceof 运算符</p>
-<p>instanceof是一个二元运算符，如：A instanceof B. 其中，A必须是一个合法的JavaScript对象，B必须是一个合法的JavaScript函数 (function). 判断过程如下：<br>  如果函数B在对象A的原型链 (prototype chain) 中被发现，那么instanceof操作符将返回true，否则返回false.<br>例如下面的代码会返回true.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span>.__proto__.__proto__;<span class="comment">//Object &#123;&#125;</span></div><div class="line"><span class="built_in">Object</span>.__proto__;<span class="comment">//function () &#123;&#125;</span></div></pre></td></tr></table></figure></p>
-<p>Object/Function/Array 都是原生对象，也是构造函数，所以<br>Object instanceof Function 为true<br>而Function.prototype又是一个对象，所以他的构造函数是Object,所以<br>Function instanceof Object 为true</p>
-<p>所以以下就很容易理解了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span>;<span class="comment">//true</span></div><div class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>;<span class="comment">//true</span></div></pre></td></tr></table></figure></p>
-<p><img src="/images/10.1.jpg" alt=""></p>
-<p>如下，虽然constructor可以用来检查某个实例的构造函数，但是，我们经常会重写prototype，导致constructor属性会重写<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Book</span>(<span class="params"></span>) </span>&#123; </div><div class="line">&#125; </div><div class="line">Book.prototype=&#123;</div><div class="line">    getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> myBook = <span class="keyword">new</span> Book();</div><div class="line"><span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(myBook.constructor===Book);</div><div class="line"><span class="comment">//true Book在myBook的原型链上</span></div><div class="line"><span class="built_in">console</span>.log(myBook.__proto__===Book.prototype);</div><div class="line"><span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(myBook instance <span class="keyword">of</span> Book);</div></pre></td></tr></table></figure></p>
-<p>#Object.defineProperty函数<br>该函数可用于constructor中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Book</span>(<span class="params">name</span>) </span>&#123; </div><div class="line">  <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>, <span class="string">"name"</span>, &#123; </div><div class="line">      get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">        <span class="keyword">return</span> <span class="string">"Book: "</span> + name;       </div><div class="line">      &#125;,        </div><div class="line">      set: <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>) </span>&#123;            </div><div class="line">        name = newName;        </div><div class="line">      &#125;,               </div><div class="line">      configurable: <span class="literal">false</span>     </div><div class="line">   &#125;); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> myBook = <span class="keyword">new</span> Book(<span class="string">"Single Page Web Applications"</span>);</div><div class="line"><span class="built_in">console</span>.log(myBook.name);    <span class="comment">// Book: Single Page Web Applications</span></div><div class="line"></div><div class="line"><span class="comment">// we cannot delete the name property because "configurable" is set to false</span></div><div class="line"><span class="keyword">delete</span> myBook.name;    </div><div class="line"><span class="built_in">console</span>.log(myBook.name);    <span class="comment">// Book: Single Page Web Applications</span></div><div class="line"></div><div class="line"><span class="comment">// but we can change the value of the name property</span></div><div class="line">myBook.name = <span class="string">"Testable JavaScript"</span>;</div><div class="line"><span class="built_in">console</span>.log(myBook.name);    <span class="comment">// Book: Testable JavaScript</span></div></pre></td></tr></table></figure></p>
-<p>#对象字面量优于构造函数创建<br>js有个9个內建对象(构造函数)，Object、Array、String、Number、Boolean、Date、Function、Error、RegExp<br>创建这几个对象的实例可以通过对象字面量或者构造函数创建。但是对象字面量的可读性强、而且他们性能更好，因为他们在编译阶段会被优化。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// a number object</span></div><div class="line"><span class="comment">// numbers have a toFixed() method</span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>(<span class="number">5</span>);</div><div class="line">obj.toFixed(<span class="number">2</span>);     <span class="comment">// 5.00</span></div><div class="line"></div><div class="line"><span class="comment">// we can achieve the same result using literals</span></div><div class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</div><div class="line">num.toFixed(<span class="number">2</span>);     <span class="comment">// 5.00</span></div><div class="line"></div><div class="line"><span class="comment">// a string object</span></div><div class="line"><span class="comment">// strings have a slice() method </span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"text"</span>);</div><div class="line">obj.slice(<span class="number">0</span>,<span class="number">2</span>);     <span class="comment">// "te"</span></div><div class="line"></div><div class="line"><span class="comment">// same as above</span></div><div class="line"><span class="keyword">var</span> string = <span class="string">"text"</span>;</div><div class="line">string.slice(<span class="number">0</span>,<span class="number">2</span>);  <span class="comment">// "te"</span></div></pre></td></tr></table></figure></p>
-<p>构造函数方式可能引发的诡异bug<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Object</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Oh crap, we have redefined Object!</span></div><div class="line">    <span class="keyword">return</span> [];    <span class="comment">// return an array because we are EVIL</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();   <span class="comment">// not what we think it is</span></div></pre></td></tr></table></figure></p>
-<p>更多分析：<br><a href="http://stackoverflow.com/questions/14226299/javascript-object-constructor-vs-object-literal" target="_blank" rel="external">Javascript object constructor vs object literal [duplicate]</a></p>
-<p>#使用new创建实例</p>
-<p>#作用域安全的构造函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Book</span>(<span class="params">name, year</span>) </span>&#123; </div><div class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Book)) &#123; </div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Book(name, year);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.year = year;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>#总结<br>js没有类，这对经常使用其它语言的人比较有障碍，但是js有constructor来实现相同的功能，constructor和普通函数一样，只是使用时多了个new。使用类让我们可以方便的实现多个具有相同属性和方法的对象。</p>
-
-          
+          <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* oloo 对象链接其他对象*/</span></div><div class="line"><span class="keyword">var</span> Animal=&#123;</div><div class="line">    val:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</div><div class="line">    setVal:<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.val=val;</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Mankey=<span class="built_in">Object</span>.create(a);</div><div class="line">Mankey.val[<span class="number">0</span>]=<span class="number">3</span>;</div><div class="line"></div><div class="line"><span class="comment">/*原型继承*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">    getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line">Man.prototype=<span class="keyword">new</span> Person();</div><div class="line"></div><div class="line"><span class="keyword">var</span> man1=<span class="keyword">new</span> Man(<span class="string">'tom'</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Woman</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line">Woman.prototype=<span class="built_in">Object</span>.create(Person.prototype);</div><div class="line"><span class="keyword">var</span> woman1=<span class="keyword">new</span> Woman(<span class="string">'july'</span>);</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/30/10/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -505,10 +470,12 @@
 
       
         
-          
-            <p>DOM2 发布与2000-11-13，包含以下几块内容<br>(dom2规范)[<a href="https://www.w3.org/TR/DOM-Level-2/" target="_blank" rel="external">https://www.w3.org/TR/DOM-Level-2/</a>]<br>DOM Level 2 核心 规定了访问和更改文档内容及结构的一个 API，此 API 同时包含用于 XML 的接口。<br>DOM Level 2 HTML 规定了操作 HTML 文档结构和内容的 API。（这部分规范仍然是工作草案）<br>DOM Level 2 Views 规定了对文档视图进行访问和更改的 API。视图是与原文档相关联的表现形式或某种备用的表现形式。<br>DOM Level 2 Style 规定了动态访问及更改内容样式表的 API。<br>DOM Level 2 Events 规定了访问文档事件的 API。<br>DOM Level 2 Traversal-Range 规定了动态遍历和识别文档中内容范围的 API。</p>
-
-          
+          <p>DOM2 发布与2000-11-13，包含以下几块内容<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/23/9/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -599,44 +566,12 @@
 
       
         
-          
-            <p>css层叠（cascade）</p>
-<ul>
-<li>找出所有对这个元素或者属性的样式声明</li>
-<li>通过important和origin对其进行排序（第一个权重最低）<ul>
-<li>user agent样式</li>
-<li>user样式</li>
-<li>author样式</li>
-<li>author中带有!important的样式</li>
-<li>user中带有!important的样式</li>
-</ul>
-</li>
-<li><p>对同一important和来源进行排序。</p>
-<ul>
-<li>更多具体选择器的高于普通选择器的权重</li>
-<li>伪类元素和伪类等同于普通元素</li>
-<li>ice计算原则<ul>
-<li>选择符如果有个i(id),就在i的位置加1</li>
-<li>选择符如果有个c(class),就在c的位置加1</li>
-<li>选择符如果有个e(element),接在e的位置加1</li>
-</ul>
-</li>
-<li><p>demo</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/*但是，千万得知道 0-1-12 与 0-2-0 相比，仍然是 0-2-0 的特指度更高。*/</div><div class="line">p&#123;&#125;                                   //0-0-1 特指度=1</div><div class="line">p.largetext&#123;&#125;                         //0-1-1 特指度=11</div><div class="line">p#largetext&#123;&#125;                         //1-0-1 特指度=101</div><div class="line">body p#largetext&#123;&#125;                    //1-0-2 特指度=102</div><div class="line">body p#largetext ul.mylist&#123;&#125;          //1-1-3 特指度=113</div><div class="line">body p#largetext ul.mylist li&#123;&#125;       //1-1-4 特指度=114</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>对所有权重进行排序，如果有两个地方有相同的权重，则后面的覆盖前面的，</p>
-</li>
-</ul>
-<p>定义</p>
-<ul>
-<li>author：来自文档的样式，也就是我们平时所写的代码</li>
-<li>user:用户指定的样式文件，一些ua允许用户导入自定义样式表，例如ie（Internet 选项 -&gt; 外观 -&gt; 辅助功能 -&gt; 用户样式表）</li>
-<li>user agent :一些ua 例如浏览器自定义的某些样式</li>
-</ul>
-
-          
+          <p>css层叠（cascade）<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/14/8/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -727,12 +662,12 @@
 
       
         
-          
-            <p>input，如果不给input设置背景颜色的话，input没有内阴影，但是，如果设置一个背景，就会产生阴影，解决办法，设置一个border</p>
-<p>jquery $(‘#test input’).select().focus();<br>safari如果选择器结果有多个，会导致每个的input都会触发blur，而chrome不会</p>
-<p><a href="https://jsfiddle.net/liuhuiashazj/c5rw0gpc/" target="_blank" rel="external">https://jsfiddle.net/liuhuiashazj/c5rw0gpc/</a></p>
-
-          
+          <p>input，如果不给input设置背景颜色的话，input没有内阴影，但是，如果设置一个背景，就会产生阴影，解决办法，设置一个border<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/09/7/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -823,83 +758,15 @@
 
       
         
-          
-            <h1 id="什么是Electron"><a href="#什么是Electron" class="headerlink" title="什么是Electron"></a>什么是Electron</h1><ul>
+          <h1 id="什么是Electron"><a href="#什么是Electron" class="headerlink" title="什么是Electron"></a>什么是Electron</h1><ul>
 <li>Electron是一个可以使用js、html、css创建桌面应用的库</li>
 <li>可以创建mac、window、linux等应用</li>
-<li>atom基于electron开发，以前叫atom-shell</li>
-</ul>
-<h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><ul>
-<li><p>Electron安装不上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error: EACCES: permission denied, rename <span class="string">'/var/folders/v4/wr5tmnkx2_g45db_xjr78_fw0000gn/T/electron-tmp-download-2363-1473215672128/electron-v1.3.5-darwin-x64.zip'</span> -&gt; <span class="string">'/Users/liuhui/.electron/electron-v1.3.5-darwin-x64.zip'</span></div></pre></td></tr></table></figure>
-<p>  解决方案：<br>  直接sudo没用，要先改下/Users/liuhui/.electron的读写权限<br>  然后sudo安装</p>
-</li>
-</ul>
-<h1 id="为什么重要"><a href="#为什么重要" class="headerlink" title="为什么重要"></a>为什么重要</h1><ul>
-<li>使用web语言就可以轻松写出跨平台的app</li>
-<li>而且只需要兼容最新的chrome浏览器就可以，es2015的90%的功能都能用</li>
-<li>node的300000多的模块都可以用</li>
-<li></li>
-</ul>
-<h1 id="怎么做？"><a href="#怎么做？" class="headerlink" title="怎么做？"></a>怎么做？</h1><ul>
-<li>electron合并了chromium和node.js</li>
-<li>提供了一系列的api进行native开发，例如file dialogs,notifications,icons更多</li>
-</ul>
-<p><img src="/images/6.1.png" alt=""></p>
-<h1 id="两个进程"><a href="#两个进程" class="headerlink" title="两个进程"></a>两个进程</h1><ul>
-<li>主进程（app的入口js),控制整个app的生命周期<ul>
-<li>可以用的api<ul>
-<li>node.js apis</li>
-<li>electron main process modules</li>
-</ul>
-</li>
-<li>用处<ul>
-<li>创建渲染进程</li>
-<li>调用native 元素</li>
-<li>启动和退出app</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>渲染进程（类似于浏览器的一个窗口，可以有多个，相互独立）<ul>
-<li>可以用的api<ul>
-<li>node.js apis</li>
-<li>dom apis</li>
-<li>electron renderer process module</li>
-</ul>
-</li>
-<li>用处<ul>
-<li>设计网页，使用html和css</li>
-<li>js交互</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="一个形象的比喻"><a href="#一个形象的比喻" class="headerlink" title="一个形象的比喻"></a>一个形象的比喻</h1><ul>
-<li>主进程相当于chrome</li>
-<li>渲染进程相当于chrome中的每个进程</li>
-</ul>
-<h1 id="两个进程之间的通信"><a href="#两个进程之间的通信" class="headerlink" title="两个进程之间的通信"></a>两个进程之间的通信</h1><p>两个之间可以通过IPC通信，如下图<br><img src="/images/6.2.png" alt=""></p>
-<h1 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h1><ul>
-<li>electron使用和node apps同样的文件package.json</li>
-<li>electron通过这个文件来判断从哪个文件启动你的app<br><img src="/images/6.3.png" alt=""><br>-通过electron .启动</li>
-</ul>
-<h1 id="如何打包"><a href="#如何打包" class="headerlink" title="如何打包"></a>如何打包</h1><ul>
-<li>使用electron-packager来进行linux/mac/window的打包</li>
-<li>electron-packager ./ MyApp    –version=1.3.4</li>
-</ul>
-<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><ul>
-<li><a href="http://electron.atom.io/docs/" target="_blank" rel="external">Full Electron docs</a></li>
-</ul>
-<h1 id="api列表"><a href="#api列表" class="headerlink" title="api列表"></a>api列表</h1><h2 id="main-progress"><a href="#main-progress" class="headerlink" title="main progress"></a>main progress</h2><p>打开file选择器，支持过滤，回调|dialog.showOpenDialog([browserWindow, ]options[, callback])<br>自动升级,提供调用squirrel插件|autoUpdater<br>控制远程下载,will-download事件中绑定updated/done|DownloadItem<br>支持电脑重启事件|powerMonitor<br>系统通知|notifications</p>
-<h1 id="api"><a href="#api" class="headerlink" title="api"></a>api</h1><ul>
-<li><a href="http://electron.atom.io/docs/api/" target="_blank" rel="external">api汇总</a></li>
-<li>clipboard 剪切板</li>
-<li></li>
-</ul>
-
-          
+<li>atom基于electron开发，以前叫atom-shell
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/05/6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1004,12 +871,12 @@
 </tr>
 </tbody>
 </table>
-<p>outlook对css和html支持情况|<a href="https://www.campaignmonitor.com/css/" target="_blank" rel="external">https://www.campaignmonitor.com/css/</a><br>outlook对css和html支持情况|<a href="https://msdn.microsoft.com/en-us/library/aa338201(v=office.12).aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/aa338201(v=office.12).aspx</a><br>ES5/ES6/ES7兼容性|<a href="http://kangax.github.io/compat-table/es5/" target="_blank" rel="external">http://kangax.github.io/compat-table/es5/</a></p>
-<p>fildler的各种状态|<a href="http://docs.telerik.com/fiddler/KnowledgeBase/UIGuide" target="_blank" rel="external">http://docs.telerik.com/fiddler/KnowledgeBase/UIGuide</a></p>
-<p>内存泄漏|<a href="https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn</a></p>
-<p>html规范|<a href="https://html.spec.whatwg.org/" target="_blank" rel="external">https://html.spec.whatwg.org/</a></p>
-<p>链接数限制|<a href="http://www.browserscope.org/?category=network&amp;v=top" target="_blank" rel="external">http://www.browserscope.org/?category=network&amp;v=top</a></p>
-<p>eventLoop模型|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop</a></p>
+<p>|outlook对css和html支持情况|<a href="https://www.campaignmonitor.com/css/|" target="_blank" rel="external">https://www.campaignmonitor.com/css/|</a><br>|outlook对css和html支持情况|<a href="https://msdn.microsoft.com/en-us/library/aa338201(v=office.12).aspx|" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/aa338201(v=office.12).aspx|</a><br>|ES5/ES6/ES7兼容性|<a href="http://kangax.github.io/compat-table/es5/|" target="_blank" rel="external">http://kangax.github.io/compat-table/es5/|</a></p>
+<p>|fildler的各种状态|<a href="http://docs.telerik.com/fiddler/KnowledgeBase/UIGuide|" target="_blank" rel="external">http://docs.telerik.com/fiddler/KnowledgeBase/UIGuide|</a></p>
+<p>|内存泄漏|<a href="https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn|" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn|</a></p>
+<p>|html规范|<a href="https://html.spec.whatwg.org/|" target="_blank" rel="external">https://html.spec.whatwg.org/|</a></p>
+<p>|链接数限制|<a href="http://www.browserscope.org/?category=network&amp;v=top|" target="_blank" rel="external">http://www.browserscope.org/?category=network&amp;v=top|</a></p>
+<p>|eventLoop模型|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop|" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop|</a></p>
 <p><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="external">how browser works</a></p>
 <p><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="external">event loop&amp;concurency</a></p>
 <p><a href="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D" target="_blank" rel="external">event loop simulation</a></p>
@@ -1105,10 +972,12 @@
 
       
         
-          
-            <p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 此为注释 – 将被 Git 忽略</span></div><div class="line">*.a       <span class="comment"># 忽略所有 .a 结尾的文件</span></div><div class="line">!lib.a    <span class="comment"># 但 lib.a 除外</span></div><div class="line">/TODO     <span class="comment"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span></div><div class="line">build/    <span class="comment"># 忽略 build/ 目录下的所有文件</span></div><div class="line">doc/*.txt <span class="comment"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></div><div class="line">``` </div><div class="line">规则很简单，不做过多解释，但是有时候在项目开发过程中，突然心血来潮想把之前的某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，为什么呢？</div><div class="line">gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</div><div class="line"></div><div class="line">```bash</div><div class="line">git rm -r --cached .</div><div class="line">git add .</div><div class="line">git commit -m <span class="string">'update .gitignore'</span></div></pre></td></tr></table></figure></p>
-
-          
+          <p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/17/4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1199,27 +1068,12 @@
 
       
         
-          
-            <p><a href="https://github.com/sourcegraph/thyme" target="_blank" rel="external">原文地址</a></p>
-<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>如何有效的改进我们的开发效率，首先得监控我们的时间都浪费在哪里了</p>
-<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
-<li>通过cli即可跟踪和分析应用使用情况</li>
-<li>详细的图表显示时间如何花掉的</li>
-<li>数据存储在本地（控制权和隐私）</li>
-<li>开源、文档健全、轻松扩展</li>
-</ul>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
-<li>安装GO(brew install go)</li>
-<li>安装完GO后配置环境变量<br>如果是zsh，则添加以下两行即可</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> GOPATH=<span class="string">"<span class="variable">$HOME</span>/mywork/"</span></div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOPATH</span>/bin</div><div class="line">``` </div><div class="line"></div><div class="line">- go get -u github.com/sourcegraph/thyme/cmd/thyme</div><div class="line">- 安装watch(brew install watch)</div><div class="line"></div><div class="line"><span class="comment">### 使用</span></div><div class="line">- 记录每30s使用的应用到thyme.json</div><div class="line">	``` bash</div><div class="line">	watch -n 30 thyme track -o thyme.json</div><div class="line">	<span class="comment">#watch替换方案如下</span></div><div class="line">	<span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span> thyme track -o thyme.json; sleep 30s; <span class="keyword">done</span>;</div></pre></td></tr></table></figure>
-<ul>
-<li>将json文件解析为html图表查看  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">thyme show -i thyme.json -w stats &gt; thyme.html</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="/images/3.1.png" alt=""></p>
-
-          
+          <p><a href="https://github.com/sourcegraph/thyme">原文地址</a><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/17/3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1310,42 +1164,12 @@
 
       
         
-          
-            <h3 id="页面的html结构"><a href="#页面的html结构" class="headerlink" title="页面的html结构"></a>页面的html结构</h3><p><img src="/images/2.1.png" alt=""></p>
-<h4 id="整个页面可以打开两种模式的窗口"><a href="#整个页面可以打开两种模式的窗口" class="headerlink" title="整个页面可以打开两种模式的窗口"></a>整个页面可以打开两种模式的窗口</h4><ul>
-<li>文件浏览窗口(id为wrapper)<br><img src="/images/2.2.png" alt=""></li>
-<li>新建会议窗口(id为newmeet)<br><img src="/images/2.3.png" alt=""></li>
-</ul>
-<h3 id="页面的目录结构"><a href="#页面的目录结构" class="headerlink" title="页面的目录结构"></a>页面的目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">├── common  (通用的css、img、js、tpl)</div><div class="line">│   ├── css</div><div class="line">│   ├── imgs</div><div class="line">│   ├── js</div><div class="line">│   └── tpl</div><div class="line">├── libs    (基本库)</div><div class="line">└── views   (页面所有view集合)</div><div class="line">    ├── detail   （会议详情头部）</div><div class="line">    ├── dir      （目录详情页）</div><div class="line">    ├── doclist  （会议文档列表）</div><div class="line">    ├── edit     （会议详情编辑）</div><div class="line">    ├── file     （文件详情页）</div><div class="line">    ├── fnav     （左侧导航一）</div><div class="line">    ├── head     （头部）</div><div class="line">    ├── help     （帮助页）</div><div class="line">    ├── iboxdocs （个人文档列表）</div><div class="line">    ├── iboxleft （个人左侧目录树）</div><div class="line">    ├── items    （会议列表）</div><div class="line">    ├── lead	 （引导页）</div><div class="line">    ├── nav      （左侧导航二）</div><div class="line">    ├── searchtab（搜索切换）</div><div class="line">    ├── team	 （云盘文档列表）</div><div class="line">    └── teamleft （云盘左侧目录树）</div></pre></td></tr></table></figure>
-<h3 id="路由信息"><a href="#路由信息" class="headerlink" title="路由信息"></a>路由信息</h3><ul>
-<li>‘meeting/:cate/:role/:product/:page’: ‘meeting’</li>
-<li>‘detail/:cate/:role/:mid’: ‘detailmeet’</li>
-<li>‘editmeet/:mid/:copy’: ‘editmeet’</li>
-<li>‘newmeet’: ‘newmeet’</li>
-<li>‘search/:tab/:word’: ‘search’</li>
-<li>‘file/:fid’: ‘file’</li>
-<li>‘dir/:fid’: ‘dir’</li>
-<li>‘help/(:index)’: ‘help’</li>
-<li>‘myfile/:fid’: ‘myfile’</li>
-<li>‘ibox’: ‘ibox’</li>
-<li>‘team/:fid’: ‘team’</li>
-</ul>
-<h3 id="路由与view对应关系"><a href="#路由与view对应关系" class="headerlink" title="路由与view对应关系"></a>路由与view对应关系</h3><p><img src="/images/2.4.png" alt=""><br>飘绿部分为大量通用的view（head、lead、fnav、nav）<br>剩余非通用的view，分别组成各自的页面</p>
-<h3 id="view之间继承关系"><a href="#view之间继承关系" class="headerlink" title="view之间继承关系"></a>view之间继承关系</h3><p><img src="/images/2.5.png" alt=""></p>
-<h3 id="页面产出通用组件"><a href="#页面产出通用组件" class="headerlink" title="页面产出通用组件"></a>页面产出通用组件</h3><ul>
-<li>dropdown.js(搜索下拉提示组件，事件代理等)</li>
-<li>leanModal.js(模态框组件，支持样式定义，回调函数，事件代理等)</li>
-<li>tree.js(目录树组件，支持远程数据增删改拖拽移动，支持右键菜单，事件代理等)</li>
-<li>build.sh(自动化构建脚本，版本号等，支持代码直接远程部署带测试机)</li>
-</ul>
-<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><ul>
-<li>backbone.js</li>
-<li>requirejs</li>
-<li>zepto.js</li>
-<li>shell</li>
-</ul>
-
-          
+          <h3 id="页面的html结构"><a href="#页面的html结构" class="headerlink" title="页面的html结构"></a>页面的html结构</h3><p><img src="/images/2.1.png" alt=""><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/16/2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
