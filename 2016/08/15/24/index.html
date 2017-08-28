@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Date," />
 
 
 
@@ -84,16 +84,24 @@
 
 
 
-<meta name="description" content="2016.5月，nodejs支持debugger能力视频地址">
+<meta name="description" content="ie8中var t1=new Date(‘2015-04-07’)报错翻查官方文档">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node.js debugger">
-<meta property="og:url" content="http://yoursite.com/2017/04/10/25/index.html">
+<meta property="og:title" content="关于js Date的那些坑">
+<meta property="og:url" content="http://yoursite.com/2016/08/15/24/index.html">
 <meta property="og:site_name" content="Sunlife">
-<meta property="og:description" content="2016.5月，nodejs支持debugger能力视频地址">
-<meta property="og:updated_time" content="2017-08-28T03:24:30.000Z">
+<meta property="og:description" content="ie8中var t1=new Date(‘2015-04-07’)报错翻查官方文档">
+<meta property="og:image" content="http://yoursite.com/images/1.1.png">
+<meta property="og:image" content="http://yoursite.com/images/1.2.png">
+<meta property="og:image" content="http://yoursite.com/images/1.3.png">
+<meta property="og:image" content="http://yoursite.com/images/1.4.png">
+<meta property="og:image" content="http://yoursite.com/images/1.5.png">
+<meta property="og:image" content="http://yoursite.com/images/1.6.png">
+<meta property="og:image" content="http://yoursite.com/images/1.7.png">
+<meta property="og:updated_time" content="2017-08-28T03:27:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node.js debugger">
-<meta name="twitter:description" content="2016.5月，nodejs支持debugger能力视频地址">
+<meta name="twitter:title" content="关于js Date的那些坑">
+<meta name="twitter:description" content="ie8中var t1=new Date(‘2015-04-07’)报错翻查官方文档">
+<meta name="twitter:image" content="http://yoursite.com/images/1.1.png">
 
 
 
@@ -114,9 +122,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/10/25/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/08/15/24/"/>
 
-  <title> node.js debugger | Sunlife </title>
+  <title> 关于js Date的那些坑 | Sunlife </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -236,7 +244,7 @@
             
             
               
-                node.js debugger
+                关于js Date的那些坑
               
             
           </h1>
@@ -248,8 +256,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-04-10T16:45:33+08:00" content="2017-04-10">
-              2017-04-10
+            <time itemprop="dateCreated" datetime="2016-08-15T16:53:21+08:00" content="2016-08-15">
+              2016-08-15
             </time>
           </span>
 
@@ -276,10 +284,34 @@
       
 
       
-        <p>2016.5月，nodejs支持debugger能力<br><a href="https://www.youtube.com/watch?v=x8u0n4dT-WI&amp;feature=youtu.be&amp;t=2571" target="_blank" rel="external">视频地址</a><br><a id="more"></a></p>
-<p>1.node debugger（不是一个全功能的调试器，应用于简单调试）<br>nodejs支持一个基于tcp协议的和内建的客户端的debugger的工具包，使用方式如下<br>node debug mytest.js<br>调试过程中支持以下命令<br>cont, c: continue excution<br>next, n:step next<br>step, s:step in<br>out,o :step out<br>repl :read-eval-print loop 交互控制台</p>
-<p>2.v8 inspector<br>使用<a href="https://chromedevtools.github.io/debugger-protocol-viewer/" target="_blank" rel="external">chrome debugger 协议</a><br>native node debugger使用v8-debug,devtool使用chrome debugger协议，所以node inspect要在这两者中间交互</p>
-<p>node –inspect –debug-brk test.js</p>
+        <h3 id="ie8中var-t1-new-Date-‘2015-04-07’-报错"><a href="#ie8中var-t1-new-Date-‘2015-04-07’-报错" class="headerlink" title="ie8中var t1=new Date(‘2015-04-07’)报错"></a>ie8中var t1=new Date(‘2015-04-07’)报错</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="external">翻查官方文档</a><br><a id="more"></a></p>
+<h4 id="new-Date-支持以下几种参数形式"><a href="#new-Date-支持以下几种参数形式" class="headerlink" title="new Date()支持以下几种参数形式"></a>new Date()支持以下几种参数形式</h4><pre><code class="javascript"><span class="keyword">new</span> <span class="built_in">Date</span>();
+<span class="keyword">new</span> <span class="built_in">Date</span>(value);
+<span class="keyword">new</span> <span class="built_in">Date</span>(dateString);
+<span class="keyword">new</span> <span class="built_in">Date</span>(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);
+</code></pre>
+<h4 id="2015-04-07相当于第三种-datestring"><a href="#2015-04-07相当于第三种-datestring" class="headerlink" title="2015-04-07相当于第三种 datestring"></a>2015-04-07相当于第三种 datestring</h4><p><img src="/images/1.1.png" alt=""></p>
+<h4 id="就是说datestring得支持parse解析"><a href="#就是说datestring得支持parse解析" class="headerlink" title="就是说datestring得支持parse解析"></a>就是说datestring得支持parse解析</h4><p><img src="/images/1.2.png" alt=""></p>
+<h4 id="同时提到了，ie8不支持iso8601-时间表示法"><a href="#同时提到了，ie8不支持iso8601-时间表示法" class="headerlink" title="同时提到了，ie8不支持iso8601 时间表示法"></a>同时提到了，ie8不支持iso8601 时间表示法</h4><p><img src="/images/1.3.png" alt=""></p>
+<h4 id="如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区"><a href="#如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区" class="headerlink" title="如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区"></a>如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区</h4><p><img src="/images/1.4.png" alt=""></p>
+<pre><code class="javascript"><span class="keyword">var</span> a=<span class="built_in">Date</span>.parse(<span class="string">"March 7, 2014"</span>);
+<span class="keyword">var</span> b=<span class="built_in">Date</span>.parse(<span class="string">"2014-03-07"</span>);
+<span class="keyword">var</span> c=<span class="keyword">new</span> <span class="built_in">Date</span>()
+c.setTime(a);
+<span class="keyword">var</span> d=<span class="keyword">new</span> <span class="built_in">Date</span>()
+d.setTime(b);
+<span class="built_in">console</span>.log(c,c.getMonth(),c.getDate(),c.getHours());
+<span class="built_in">console</span>.log(d,d.getMonth(),d.getDate(),d.getHours());
+</code></pre>
+<h4 id="chrome中结果"><a href="#chrome中结果" class="headerlink" title="chrome中结果"></a>chrome中结果</h4><p><img src="/images/1.5.png" alt=""></p>
+<h4 id="火狐中结果"><a href="#火狐中结果" class="headerlink" title="火狐中结果"></a>火狐中结果</h4><p><img src="/images/1.6.png" alt=""></p>
+<h4 id="同理"><a href="#同理" class="headerlink" title="同理"></a>同理</h4><pre><code class="javascript"><span class="keyword">var</span> c=<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"March 7, 2014"</span>);
+<span class="keyword">var</span> d=<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2014-03-07"</span>);
+<span class="built_in">console</span>.log(c,c.getMonth(),c.getDate(),c.getHours());
+<span class="built_in">console</span>.log(d,d.getMonth(),d.getDate(),d.getHours());
+</code></pre>
+<p><img src="/images/1.7.png" alt=""></p>
+<h4 id="分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符"><a href="#分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符" class="headerlink" title="分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符"></a>分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符</h4><p>第二种初始化时，会假设当前设置的时区为utc标准时区，而北京时区比实际快8个小时，所以转化为当地时区后就是8点</p>
 
       
     </div>
@@ -300,21 +332,23 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Date/" rel="tag">#Date</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/16/23/" rel="next" title="grid布局">
-                <i class="fa fa-chevron-left"></i> grid布局
-              </a>
-            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/13/26/" rel="prev" title="一些改变人生的书-扩展你的可能性">
-                一些改变人生的书-扩展你的可能性 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/16/2/" rel="prev" title="Backbone的mvc架构">
+                Backbone的mvc架构 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -422,7 +456,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ie8中var-t1-new-Date-‘2015-04-07’-报错"><span class="nav-number">1.</span> <span class="nav-text">ie8中var t1=new Date(‘2015-04-07’)报错</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#new-Date-支持以下几种参数形式"><span class="nav-number">1.1.</span> <span class="nav-text">new Date()支持以下几种参数形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2015-04-07相当于第三种-datestring"><span class="nav-number">1.2.</span> <span class="nav-text">2015-04-07相当于第三种 datestring</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#就是说datestring得支持parse解析"><span class="nav-number">1.3.</span> <span class="nav-text">就是说datestring得支持parse解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同时提到了，ie8不支持iso8601-时间表示法"><span class="nav-number">1.4.</span> <span class="nav-text">同时提到了，ie8不支持iso8601 时间表示法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区"><span class="nav-number">1.5.</span> <span class="nav-text">如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chrome中结果"><span class="nav-number">1.6.</span> <span class="nav-text">chrome中结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#火狐中结果"><span class="nav-number">1.7.</span> <span class="nav-text">火狐中结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同理"><span class="nav-number">1.8.</span> <span class="nav-text">同理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符"><span class="nav-number">1.9.</span> <span class="nav-text">分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
