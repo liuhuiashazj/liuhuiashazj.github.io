@@ -280,6 +280,8 @@
         
           
             <p><a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="external">原文地址</a></p>
+<h2 id="什么是Event-Loop"><a href="#什么是Event-Loop" class="headerlink" title="什么是Event Loop"></a>什么是Event Loop</h2><p>eventloop允许Node.js执行不阻塞的I/O操作的一个东西（虽然js是单线程），通过卸载系统内核的一些操作。</p>
+<p>现在大部分内核都是多线程的，他们可以处理在后台处理多个操作。当其中的一个操作完成时，内核告诉Node.js，这个回调可以添加到poll queue队列中以便最终执行，我们将会解释这个话题的更多细节。</p>
 
           
         
