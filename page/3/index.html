@@ -235,6 +235,327 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/17/11/" itemprop="url">
+                  （翻译）SVG和media queries
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-17T11:50:30+08:00" content="2016-10-17">
+              2016-10-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应<br>如下代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">    circle &#123;</div><div class="line">      fill: green;</div><div class="line">    &#125;</div><div class="line">    @media (min-width: 100px) &#123;</div><div class="line">      circle &#123;</div><div class="line">        fill: blue;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"50"</span> <span class="attr">cy</span>=<span class="string">"50"</span> <span class="attr">r</span>=<span class="string">"50"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>但是什么情况下这个圈应该是蓝色的呢，规范说min-width必须是viewport的宽度，但是…</p>
+<p>#哪个viewport<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span></div><div class="line">  …as above…</div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>如上，哪个圆是蓝色的圆（有可能被裁剪的）,如上，哪个viewport会被使用<br>会是以下的么：</p>
+<ul>
+<li>主document的大小</li>
+<li>svg上面的width/height/viewBox属性</li>
+<li>img上面的width/height属性</li>
+<li>img的layout</li>
+</ul>
+<p>实际结果如下<br><img src="/images/11.1.png" alt=""></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 大多数浏览器会这样解析</div><div class="line"></div><div class="line">对于<span class="tag">&lt;<span class="name">img</span>&gt;</span>,svg会scale到图片大小，svg的viewport就是img的大小</div><div class="line">所以第一个图片使用的viewport是50*50，所以第一个是绿色的</div><div class="line">第二个图片使用的viewport是100*100，因此第二个是蓝色的</div><div class="line"></div><div class="line">对于<span class="tag">&lt;<span class="name">iframe</span>&gt;</span>，svg的viewport是iframe的大小</div><div class="line">所以第三个是绿色，第四个是蓝色</div><div class="line"></div><div class="line">对于<span class="tag">&lt;<span class="name">svg</span>&gt;</span>,svg没有它自己的viewport，这是父级的一部分，这意味着style是被父级拥有的，作用域不是SVG。</div><div class="line"></div><div class="line"># firefox怎么解析的呢</div><div class="line">对于<span class="tag">&lt;<span class="name">img</span>&gt;</span>,viewport,是device pixels里面的渲染大小，意味着，页面的viewport</div><div class="line"></div><div class="line"></div><div class="line"># draw svg到canvas</div><div class="line">可以draw<span class="tag">&lt;<span class="name">img</span>&gt;</span>标签里面的内容到<span class="tag">&lt;<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">canvas2dContext.drawImage(img, x, y, width, height);</div></pre></td></tr></table></figure>
+<p>那么这种情况下，什么时候circle应该是蓝色的呢</p>
+<ul>
+<li>主窗口的css大小</li>
+<li>svg的width/height/viewBox属性</li>
+<li>img的width/height</li>
+<li>img 的css layout</li>
+<li>canvas 的像素大小</li>
+<li>canvas的 css layout</li>
+<li>drawImage调用时指定的width/height</li>
+<li>drawImage调用时指定的width/height,乘以transfrom的倍数</li>
+</ul>
+<p><a href="/demo/svg/index.html">svg demo</a></p>
+<p><a href="https://jakearchibald.com/2016/svg-media-queries/" target="_blank" rel="external">https://jakearchibald.com/2016/svg-media-queries/</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/30/10/" itemprop="url">
+                  理解javascript的constructor
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-30T14:04:18+08:00" content="2016-09-30">
+              2016-09-30
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* oloo 对象链接其他对象*/</span></div><div class="line"><span class="keyword">var</span> Animal=&#123;</div><div class="line">    val:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</div><div class="line">    setVal:<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.val=val;</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Mankey=<span class="built_in">Object</span>.create(a);</div><div class="line">Mankey.val[<span class="number">0</span>]=<span class="number">3</span>;</div><div class="line"></div><div class="line"><span class="comment">/*原型继承*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">    getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line">Man.prototype=<span class="keyword">new</span> Person();</div><div class="line"></div><div class="line"><span class="keyword">var</span> man1=<span class="keyword">new</span> Man(<span class="string">'tom'</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Woman</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line">Woman.prototype=<span class="built_in">Object</span>.create(Person.prototype);</div><div class="line"><span class="keyword">var</span> woman1=<span class="keyword">new</span> Woman(<span class="string">'july'</span>);</div></pre></td></tr></table></figure>
+<p>再看个栗子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> ;<span class="comment">//true</span></div><div class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span>; <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>为啥呢<br>instanceof 运算符</p>
+<p>instanceof是一个二元运算符，如：A instanceof B. 其中，A必须是一个合法的JavaScript对象，B必须是一个合法的JavaScript函数 (function). 判断过程如下：<br>  如果函数B在对象A的原型链 (prototype chain) 中被发现，那么instanceof操作符将返回true，否则返回false.<br>例如下面的代码会返回true.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span>.__proto__.__proto__;<span class="comment">//Object &#123;&#125;</span></div><div class="line"><span class="built_in">Object</span>.__proto__;<span class="comment">//function () &#123;&#125;</span></div></pre></td></tr></table></figure></p>
+<p>Object/Function/Array 都是原生对象，也是构造函数，所以<br>Object instanceof Function 为true<br>而Function.prototype又是一个对象，所以他的构造函数是Object,所以<br>Function instanceof Object 为true</p>
+<p>所以以下就很容易理解了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span>;<span class="comment">//true</span></div><div class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>;<span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p><img src="/images/10.1.jpg" alt=""></p>
+<p>如下，虽然constructor可以用来检查某个实例的构造函数，但是，我们经常会重写prototype，导致constructor属性会重写<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Book</span>(<span class="params"></span>) </span>&#123; </div><div class="line">&#125; </div><div class="line">Book.prototype=&#123;</div><div class="line">    getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> myBook = <span class="keyword">new</span> Book();</div><div class="line"><span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(myBook.constructor===Book);</div><div class="line"><span class="comment">//true Book在myBook的原型链上</span></div><div class="line"><span class="built_in">console</span>.log(myBook.__proto__===Book.prototype);</div><div class="line"><span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(myBook instance <span class="keyword">of</span> Book);</div></pre></td></tr></table></figure></p>
+<p>#Object.defineProperty函数<br>该函数可用于constructor中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Book</span>(<span class="params">name</span>) </span>&#123; </div><div class="line">  <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>, <span class="string">"name"</span>, &#123; </div><div class="line">      get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">        <span class="keyword">return</span> <span class="string">"Book: "</span> + name;       </div><div class="line">      &#125;,        </div><div class="line">      set: <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>) </span>&#123;            </div><div class="line">        name = newName;        </div><div class="line">      &#125;,               </div><div class="line">      configurable: <span class="literal">false</span>     </div><div class="line">   &#125;); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> myBook = <span class="keyword">new</span> Book(<span class="string">"Single Page Web Applications"</span>);</div><div class="line"><span class="built_in">console</span>.log(myBook.name);    <span class="comment">// Book: Single Page Web Applications</span></div><div class="line"></div><div class="line"><span class="comment">// we cannot delete the name property because "configurable" is set to false</span></div><div class="line"><span class="keyword">delete</span> myBook.name;    </div><div class="line"><span class="built_in">console</span>.log(myBook.name);    <span class="comment">// Book: Single Page Web Applications</span></div><div class="line"></div><div class="line"><span class="comment">// but we can change the value of the name property</span></div><div class="line">myBook.name = <span class="string">"Testable JavaScript"</span>;</div><div class="line"><span class="built_in">console</span>.log(myBook.name);    <span class="comment">// Book: Testable JavaScript</span></div></pre></td></tr></table></figure></p>
+<p>#对象字面量优于构造函数创建<br>js有个9个內建对象(构造函数)，Object、Array、String、Number、Boolean、Date、Function、Error、RegExp<br>创建这几个对象的实例可以通过对象字面量或者构造函数创建。但是对象字面量的可读性强、而且他们性能更好，因为他们在编译阶段会被优化。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// a number object</span></div><div class="line"><span class="comment">// numbers have a toFixed() method</span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>(<span class="number">5</span>);</div><div class="line">obj.toFixed(<span class="number">2</span>);     <span class="comment">// 5.00</span></div><div class="line"></div><div class="line"><span class="comment">// we can achieve the same result using literals</span></div><div class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</div><div class="line">num.toFixed(<span class="number">2</span>);     <span class="comment">// 5.00</span></div><div class="line"></div><div class="line"><span class="comment">// a string object</span></div><div class="line"><span class="comment">// strings have a slice() method </span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"text"</span>);</div><div class="line">obj.slice(<span class="number">0</span>,<span class="number">2</span>);     <span class="comment">// "te"</span></div><div class="line"></div><div class="line"><span class="comment">// same as above</span></div><div class="line"><span class="keyword">var</span> string = <span class="string">"text"</span>;</div><div class="line">string.slice(<span class="number">0</span>,<span class="number">2</span>);  <span class="comment">// "te"</span></div></pre></td></tr></table></figure></p>
+<p>构造函数方式可能引发的诡异bug<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Object</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Oh crap, we have redefined Object!</span></div><div class="line">    <span class="keyword">return</span> [];    <span class="comment">// return an array because we are EVIL</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();   <span class="comment">// not what we think it is</span></div></pre></td></tr></table></figure></p>
+<p>更多分析：<br><a href="http://stackoverflow.com/questions/14226299/javascript-object-constructor-vs-object-literal" target="_blank" rel="external">Javascript object constructor vs object literal [duplicate]</a></p>
+<p>#使用new创建实例</p>
+<p>#作用域安全的构造函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Book</span>(<span class="params">name, year</span>) </span>&#123; </div><div class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Book)) &#123; </div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Book(name, year);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.year = year;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>#总结<br>js没有类，这对经常使用其它语言的人比较有障碍，但是js有constructor来实现相同的功能，constructor和普通函数一样，只是使用时多了个new。使用类让我们可以方便的实现多个具有相同属性和方法的对象。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/23/9/" itemprop="url">
+                  Dom-level-2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-23T17:59:47+08:00" content="2016-09-23">
+              2016-09-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>DOM2 发布与2000-11-13，包含以下几块内容<br>(dom2规范)[<a href="https://www.w3.org/TR/DOM-Level-2/" target="_blank" rel="external">https://www.w3.org/TR/DOM-Level-2/</a>]<br>DOM Level 2 核心 规定了访问和更改文档内容及结构的一个 API，此 API 同时包含用于 XML 的接口。<br>DOM Level 2 HTML 规定了操作 HTML 文档结构和内容的 API。（这部分规范仍然是工作草案）<br>DOM Level 2 Views 规定了对文档视图进行访问和更改的 API。视图是与原文档相关联的表现形式或某种备用的表现形式。<br>DOM Level 2 Style 规定了动态访问及更改内容样式表的 API。<br>DOM Level 2 Events 规定了访问文档事件的 API。<br>DOM Level 2 Traversal-Range 规定了动态遍历和识别文档中内容范围的 API。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/14/8/" itemprop="url">
                   css层叠（cascade）
                 </a>
@@ -684,6 +1005,14 @@
 </tbody>
 </table>
 <p>outlook对css和html支持情况|<a href="https://www.campaignmonitor.com/css/" target="_blank" rel="external">https://www.campaignmonitor.com/css/</a><br>outlook对css和html支持情况|<a href="https://msdn.microsoft.com/en-us/library/aa338201(v=office.12).aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/aa338201(v=office.12).aspx</a><br>ES5/ES6/ES7兼容性|<a href="http://kangax.github.io/compat-table/es5/" target="_blank" rel="external">http://kangax.github.io/compat-table/es5/</a></p>
+<p>fildler的各种状态|<a href="http://docs.telerik.com/fiddler/KnowledgeBase/UIGuide" target="_blank" rel="external">http://docs.telerik.com/fiddler/KnowledgeBase/UIGuide</a></p>
+<p>内存泄漏|<a href="https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn</a></p>
+<p>html规范|<a href="https://html.spec.whatwg.org/" target="_blank" rel="external">https://html.spec.whatwg.org/</a></p>
+<p>链接数限制|<a href="http://www.browserscope.org/?category=network&amp;v=top" target="_blank" rel="external">http://www.browserscope.org/?category=network&amp;v=top</a></p>
+<p>eventLoop模型|<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop</a></p>
+<p><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="external">how browser works</a></p>
+<p><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="external">event loop&amp;concurency</a></p>
+<p><a href="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D" target="_blank" rel="external">event loop simulation</a></p>
 
           
         
@@ -1043,132 +1372,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/15/1/" itemprop="url">
-                  关于js Date的那些坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-15T16:53:21+08:00" content="2016-08-15">
-              2016-08-15
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="ie8中var-t1-new-Date-‘2015-04-07’-报错"><a href="#ie8中var-t1-new-Date-‘2015-04-07’-报错" class="headerlink" title="ie8中var t1=new Date(‘2015-04-07’)报错"></a>ie8中var t1=new Date(‘2015-04-07’)报错</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="external">翻查官方文档</a></p>
-<h4 id="new-Date-支持以下几种参数形式"><a href="#new-Date-支持以下几种参数形式" class="headerlink" title="new Date()支持以下几种参数形式"></a>new Date()支持以下几种参数形式</h4><pre><code class="javascript"><span class="keyword">new</span> <span class="built_in">Date</span>();
-<span class="keyword">new</span> <span class="built_in">Date</span>(value);
-<span class="keyword">new</span> <span class="built_in">Date</span>(dateString);
-<span class="keyword">new</span> <span class="built_in">Date</span>(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);
-</code></pre>
-<h4 id="2015-04-07相当于第三种-datestring"><a href="#2015-04-07相当于第三种-datestring" class="headerlink" title="2015-04-07相当于第三种 datestring"></a>2015-04-07相当于第三种 datestring</h4><p><img src="/images/1.1.png" alt=""></p>
-<h4 id="就是说datestring得支持parse解析"><a href="#就是说datestring得支持parse解析" class="headerlink" title="就是说datestring得支持parse解析"></a>就是说datestring得支持parse解析</h4><p><img src="/images/1.2.png" alt=""></p>
-<h4 id="同时提到了，ie8不支持iso8601-时间表示法"><a href="#同时提到了，ie8不支持iso8601-时间表示法" class="headerlink" title="同时提到了，ie8不支持iso8601 时间表示法"></a>同时提到了，ie8不支持iso8601 时间表示法</h4><p><img src="/images/1.3.png" alt=""></p>
-<h4 id="如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区"><a href="#如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区" class="headerlink" title="如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区"></a>如果使用的iso8601时间jin进行格式化，那使用的utc时区就是当地时区</h4><p><img src="/images/1.4.png" alt=""></p>
-<pre><code class="javascript"><span class="keyword">var</span> a=<span class="built_in">Date</span>.parse(<span class="string">"March 7, 2014"</span>);
-<span class="keyword">var</span> b=<span class="built_in">Date</span>.parse(<span class="string">"2014-03-07"</span>);
-<span class="keyword">var</span> c=<span class="keyword">new</span> <span class="built_in">Date</span>()
-c.setTime(a);
-<span class="keyword">var</span> d=<span class="keyword">new</span> <span class="built_in">Date</span>()
-d.setTime(b);
-<span class="built_in">console</span>.log(c,c.getMonth(),c.getDate(),c.getHours());
-<span class="built_in">console</span>.log(d,d.getMonth(),d.getDate(),d.getHours());
-</code></pre>
-<h4 id="chrome中结果"><a href="#chrome中结果" class="headerlink" title="chrome中结果"></a>chrome中结果</h4><p><img src="/images/1.5.png" alt=""></p>
-<h4 id="火狐中结果"><a href="#火狐中结果" class="headerlink" title="火狐中结果"></a>火狐中结果</h4><p><img src="/images/1.6.png" alt=""></p>
-<h4 id="同理"><a href="#同理" class="headerlink" title="同理"></a>同理</h4><pre><code class="javascript"><span class="keyword">var</span> c=<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"March 7, 2014"</span>);
-<span class="keyword">var</span> d=<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2014-03-07"</span>);
-<span class="built_in">console</span>.log(c,c.getMonth(),c.getDate(),c.getHours());
-<span class="built_in">console</span>.log(d,d.getMonth(),d.getDate(),d.getHours());
-</code></pre>
-<p><img src="/images/1.7.png" alt=""></p>
-<h4 id="分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符"><a href="#分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符" class="headerlink" title="分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符"></a>分析，第一种初始化的方式，会假设当前设置的时区为当地时区，故设置结果和实际相符</h4><p>第二种初始化时，会假设当前设置的时区为utc标准时区，而北京时区比实际快8个小时，所以转化为当地时区后就是8点</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1209,7 +1417,7 @@ d.setTime(b);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

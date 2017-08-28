@@ -84,13 +84,19 @@
 
 
 
+<meta name="description" content="js serialize 序列化（表单转字符串）
+post 请求1234567891011121314151617function()&amp;#123;    var xhr = CreateXHR();    xhr.onreadystatechange = function()&amp;#123;        if(xhr.readyState == 4)&amp;#123;//检测XHR的readyState属">
 <meta property="og:type" content="article">
-<meta property="og:title" content="31">
+<meta property="og:title" content="备忘录">
 <meta property="og:url" content="http://yoursite.com/2017/05/25/31/index.html">
 <meta property="og:site_name" content="Sunlife">
-<meta property="og:updated_time" content="2017-06-02T05:19:39.000Z">
+<meta property="og:description" content="js serialize 序列化（表单转字符串）
+post 请求1234567891011121314151617function()&amp;#123;    var xhr = CreateXHR();    xhr.onreadystatechange = function()&amp;#123;        if(xhr.readyState == 4)&amp;#123;//检测XHR的readyState属">
+<meta property="og:updated_time" content="2017-07-07T11:58:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="31">
+<meta name="twitter:title" content="备忘录">
+<meta name="twitter:description" content="js serialize 序列化（表单转字符串）
+post 请求1234567891011121314151617function()&amp;#123;    var xhr = CreateXHR();    xhr.onreadystatechange = function()&amp;#123;        if(xhr.readyState == 4)&amp;#123;//检测XHR的readyState属">
 
 
 
@@ -113,7 +119,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2017/05/25/31/"/>
 
-  <title> 31 | Sunlife </title>
+  <title> 备忘录 | Sunlife </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -233,7 +239,7 @@
             
             
               
-                31
+                备忘录
               
             
           </h1>
@@ -273,7 +279,15 @@
       
 
       
-        
+        <p>js serialize 序列化（表单转字符串）</p>
+<p>post 请求<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> xhr = CreateXHR();</div><div class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;<span class="comment">//检测XHR的readyState属性</span></div><div class="line">            <span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt;= <span class="number">300</span>) || xhr.status == <span class="number">304</span>)&#123;</div><div class="line">                alert(xhr.responseText);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                alert(<span class="string">"Request was unsuccessful:"</span> + xhr.status);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    </div><div class="line">    xhr.open(<span class="string">"post"</span>,<span class="string">"post.php"</span>,<span class="literal">true</span>);</div><div class="line">    xhr.setRequestHeader(<span class="string">"Content-Type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);</div><div class="line">    <span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"ID"</span>);</div><div class="line">    xhr.send(serialize(form));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>get和post区别<br>1.get用于信息获取，post用于修改服务器上的资源<br>2.get数据附在url后，post放在http报文实体的主体中<br>3.get数据量限制在2kb ，由于浏览器对url有限制，ie为2kb，chrome、firefox理论上没有限制，真正限制取决于操作系统，post对数据没有限制，取决于服务器端处理程序的能力</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">  <span class="comment">// TDZ开始</span></div><div class="line">  tmp = <span class="string">'abc'</span>; <span class="comment">// ReferenceError</span></div><div class="line">  <span class="built_in">console</span>.log(tmp); <span class="comment">// ReferenceError</span></div><div class="line"></div><div class="line">  <span class="keyword">let</span> tmp; <span class="comment">// TDZ结束</span></div><div class="line">  <span class="built_in">console</span>.log(tmp); <span class="comment">// undefined</span></div><div class="line"></div><div class="line">  tmp = <span class="number">123</span>;</div><div class="line">  <span class="built_in">console</span>.log(tmp); <span class="comment">// 123</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码中，在let命令声明变量tmp之前，都属于变量tmp的“死区”。</p>
+<p>“暂时性死区”也意味着typeof不再是一个百分之百安全的操作。</p>
+<p>所以，在没有let之前，typeof运算符是百分之百安全的，永远不会报错。现在这一点不成立了。这样的设计是为了让大家养成良好的编程习惯，变量一定要在声明之后使用，否则就报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x = y, y = 2</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line">bar(); <span class="comment">// 报错</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">y=2,x = y</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line">bar(); <span class="comment">//[2,2]</span></div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -298,13 +312,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/25/30/" rel="next" title="30">
-                <i class="fa fa-chevron-left"></i> 30
+              <a href="/2017/05/25/30/" rel="next" title="gzip压缩">
+                <i class="fa fa-chevron-left"></i> gzip压缩
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/06/32/" rel="prev" title="前端内存泄漏分析">
+                前端内存泄漏分析 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -372,7 +390,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -119,7 +119,7 @@ atom基于electron开发，以前叫atom-shell
 <meta property="og:image" content="http://yoursite.com/images/test/28.md0lkNZKGr.png">
 <meta property="og:image" content="http://yoursite.com/images/test/28.md9dJCVX6I.png">
 <meta property="og:image" content="http://yoursite.com/images/test/28.mdEjTOVah6.png">
-<meta property="og:updated_time" content="2017-06-06T03:39:22.000Z">
+<meta property="og:updated_time" content="2017-06-07T03:29:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="electron在企业云盘中的应用">
 <meta name="twitter:description" content="简要介绍
@@ -445,8 +445,12 @@ atom基于electron开发，以前叫atom-shell
 </ul>
 <p><a href="https://electron.atom.io/docs/development/debugging-instructions-macos/" target="_blank" rel="external">https://electron.atom.io/docs/development/debugging-instructions-macos/</a></p>
 <ul>
-<li>官方给出的调试方案<br><a href="https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md" target="_blank" rel="external">https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md</a></li>
+<li><p>官方给出的调试方案<br><a href="https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md" target="_blank" rel="external">https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md</a></p>
+</li>
+<li><p>使用visual studio code进行调试<br>详细参考 <a href="https://www.youtube.com/watch?v=nuZIeJ0ljgo" target="_blank" rel="external">https://www.youtube.com/watch?v=nuZIeJ0ljgo</a><br>具体的launch.json配置如下</p>
+</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="string">"program"</span>: <span class="string">"$&#123;workspaceRoot&#125;/main.js"</span>,</div><div class="line"><span class="string">"runtimeExecutable"</span>:<span class="string">"/Users/liuhui/.tnvm/versions/node/v6.6.0/bin/electron"</span>,</div><div class="line"><span class="string">"runtimeArgs"</span>:[</div><div class="line">    <span class="string">"-enable-logging"</span></div><div class="line">],</div><div class="line"><span class="string">"env"</span>:&#123;</div><div class="line">    <span class="string">"NODE_ENV"</span>: <span class="string">"development"</span>,</div><div class="line">    <span class="string">"DEBUG"</span>: <span class="string">"app:*"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>electron 文章</p>
 <p><a href="https://nulab-inc.com/blog/typetalk/3-necessary-things-to-correctly-release-a-product-based-on-the-electron-app/" target="_blank" rel="external">https://nulab-inc.com/blog/typetalk/3-necessary-things-to-correctly-release-a-product-based-on-the-electron-app/</a></p>
 <p>electron和nw区别</p>
@@ -555,7 +559,7 @@ atom基于electron开发，以前叫atom-shell
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

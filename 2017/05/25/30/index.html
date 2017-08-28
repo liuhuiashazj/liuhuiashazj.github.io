@@ -84,13 +84,46 @@
 
 
 
+<meta name="description" content="正常的http请求
+
+问题在哪呢？
+100kb非常大，实际上html是非常冗余的，html,table,div标签都有结束标签，实际上内容都一样，大量的单词是重复的，不管你怎样切分，html都不是精简的
+解决方案：zip
+
+yahoo主页通过压缩从101kb到15kb
+更多细节
+这个交换的关键点就在于浏览器和服务器端知道发送zipped文件是ok的，这个约点有两个部分
+浏览器发送一个header">
 <meta property="og:type" content="article">
-<meta property="og:title" content="30">
+<meta property="og:title" content="gzip压缩">
 <meta property="og:url" content="http://yoursite.com/2017/05/25/30/index.html">
 <meta property="og:site_name" content="Sunlife">
-<meta property="og:updated_time" content="2017-06-02T05:18:21.000Z">
+<meta property="og:description" content="正常的http请求
+
+问题在哪呢？
+100kb非常大，实际上html是非常冗余的，html,table,div标签都有结束标签，实际上内容都一样，大量的单词是重复的，不管你怎样切分，html都不是精简的
+解决方案：zip
+
+yahoo主页通过压缩从101kb到15kb
+更多细节
+这个交换的关键点就在于浏览器和服务器端知道发送zipped文件是ok的，这个约点有两个部分
+浏览器发送一个header">
+<meta property="og:image" content="http://yoursite.com/../images/test/30.mdb2H0W2dg.png">
+<meta property="og:image" content="http://yoursite.com/../images/test/30.mdj40gcEGi.png">
+<meta property="og:updated_time" content="2017-07-06T06:40:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="30">
+<meta name="twitter:title" content="gzip压缩">
+<meta name="twitter:description" content="正常的http请求
+
+问题在哪呢？
+100kb非常大，实际上html是非常冗余的，html,table,div标签都有结束标签，实际上内容都一样，大量的单词是重复的，不管你怎样切分，html都不是精简的
+解决方案：zip
+
+yahoo主页通过压缩从101kb到15kb
+更多细节
+这个交换的关键点就在于浏览器和服务器端知道发送zipped文件是ok的，这个约点有两个部分
+浏览器发送一个header">
+<meta name="twitter:image" content="http://yoursite.com/../images/test/30.mdb2H0W2dg.png">
 
 
 
@@ -113,7 +146,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2017/05/25/30/"/>
 
-  <title> 30 | Sunlife </title>
+  <title> gzip压缩 | Sunlife </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -233,7 +266,7 @@
             
             
               
-                30
+                gzip压缩
               
             
           </h1>
@@ -273,7 +306,25 @@
       
 
       
-        
+        <p>正常的http请求</p>
+<p><img src="../images/test/30.mdb2H0W2dg.png" alt=""></p>
+<p>问题在哪呢？</p>
+<p>100kb非常大，实际上html是非常冗余的，html,table,div标签都有结束标签，实际上内容都一样，大量的单词是重复的，不管你怎样切分，html都不是精简的</p>
+<p>解决方案：zip</p>
+<p><img src="../images/test/30.mdj40gcEGi.png" alt=""></p>
+<p>yahoo主页通过压缩从101kb到15kb</p>
+<p>更多细节</p>
+<p>这个交换的关键点就在于浏览器和服务器端知道发送zipped文件是ok的，这个约点有两个部分</p>
+<p>浏览器发送一个header 告诉服务器端，它支持gzip和deflate（两种压缩方式）</p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>服务器端发送一个响应，告诉他内容是压缩的</p>
+<p>Content-Encoding: gzip</p>
+<p>服务器端如果没有返回上面这个字段，则表明它不是压缩的</p>
+<p>#设置server<br>好消息是我们控制不了浏览器，它要么支持gzip要么不支持</p>
+<p>我们要做的是配置服务器端，在浏览器支持gzip的情况下，返回zipped文件</p>
+<p>apache中在.htaccess设置如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># compress text, html, javascript, css, xml:</div><div class="line">AddOutputFilterByType DEFLATE text/plain</div><div class="line">AddOutputFilterByType DEFLATE text/html</div><div class="line">AddOutputFilterByType DEFLATE text/xml</div><div class="line">AddOutputFilterByType DEFLATE text/css</div><div class="line">AddOutputFilterByType DEFLATE application/xml</div><div class="line">AddOutputFilterByType DEFLATE application/xhtml+xml</div><div class="line">AddOutputFilterByType DEFLATE application/rss+xml</div><div class="line">AddOutputFilterByType DEFLATE application/javascript</div><div class="line">AddOutputFilterByType DEFLATE application/x-javascript</div><div class="line"></div><div class="line"># Or, compress certain file types by extension:</div><div class="line">&lt;files *.html&gt;</div><div class="line">SetOutputFilter DEFLATE</div><div class="line">&lt;/files&gt;</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -306,8 +357,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/25/31/" rel="prev" title="31">
-                31 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/25/31/" rel="prev" title="备忘录">
+                备忘录 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -376,7 +427,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -1,0 +1,586 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。
+如下
+12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStuff&apos;)        .addEv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事件、并发、js（翻译）">
+<meta property="og:url" content="http://yoursite.com/2017/07/18/33/index.html">
+<meta property="og:site_name" content="Sunlife">
+<meta property="og:description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。
+如下
+12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStuff&apos;)        .addEv">
+<meta property="og:image" content="http://yoursite.com/../images/test/33.mdNRSFCoGT.png">
+<meta property="og:updated_time" content="2017-07-18T08:41:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="事件、并发、js（翻译）">
+<meta name="twitter:description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。
+如下
+12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStuff&apos;)        .addEv">
+<meta name="twitter:image" content="http://yoursite.com/../images/test/33.mdNRSFCoGT.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/18/33/"/>
+
+  <title> 事件、并发、js（翻译） | Sunlife </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Sunlife</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                事件、并发、js（翻译）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-18T15:51:50+08:00" content="2017-07-18">
+              2017-07-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。</p>
+<p>如下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"doStuff"</span>&gt;</span>Do Stuff<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'doStuff'</span>)</div><div class="line">        .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'Do Stuff'</span>);</div><div class="line">            &#125;</div><div class="line">        );</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>事件模型大概如下图<br><img src="../images/test/33.mdNRSFCoGT.png" alt=""><br>From Philip Robert’s diagram</p>
+<p>以下几个点：<br>1.用户界面：用户点击do stuff按钮，很简单<br>2.Web APIS:<br>    DOM API的事件中心，Web APIS是多线程区域，允许一次触发多个事件，他们在页面加载完毕后通过window全局对象可以访问到，DOM以外的的例子就是AJAX的XMLHttpRequest,和timer的setTimeout函数<br>3.Event Queue:<br>    event的回调函数的下一步就是将其push到很多的events queues(也叫task queues)中,因为有很多的web api，浏览器有很多的event queues，比如network request，dom events、rendering更多</p>
+<pre><code>关于 [event-loop](https://www.w3.org/TR/html5/webappapis.html#event-loop)
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">For example, a user agent could have one task queue for mouse and key events (the user interaction task source), and another for everything else. The user agent could then give keyboard and mouse events preference over other tasks three quarters of the time, keeping the interface responsive but not starving other task queues, and never processing events from any one task source out of order.</div><div class="line"></div><div class="line">用户代理会把3/4的时间给keyboard和mouse事件，以保持用户界面的响应</div></pre></td></tr></table></figure>
+<p>4.Event loop：<br>    单一的event loop会选择哪个callback放到javascript的call stack中，下面是火狐中c++的伪代码</p>
+<pre><code><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(<span class="built_in">queue</span>.waitForMessage())&#123;</div><div class="line">    <span class="built_in">queue</span>.processNextMessage();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><p>5.Call stack：<br>    每个函数调用，包括event 回调，都会创建一个stack frame（也叫execution object），这些stack frames会从栈顶push和pop，栈顶是当前正在执行的代码，当函数返回时，就会从栈顶pop</p>
+<pre><code>chrome v8中stack frame的源代码
+</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> V8_EXPORT StackFrame &#123;</div><div class="line"> <span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">GetLineNumber</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">GetColumn</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">GetScriptId</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line">    Local&lt;String&gt; GetScriptName() <span class="keyword">const</span>;</div><div class="line">    Local&lt;String&gt; GetScriptNameOrSourceURL() <span class="keyword">const</span>;</div><div class="line">    Local&lt;String&gt; GetFunctionName() <span class="keyword">const</span>;</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">IsEval</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">IsConstructor</span><span class="params">()</span> <span class="keyword">const</span></span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>call stack的三个特征<br>1.单一线程<br>线程是CPU利用率的基本单位。 作为较低级别的OS结构，它们由线程ID，程序计数器，寄存器组和堆栈组成虽然JavaScript引擎本身是多线程的，但它的调用堆栈是单线程的，只允许一段代码在一个时间执行。<br>2.同步<br>JavaScript调用堆栈执行完成任务而不是任务切换，同样适用于事件。 这不是ECMAScript或WC3规格的要求。 但是有一些例外，如window.alert（）中断当前执行的任务。<br>3.非阻塞<br>当线程执行的时候，会阻塞 浏览器是非阻塞的，仍然接受诸如鼠标点击的事件，即使它们可能不会立即执行。</p>
+<p>##CPU 密集型 task<br>CPU密集型任务可能很困难，因为单一线程的原因，因为同步运行的队列，回调和线程会进入一个等待的状态</p>
+<p>下面是一个cpu密集型的例子<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"bigLoop"</span>&gt;</span>Big Loop<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"doStuff"</span>&gt;</span>Do Stuff<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'bigLoop'</span>)</div><div class="line">        .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="comment">//  big loop</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> array = [], i = <span class="number">0</span>; i &lt; <span class="number">10000000</span>; i++) &#123;</div><div class="line">                array.push(i);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'doStuff'</span>)</div><div class="line">        .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="comment">//  message</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'do stuff'</span>);</div><div class="line">        &#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><a href="http://codepen.io/anon/pen/QwXbLy?editors=101" target="_blank" rel="external">codepen</a></p>
+<p>解决方案<br>1.方案一<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'bigLoop'</span>)</div><div class="line">   .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> array = []</div><div class="line">       <span class="comment">// smaller loop</span></div><div class="line">       setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">5000000</span>; i++) &#123;</div><div class="line">                array.push(i);</div><div class="line">            &#125;</div><div class="line">       &#125;, <span class="number">0</span>);</div><div class="line">       <span class="comment">// smaller loop</span></div><div class="line">       setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">5000000</span>; i++) &#123;</div><div class="line">                array.push(i);</div><div class="line">            &#125;</div><div class="line">       &#125;, <span class="number">0</span>);</div><div class="line">   &#125;);</div></pre></td></tr></table></figure></p>
+<p>2.方案二<br>web worker</p>
+<p>参考资料<br><a href="http://www.w3.org/TR/html5/webappapis.html#webappapis" target="_blank" rel="external">W3C Web APIs</a><br><a href="http://www.w3.org/TR/html5/webappapis.html#event-loop" target="_blank" rel="external">W3C Event Queue (Task Queue)</a><br><a href="http://www.w3.org/TR/html5/webappapis.html#event-loops" target="_blank" rel="external">W3C Event Loop</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" target="_blank" rel="external">Concurrency modal and Event Loop, MDN</a><br><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-10.3" target="_blank" rel="external">ECMAScript 10.3 Call Stack</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/06/32/" rel="next" title="前端内存泄漏分析">
+                <i class="fa fa-chevron-left"></i> 前端内存泄漏分析
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/24/34/" rel="prev" title="34">
+                34 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="liuhuiashazj" />
+          <p class="site-author-name" itemprop="name">liuhuiashazj</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuhuiashazj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
