@@ -5,17 +5,17 @@
   
   <title>Git忽略规则及.gitignore不生效的解决办法 | 享受阳光生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：&amp;lt;!−− more −−&amp;gt; 12345678910111213# 此为注释 – 将被 Git 忽略*.a       # 忽略所有 .a 结尾的文件!lib.a    # 但 lib.a 除外/TOD">
+  <meta name="description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git忽略规则及.gitignore不生效的解决办法">
 <meta property="og:url" content="http://yoursite.com/2016/08/17/9/index.html">
 <meta property="og:site_name" content="享受阳光生活">
-<meta property="og:description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：&amp;lt;!−− more −−&amp;gt; 12345678910111213# 此为注释 – 将被 Git 忽略*.a       # 忽略所有 .a 结尾的文件!lib.a    # 但 lib.a 除外/TOD">
+<meta property="og:description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T07:32:23.000Z">
+<meta property="og:updated_time" content="2017-10-20T07:39:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git忽略规则及.gitignore不生效的解决办法">
-<meta name="twitter:description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：&amp;lt;!−− more −−&amp;gt; 12345678910111213# 此为注释 – 将被 Git 忽略*.a       # 忽略所有 .a 结尾的文件!lib.a    # 但 lib.a 除外/TOD">
+<meta name="twitter:description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：">
   
     <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
   
@@ -90,12 +90,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：<br>&lt;!−− more −−&gt;</p>
+        <p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：<br><a id="more"></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 此为注释 – 将被 Git 忽略</div><div class="line">*.a       # 忽略所有 .a 结尾的文件</div><div class="line">!lib.a    # 但 lib.a 除外</div><div class="line">/TODO     # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</div><div class="line">build/    # 忽略 build/ 目录下的所有文件</div><div class="line">doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</div><div class="line">``` </div><div class="line">规则很简单，不做过多解释，但是有时候在项目开发过程中，突然心血来潮想把之前的某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，为什么呢？</div><div class="line">gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</div><div class="line">```bash</div><div class="line">git rm -r --cached .</div><div class="line">git add .</div><div class="line">git commit -m &apos;update .gitignore&apos;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/17/9/" data-id="cj8zkvfmv000wxixljsx0eq72" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/17/9/" data-id="cj8zk8frn000ycsxl36vnp7eg" class="article-share-link">Share</a>
       
       
     </footer>

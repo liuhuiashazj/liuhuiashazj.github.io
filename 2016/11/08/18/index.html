@@ -5,17 +5,17 @@
   
   <title>node里面NODE_ENV有什么用 | 享受阳光生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mdl可以用来设置环境变量（默认值为development）。一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：&amp;lt;!−− more −−&amp;gt;12linux &amp;amp; mac: export NODE_ENV=productionwindows: set NODE_ENV=production demo如下 1234567891011">
+  <meta name="description" content="mdl可以用来设置环境变量（默认值为development）。一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node里面NODE_ENV有什么用">
 <meta property="og:url" content="http://yoursite.com/2016/11/08/18/index.html">
 <meta property="og:site_name" content="享受阳光生活">
-<meta property="og:description" content="mdl可以用来设置环境变量（默认值为development）。一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：&amp;lt;!−− more −−&amp;gt;12linux &amp;amp; mac: export NODE_ENV=productionwindows: set NODE_ENV=production demo如下 1234567891011">
+<meta property="og:description" content="mdl可以用来设置环境变量（默认值为development）。一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T07:31:02.000Z">
+<meta property="og:updated_time" content="2017-10-20T07:40:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node里面NODE_ENV有什么用">
-<meta name="twitter:description" content="mdl可以用来设置环境变量（默认值为development）。一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：&amp;lt;!−− more −−&amp;gt;12linux &amp;amp; mac: export NODE_ENV=productionwindows: set NODE_ENV=production demo如下 1234567891011">
+<meta name="twitter:description" content="mdl可以用来设置环境变量（默认值为development）。一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：">
   
     <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
   
@@ -90,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>mdl可以用来设置环境变量（默认值为development）。<br>一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：<br>&lt;!−− more −−&gt;<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">linux &amp; mac: export NODE_ENV=production</div><div class="line">windows: set NODE_ENV=production</div></pre></td></tr></table></figure></p>
+        <p>mdl可以用来设置环境变量（默认值为development）。<br>一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：<br><a id="more"></a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">linux &amp; mac: export NODE_ENV=production</div><div class="line">windows: set NODE_ENV=production</div></pre></td></tr></table></figure></p>
 <p>demo如下</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//package.json</div><div class="line">&#123;</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"npmtest"</span>,</div><div class="line">    <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">    <span class="attr">"description"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"main"</span>: <span class="string">"app.js"</span>,</div><div class="line">    <span class="attr">"scripts"</span>: &#123;</div><div class="line">        <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</div><div class="line">        <span class="attr">"start"</span>: <span class="string">"better-npm-run start"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"betterScripts"</span>: &#123;</div><div class="line">        <span class="attr">"start"</span>: &#123;</div><div class="line">            <span class="attr">"command"</span>: <span class="string">"node app.js"</span>,</div><div class="line">            <span class="attr">"env"</span>: &#123;</div><div class="line">                <span class="attr">"NODE_ENV"</span>: <span class="string">"dev"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//app.js</span></div><div class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'product'</span>) &#123;</div><div class="line">    <span class="comment">// just for production code</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'production'</span>);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'dev'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -98,7 +98,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/08/18/" data-id="cj8zkvflr000axixlnoprcnf8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/11/08/18/" data-id="cj8zk8fr2000bcsxl1g79nmlw" class="article-share-link">Share</a>
       
       
     </footer>

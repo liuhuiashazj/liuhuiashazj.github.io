@@ -5,12 +5,12 @@
   
   <title>关于js Date的那些坑 | 享受阳光生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ie8中var t1=new Date(‘2015-04-07’)报错 翻查官方文档 &amp;lt;!−− more −−&amp;gt;new Date()支持以下几种参数形式 1234new Date();new Date(value);new Date(dateString);new Date(year, month[, day[, hour[, minutes[, seconds[, milliseco">
+  <meta name="description" content="ie8中var t1=new Date(‘2015-04-07’)报错 翻查官方文档">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于js Date的那些坑">
 <meta property="og:url" content="http://yoursite.com/2016/08/15/6/index.html">
 <meta property="og:site_name" content="享受阳光生活">
-<meta property="og:description" content="ie8中var t1=new Date(‘2015-04-07’)报错 翻查官方文档 &amp;lt;!−− more −−&amp;gt;new Date()支持以下几种参数形式 1234new Date();new Date(value);new Date(dateString);new Date(year, month[, day[, hour[, minutes[, seconds[, milliseco">
+<meta property="og:description" content="ie8中var t1=new Date(‘2015-04-07’)报错 翻查官方文档">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/1.1.png">
 <meta property="og:image" content="http://yoursite.com/images/1.2.png">
@@ -18,10 +18,10 @@
 <meta property="og:image" content="http://yoursite.com/images/1.4.png">
 <meta property="og:image" content="http://yoursite.com/images/1.5.png">
 <meta property="og:image" content="http://yoursite.com/images/1.6.png">
-<meta property="og:updated_time" content="2017-10-20T07:32:00.000Z">
+<meta property="og:updated_time" content="2017-10-20T07:39:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于js Date的那些坑">
-<meta name="twitter:description" content="ie8中var t1=new Date(‘2015-04-07’)报错 翻查官方文档 &amp;lt;!−− more −−&amp;gt;new Date()支持以下几种参数形式 1234new Date();new Date(value);new Date(dateString);new Date(year, month[, day[, hour[, minutes[, seconds[, milliseco">
+<meta name="twitter:description" content="ie8中var t1=new Date(‘2015-04-07’)报错 翻查官方文档">
 <meta name="twitter:image" content="http://yoursite.com/images/1.1.png">
   
     <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
@@ -99,7 +99,8 @@
       
         <p>ie8中var t1=new Date(‘2015-04-07’)报错</p>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="external">翻查官方文档</a></p>
-<p>&lt;!−− more −−&gt;<br>new Date()支持以下几种参数形式</p>
+<a id="more"></a>
+<p>new Date()支持以下几种参数形式</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(value);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(dateString);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(year, month[, day[, hour[, minutes[, seconds[, milliseconds]]]]]);</div></pre></td></tr></table></figure>
 <p>2015-04-07相当于第三种 datestring</p>
 <p><img src="/images/1.1.png" alt="img1"><br>__<br>就是说datestring得支持parse解析</p>
@@ -116,7 +117,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/15/6/" data-id="cj8zkvfmt000uxixlzk56q3xs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/08/15/6/" data-id="cj8zk8frl000vcsxlt1e963nm" class="article-share-link">Share</a>
       
       
     </footer>

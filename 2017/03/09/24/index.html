@@ -5,17 +5,17 @@
   
   <title>electron | 享受阳光生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mainProcess和renderProcess的通信方式&amp;lt;!−− more −−&amp;gt; 异步render process 123456789const ipc = require(&apos;electron&apos;).ipcRendererconst asyncMsgBtn = document.getElementById(&apos;async-msg&apos;)asyncMsgBtn.addEventListe">
+  <meta name="description" content="mainProcess和renderProcess的通信方式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="electron">
 <meta property="og:url" content="http://yoursite.com/2017/03/09/24/index.html">
 <meta property="og:site_name" content="享受阳光生活">
-<meta property="og:description" content="mainProcess和renderProcess的通信方式&amp;lt;!−− more −−&amp;gt; 异步render process 123456789const ipc = require(&apos;electron&apos;).ipcRendererconst asyncMsgBtn = document.getElementById(&apos;async-msg&apos;)asyncMsgBtn.addEventListe">
+<meta property="og:description" content="mainProcess和renderProcess的通信方式">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T07:31:24.000Z">
+<meta property="og:updated_time" content="2017-10-20T07:39:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="electron">
-<meta name="twitter:description" content="mainProcess和renderProcess的通信方式&amp;lt;!−− more −−&amp;gt; 异步render process 123456789const ipc = require(&apos;electron&apos;).ipcRendererconst asyncMsgBtn = document.getElementById(&apos;async-msg&apos;)asyncMsgBtn.addEventListe">
+<meta name="twitter:description" content="mainProcess和renderProcess的通信方式">
   
     <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
   
@@ -90,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="mainProcess和renderProcess的通信方式"><a href="#mainProcess和renderProcess的通信方式" class="headerlink" title="mainProcess和renderProcess的通信方式"></a>mainProcess和renderProcess的通信方式</h4><p>&lt;!−− more −−&gt;</p>
+        <h4 id="mainProcess和renderProcess的通信方式"><a href="#mainProcess和renderProcess的通信方式" class="headerlink" title="mainProcess和renderProcess的通信方式"></a>mainProcess和renderProcess的通信方式</h4><a id="more"></a>
 <h4 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h4><p>render process</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ipc = <span class="built_in">require</span>(<span class="string">'electron'</span>).ipcRenderer</div><div class="line"><span class="keyword">const</span> asyncMsgBtn = <span class="built_in">document</span>.getElementById(<span class="string">'async-msg'</span>)</div><div class="line">asyncMsgBtn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  ipc.send(<span class="string">'asynchronous-message'</span>, <span class="string">'ping'</span>)</div><div class="line">&#125;)</div><div class="line">ipc.on(<span class="string">'asynchronous-reply'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event, arg</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> message = <span class="string">`Asynchronous message reply: <span class="subst">$&#123;arg&#125;</span>`</span></div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'async-reply'</span>).innerHTML = message</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>main process</p>
@@ -105,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/09/24/" data-id="cj8zkvflx000fxixl8v7m3p6w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/09/24/" data-id="cj8zk8fra000icsxl3bhixw87" class="article-share-link">Share</a>
       
       
     </footer>

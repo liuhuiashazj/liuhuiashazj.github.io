@@ -5,17 +5,17 @@
   
   <title>(译文)如何实现virtual dom | 享受阳光生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="创建虚拟dom需要知道两件事。你不需要看深入研究React的源码。或者其它虚拟dom的源码。他们都非常繁琐也复杂。实际上虚拟dom只需要50行以内的代码就可以实现！！！ 这里有两个概念：  虚拟dom是真实dom的一种呈现方式 当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变&amp;lt;!−− more −−&amp;gt;就是这样，现在我们开">
+  <meta name="description" content="创建虚拟dom需要知道两件事。你不需要看深入研究React的源码。或者其它虚拟dom的源码。他们都非常繁琐也复杂。实际上虚拟dom只需要50行以内的代码就可以实现！！！ 这里有两个概念：  虚拟dom是真实dom的一种呈现方式 当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(译文)如何实现virtual dom">
 <meta property="og:url" content="http://yoursite.com/2017/09/21/5/index.html">
 <meta property="og:site_name" content="享受阳光生活">
-<meta property="og:description" content="创建虚拟dom需要知道两件事。你不需要看深入研究React的源码。或者其它虚拟dom的源码。他们都非常繁琐也复杂。实际上虚拟dom只需要50行以内的代码就可以实现！！！ 这里有两个概念：  虚拟dom是真实dom的一种呈现方式 当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变&amp;lt;!−− more −−&amp;gt;就是这样，现在我们开">
+<meta property="og:description" content="创建虚拟dom需要知道两件事。你不需要看深入研究React的源码。或者其它虚拟dom的源码。他们都非常繁琐也复杂。实际上虚拟dom只需要50行以内的代码就可以实现！！！ 这里有两个概念：  虚拟dom是真实dom的一种呈现方式 当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T07:31:57.000Z">
+<meta property="og:updated_time" content="2017-10-20T07:39:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(译文)如何实现virtual dom">
-<meta name="twitter:description" content="创建虚拟dom需要知道两件事。你不需要看深入研究React的源码。或者其它虚拟dom的源码。他们都非常繁琐也复杂。实际上虚拟dom只需要50行以内的代码就可以实现！！！ 这里有两个概念：  虚拟dom是真实dom的一种呈现方式 当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变&amp;lt;!−− more −−&amp;gt;就是这样，现在我们开">
+<meta name="twitter:description" content="创建虚拟dom需要知道两件事。你不需要看深入研究React的源码。或者其它虚拟dom的源码。他们都非常繁琐也复杂。实际上虚拟dom只需要50行以内的代码就可以实现！！！ 这里有两个概念：  虚拟dom是真实dom的一种呈现方式 当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变">
   
     <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
   
@@ -94,7 +94,8 @@
 <p>这里有两个概念：</p>
 <ul>
 <li>虚拟dom是真实dom的一种呈现方式</li>
-<li>当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变<br>&lt;!−− more −−&gt;<br>就是这样，现在我们开始深入研究下这两个概念。</li>
+<li>当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变<a id="more"></a>
+就是这样，现在我们开始深入研究下这两个概念。</li>
 </ul>
 <p>更新：本文的第二部分：虚拟dom 设置props&amp;events <a href="https://medium.com/@deathmood/write-your-virtual-dom-2-props-events-a957608f5c76" target="_blank" rel="external">here</a></p>
 <p>#DOM树的呈现<br>首先我们需要在内存中存储DOM树，并且我们能使用js对象来表示，假设我们有以下的树：</p>
@@ -124,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/21/5/" data-id="cj8zkvfmq000txixlmn634fy1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/21/5/" data-id="cj8zk8frk000ucsxl8ufs6r2c" class="article-share-link">Share</a>
       
       
     </footer>
