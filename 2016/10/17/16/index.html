@@ -5,18 +5,18 @@
   
   <title>（翻译）SVG和media queries | 享受阳光生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应 如下代码 12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green;    &amp;#125;    @me">
+  <meta name="description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应&amp;lt;!−− more −−&amp;gt;如下代码 12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green">
 <meta property="og:type" content="article">
 <meta property="og:title" content="（翻译）SVG和media queries">
 <meta property="og:url" content="http://yoursite.com/2016/10/17/16/index.html">
 <meta property="og:site_name" content="享受阳光生活">
-<meta property="og:description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应 如下代码 12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green;    &amp;#125;    @me">
+<meta property="og:description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应&amp;lt;!−− more −−&amp;gt;如下代码 12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/11.1.png">
-<meta property="og:updated_time" content="2017-10-20T06:56:36.000Z">
+<meta property="og:updated_time" content="2017-10-20T07:30:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="（翻译）SVG和media queries">
-<meta name="twitter:description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应 如下代码 12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green;    &amp;#125;    @me">
+<meta name="twitter:description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应&amp;lt;!−− more −−&amp;gt;如下代码 12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green">
 <meta name="twitter:image" content="http://yoursite.com/images/11.1.png">
   
     <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
@@ -59,9 +59,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -92,8 +92,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应</p>
-<p>如下代码</p>
+        <p>关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应<br>&lt;!−− more −−&gt;<br>如下代码</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">    circle &#123;</span></div><div class="line"><span class="undefined">      fill: green;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    @<span class="keyword">media</span> (min-width: <span class="number">100px</span>) &#123;</span></div><div class="line"><span class="undefined">      circle &#123;</span></div><div class="line"><span class="undefined">        fill: blue;</span></div><div class="line"><span class="undefined">      &#125;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"50"</span> <span class="attr">cy</span>=<span class="string">"50"</span> <span class="attr">r</span>=<span class="string">"50"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>但是什么情况下这个圈应该是蓝色的呢，规范说min-width必须是viewport的宽度，但是…</p>
 <h4 id="哪个viewport"><a href="#哪个viewport" class="headerlink" title="哪个viewport"></a>哪个viewport</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span></div><div class="line">  …as above…</div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -123,7 +122,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/17/16/" data-id="cj8zk8fr00009csxlh0sd9t1c" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/10/17/16/" data-id="cj8zkvflp0008xixlqnsywafd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,18 +131,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/11/08/17/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+    <a href="/2016/11/08/18/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          es6尾递归优化
+          node里面NODE_ENV有什么用
         
       </div>
     </a>
   
   
     <a href="/2016/09/30/15/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">理解javascript的constructor</div>
     </a>
   
@@ -161,7 +160,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
     </div>
@@ -171,7 +170,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/资源/" style="font-size: 10px;">资源</a>
     </div>
@@ -190,7 +189,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -227,7 +226,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Babel<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

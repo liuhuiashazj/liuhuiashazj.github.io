@@ -5,18 +5,18 @@
   
   <title>事件、并发、js（翻译） | 享受阳光生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。 如下 12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStuff&apos;)        .addEv">
+  <meta name="description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。&amp;lt;!−− more −−&amp;gt;如下 12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事件、并发、js（翻译）">
 <meta property="og:url" content="http://yoursite.com/2017/07/18/34/index.html">
 <meta property="og:site_name" content="享受阳光生活">
-<meta property="og:description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。 如下 12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStuff&apos;)        .addEv">
+<meta property="og:description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。&amp;lt;!−− more −−&amp;gt;如下 12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStu">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/test/33.mdNRSFCoGT.png">
-<meta property="og:updated_time" content="2017-10-20T06:56:13.000Z">
+<meta property="og:updated_time" content="2017-10-20T07:31:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件、并发、js（翻译）">
-<meta name="twitter:description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。 如下 12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStuff&apos;)        .addEv">
+<meta name="twitter:description" content="现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。&amp;lt;!−− more −−&amp;gt;如下 12345678&amp;lt;button id=&quot;doStuff&quot;&amp;gt;Do Stuff&amp;lt;/button&amp;gt;&amp;lt;script&amp;gt;    document.getElementById(&apos;doStu">
 <meta name="twitter:image" content="http://yoursite.com/images/test/33.mdNRSFCoGT.png">
   
     <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
@@ -59,9 +59,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -92,8 +92,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。</p>
-<p>如下</p>
+        <p>现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。<br>&lt;!−− more −−&gt;<br>如下</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"doStuff"</span>&gt;</span>Do Stuff<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">'doStuff'</span>)</span></div><div class="line"><span class="javascript">        .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></div><div class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="string">'Do Stuff'</span>);</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined">        );</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>事件模型大概如下图<br><img src="/images/test/33.mdNRSFCoGT.png" alt="img"></p>
 <p>From Philip Robert’s diagram</p>
@@ -117,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/18/34/" data-id="cj8zk8fri000tcsxliyc0bvn8" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/07/18/34/" data-id="cj8zkvfmn000sxixl029pd91l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -127,7 +126,7 @@
 <nav id="article-nav">
   
     <a href="/2017/07/24/35/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           (翻译)Nodejs EventLoop&amp;Timers&amp;process.netxTick()
@@ -137,7 +136,7 @@
   
   
     <a href="/2017/07/06/33/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">前端内存泄漏分析</div>
     </a>
   
@@ -155,7 +154,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
     </div>
@@ -165,7 +164,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/资源/" style="font-size: 10px;">资源</a>
     </div>
@@ -184,7 +183,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -221,7 +220,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Babel<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

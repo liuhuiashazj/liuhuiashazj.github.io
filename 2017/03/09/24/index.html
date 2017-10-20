@@ -5,17 +5,17 @@
   
   <title>electron | 享受阳光生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mainProcess和renderProcess的通信方式异步render process 123456789const ipc = require(&apos;electron&apos;).ipcRendererconst asyncMsgBtn = document.getElementById(&apos;async-msg&apos;)asyncMsgBtn.addEventListener(&apos;click&apos;, functio">
+  <meta name="description" content="mainProcess和renderProcess的通信方式&amp;lt;!−− more −−&amp;gt; 异步render process 123456789const ipc = require(&apos;electron&apos;).ipcRendererconst asyncMsgBtn = document.getElementById(&apos;async-msg&apos;)asyncMsgBtn.addEventListe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="electron">
 <meta property="og:url" content="http://yoursite.com/2017/03/09/24/index.html">
 <meta property="og:site_name" content="享受阳光生活">
-<meta property="og:description" content="mainProcess和renderProcess的通信方式异步render process 123456789const ipc = require(&apos;electron&apos;).ipcRendererconst asyncMsgBtn = document.getElementById(&apos;async-msg&apos;)asyncMsgBtn.addEventListener(&apos;click&apos;, functio">
+<meta property="og:description" content="mainProcess和renderProcess的通信方式&amp;lt;!−− more −−&amp;gt; 异步render process 123456789const ipc = require(&apos;electron&apos;).ipcRendererconst asyncMsgBtn = document.getElementById(&apos;async-msg&apos;)asyncMsgBtn.addEventListe">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T06:56:23.000Z">
+<meta property="og:updated_time" content="2017-10-20T07:31:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="electron">
-<meta name="twitter:description" content="mainProcess和renderProcess的通信方式异步render process 123456789const ipc = require(&apos;electron&apos;).ipcRendererconst asyncMsgBtn = document.getElementById(&apos;async-msg&apos;)asyncMsgBtn.addEventListener(&apos;click&apos;, functio">
+<meta name="twitter:description" content="mainProcess和renderProcess的通信方式&amp;lt;!−− more −−&amp;gt; 异步render process 123456789const ipc = require(&apos;electron&apos;).ipcRendererconst asyncMsgBtn = document.getElementById(&apos;async-msg&apos;)asyncMsgBtn.addEventListe">
   
     <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
   
@@ -57,9 +57,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -90,7 +90,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="mainProcess和renderProcess的通信方式"><a href="#mainProcess和renderProcess的通信方式" class="headerlink" title="mainProcess和renderProcess的通信方式"></a>mainProcess和renderProcess的通信方式</h4><h4 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h4><p>render process</p>
+        <h4 id="mainProcess和renderProcess的通信方式"><a href="#mainProcess和renderProcess的通信方式" class="headerlink" title="mainProcess和renderProcess的通信方式"></a>mainProcess和renderProcess的通信方式</h4><p>&lt;!−− more −−&gt;</p>
+<h4 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h4><p>render process</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ipc = <span class="built_in">require</span>(<span class="string">'electron'</span>).ipcRenderer</div><div class="line"><span class="keyword">const</span> asyncMsgBtn = <span class="built_in">document</span>.getElementById(<span class="string">'async-msg'</span>)</div><div class="line">asyncMsgBtn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  ipc.send(<span class="string">'asynchronous-message'</span>, <span class="string">'ping'</span>)</div><div class="line">&#125;)</div><div class="line">ipc.on(<span class="string">'asynchronous-reply'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event, arg</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> message = <span class="string">`Asynchronous message reply: <span class="subst">$&#123;arg&#125;</span>`</span></div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'async-reply'</span>).innerHTML = message</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <p>main process</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ipc = <span class="built_in">require</span>(<span class="string">'electron'</span>).ipcMain</div><div class="line">ipc.on(<span class="string">'asynchronous-message'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event, arg</span>) </span>&#123;</div><div class="line">  event.sender.send(<span class="string">'asynchronous-reply'</span>, <span class="string">'pong'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
@@ -104,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/09/24/" data-id="cj8zk8fra000icsxl3bhixw87" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/03/09/24/" data-id="cj8zkvflx000fxixl8v7m3p6w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -114,7 +115,7 @@
 <nav id="article-nav">
   
     <a href="/2017/03/16/25/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           grid布局
@@ -124,7 +125,7 @@
   
   
     <a href="/2016/12/06/23/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">sublime添加markdown粘贴图片功能</div>
     </a>
   
@@ -142,7 +143,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
     </div>
@@ -152,7 +153,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/资源/" style="font-size: 10px;">资源</a>
     </div>
@@ -171,7 +172,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -208,7 +209,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Babel<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

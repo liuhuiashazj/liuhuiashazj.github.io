@@ -53,9 +53,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -92,9 +92,8 @@
 <p>这里有两个概念：</p>
 <ul>
 <li>虚拟dom是真实dom的一种呈现方式</li>
-<li>当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变</li>
+<li>当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变<br>&lt;!−− more −−&gt;<br>就是这样，现在我们开始深入研究下这两个概念。</li>
 </ul>
-<p>就是这样，现在我们开始深入研究下这两个概念。</p>
 <p>更新：本文的第二部分：虚拟dom 设置props&amp;events <a href="https://medium.com/@deathmood/write-your-virtual-dom-2-props-events-a957608f5c76" target="_blank" rel="external">here</a></p>
 <p>#DOM树的呈现<br>首先我们需要在内存中存储DOM树，并且我们能使用js对象来表示，假设我们有以下的树：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">”list”</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -123,7 +122,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/21/5/" data-id="cj8zk8frk000ucsxl8ufs6r2c" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/21/5/" data-id="cj8zkvfmq000txixlmn634fy1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/3/" data-id="cj8zk8fre000ncsxlxx1n36a1" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/15/3/" data-id="cj8zkvfm8000mxixluwpbd74s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -238,6 +237,7 @@
 </tr>
 </tbody>
 </table>
+<p>&lt;!−− more −−&gt;</p>
 <p><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="external">how browser works</a></p>
 <p><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="external">event loop&amp;concurency</a></p>
 <p><a href="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D" target="_blank" rel="external">event loop simulation</a></p>
@@ -245,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/14/1/" data-id="cj8zk8fqn0000csxlk4w8so2v" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/14/1/" data-id="cj8zkvfl70000xixlkd7s3yn8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/资源/">资源</a></li></ul>
@@ -279,7 +279,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://github.com/sourcegraph/thyme" target="_blank" rel="external">原文地址</a><br>
+        <p><a href="https://github.com/sourcegraph/thyme" target="_blank" rel="external">原文地址</a><br>&lt;!−− more −−&gt;<br>
         
           <p class="article-more-link">
             <a href="/2017/09/14/2/#more">Read More</a>
@@ -288,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/14/2/" data-id="cj8zk8fr4000dcsxlvycavqxn" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/09/14/2/" data-id="cj8zkvfls000bxixl59xypom4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -321,14 +321,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="external">原文地址</a></p>
-<p>什么是Event Loop</p>
-<p>eventloop允许Node.js执行不阻塞的I/O操作的一个东西（虽然js是单线程），通过卸载系统内核的一些操作。</p>
+<p>什么是Event Loop<br>&lt;!−− more −−&gt;<br>eventloop允许Node.js执行不阻塞的I/O操作的一个东西（虽然js是单线程），通过卸载系统内核的一些操作。</p>
 <p>现在大部分内核都是多线程的，他们可以处理在后台处理多个操作。当其中的一个操作完成时，内核告诉Node.js，这个回调可以添加到poll queue队列中以便最终执行，我们将会解释这个话题的更多细节。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/24/35/" data-id="cj8zk8fri000scsxlgo2zjd3c" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/07/24/35/" data-id="cj8zkvfml000rxixlzxp2psuq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -360,8 +359,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。</p>
-<p>如下</p>
+        <p>现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。<br>&lt;!−− more −−&gt;<br>如下</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"doStuff"</span>&gt;</span>Do Stuff<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">'doStuff'</span>)</span></div><div class="line"><span class="javascript">        .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></div><div class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="string">'Do Stuff'</span>);</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined">        );</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>事件模型大概如下图<br><img src="/images/test/33.mdNRSFCoGT.png" alt="img"></p>
 <p>From Philip Robert’s diagram</p>
@@ -385,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/18/34/" data-id="cj8zk8fri000tcsxliyc0bvn8" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/07/18/34/" data-id="cj8zkvfmn000sxixl029pd91l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -417,8 +415,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn</a><br>内存泄漏的几种检测方式</p>
-<p>按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。</p>
+        <p><a href="https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn</a><br>内存泄漏的几种检测方式<br>&lt;!−− more −−&gt;<br>按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。</p>
 <p><img src="/images/test/32.mdHqYNETTT.png" alt="img"></p>
 <p>Timeline记录可视化内存泄漏<br><img src="/images/test/32.md3bUgYRQd.png" alt="img"></p>
 <p>上图可以看到jsheap越来越大，在实际使用过程中，如果您看到这种 JS 堆大小或节点大小不断增大的模式，则可能存在内存泄漏。</p>
@@ -436,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/07/06/33/" data-id="cj8zk8frh000rcsxl3p9r1edt" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/07/06/33/" data-id="cj8zkvfmi000qxixlhpza5gsu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -469,7 +466,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>正常的http请求</p>
-<p><img src="/images/test/30.mdb2H0W2dg.png" alt="img"></p>
+<p><img src="/images/test/30.mdb2H0W2dg.png" alt="img"><br>&lt;!−− more −−&gt;</p>
 <p>问题在哪呢？</p>
 <p>100kb非常大，实际上html是非常冗余的，html,table,div标签都有结束标签，实际上内容都一样，大量的单词是重复的，不管你怎样切分，html都不是精简的</p>
 <p>解决方案：zip</p>
@@ -489,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/25/31/" data-id="cj8zk8frg000qcsxldolot3wq" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/05/25/31/" data-id="cj8zkvfmf000pxixlyt00j7fg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -522,8 +519,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>node.js是什么？和JavaScript有什么关系？</p>
-<p>关于node.js究竟是什么，大家的问题在于</p>
-<p>node.js是不是一门语言？<br>node.js是不是一个JavaScript库函数？<br>node.js是不是一个JavaScript框架？</p>
+<p>关于node.js究竟是什么，大家的问题在于<br>&lt;!−− more −−&gt;<br>node.js是不是一门语言？<br>node.js是不是一个JavaScript库函数？<br>node.js是不是一个JavaScript框架？</p>
 <p>很遗憾，这三个问题的答案都是NO，看看官方对自己的描述</p>
 <p>Node.js is a platform built on Chrome’s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.</p>
 <p>官方很明确地说node.js是一个platform，也就是一个做xxx的平台。node.js是一个可以在服务器端运行JavaScript的平台，其实这句话华也不准确，按照《JavaScript权威指南》《JavaScript高级程序设计》等书中的定义，JavaScript是由两部分组成</p>
@@ -541,7 +537,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/23/30/" data-id="cj8zk8frf000pcsxl7siyle0k" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/05/23/30/" data-id="cj8zkvfma000nxixllxnxdphe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -576,9 +572,8 @@
         <h4 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h4><ul>
 <li>Electron是一个可以使用js、html、css创建桌面应用的库</li>
 <li>可以创建mac、window、linux等应用</li>
-<li>atom基于electron开发，以前叫atom-shell</li>
+<li>atom基于electron开发，以前叫atom-shell<br>&lt;!−− more −−&gt;<br><img src="/images/6.1.png" alt="img"></li>
 </ul>
-<p><img src="/images/6.1.png" alt="img"></p>
 <h4 id="如何开发你的desktop应用"><a href="#如何开发你的desktop应用" class="headerlink" title="如何开发你的desktop应用"></a>如何开发你的desktop应用</h4><ul>
 <li>一个简单的 demo<br><a href="https://github.com/sindresorhus/electron-boilerplate/tree/master/boilerplate" target="_blank" rel="external">demo</a></li>
 <li>一个入口main.js（mainProcess）+ 一个index.html（renderProcess）</li>
@@ -718,7 +713,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/17/29/" data-id="cj8zk8frf000ocsxl2010m150" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/05/17/29/" data-id="cj8zkvfme000oxixl35zae46h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -742,7 +737,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
     </div>
@@ -752,7 +747,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/资源/" style="font-size: 10px;">资源</a>
     </div>
@@ -771,7 +766,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -808,7 +803,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Babel<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

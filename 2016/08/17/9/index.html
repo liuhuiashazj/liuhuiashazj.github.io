@@ -5,17 +5,17 @@
   
   <title>Git忽略规则及.gitignore不生效的解决办法 | 享受阳光生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如： 12345678910111213# 此为注释 – 将被 Git 忽略*.a       # 忽略所有 .a 结尾的文件!lib.a    # 但 lib.a 除外/TODO     # 仅仅忽略项目根目录下的">
+  <meta name="description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：&amp;lt;!−− more −−&amp;gt; 12345678910111213# 此为注释 – 将被 Git 忽略*.a       # 忽略所有 .a 结尾的文件!lib.a    # 但 lib.a 除外/TOD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git忽略规则及.gitignore不生效的解决办法">
 <meta property="og:url" content="http://yoursite.com/2016/08/17/9/index.html">
 <meta property="og:site_name" content="享受阳光生活">
-<meta property="og:description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如： 12345678910111213# 此为注释 – 将被 Git 忽略*.a       # 忽略所有 .a 结尾的文件!lib.a    # 但 lib.a 除外/TODO     # 仅仅忽略项目根目录下的">
+<meta property="og:description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：&amp;lt;!−− more −−&amp;gt; 12345678910111213# 此为注释 – 将被 Git 忽略*.a       # 忽略所有 .a 结尾的文件!lib.a    # 但 lib.a 除外/TOD">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-19T11:56:26.000Z">
+<meta property="og:updated_time" content="2017-10-20T07:32:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git忽略规则及.gitignore不生效的解决办法">
-<meta name="twitter:description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如： 12345678910111213# 此为注释 – 将被 Git 忽略*.a       # 忽略所有 .a 结尾的文件!lib.a    # 但 lib.a 除外/TODO     # 仅仅忽略项目根目录下的">
+<meta name="twitter:description" content="在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：&amp;lt;!−− more −−&amp;gt; 12345678910111213# 此为注释 – 将被 Git 忽略*.a       # 忽略所有 .a 结尾的文件!lib.a    # 但 lib.a 除外/TOD">
   
     <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
   
@@ -57,9 +57,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -90,12 +90,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：</p>
+        <p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：<br>&lt;!−− more −−&gt;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 此为注释 – 将被 Git 忽略</div><div class="line">*.a       # 忽略所有 .a 结尾的文件</div><div class="line">!lib.a    # 但 lib.a 除外</div><div class="line">/TODO     # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</div><div class="line">build/    # 忽略 build/ 目录下的所有文件</div><div class="line">doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</div><div class="line">``` </div><div class="line">规则很简单，不做过多解释，但是有时候在项目开发过程中，突然心血来潮想把之前的某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，为什么呢？</div><div class="line">gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</div><div class="line">```bash</div><div class="line">git rm -r --cached .</div><div class="line">git add .</div><div class="line">git commit -m &apos;update .gitignore&apos;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/17/9/" data-id="cj8zk8frn000ycsxl36vnp7eg" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/08/17/9/" data-id="cj8zkvfmv000wxixljsx0eq72" class="article-share-link">Share</a>
       
       
     </footer>
@@ -104,18 +104,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/08/23/10/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+    <a href="/2016/09/05/11/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          资源检索
+          Electron
         
       </div>
     </a>
   
   
     <a href="/2016/08/16/8/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Backbone的mvc架构</div>
     </a>
   
@@ -133,7 +133,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
     </div>
@@ -143,7 +143,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/资源/" style="font-size: 10px;">资源</a>
     </div>
@@ -162,7 +162,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -199,7 +199,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Babel<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

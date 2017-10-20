@@ -53,9 +53,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -65,47 +65,6 @@
 </header>
       <div class="outer">
         <section id="main">
-  
-    <article id="post-18" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/08/18/" class="article-date">
-  <time datetime="2016-11-08T08:39:45.000Z" itemprop="datePublished">2016-11-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/08/18/">node里面NODE_ENV有什么用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mdl可以用来设置环境变量（默认值为development）。<br>一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">linux &amp; mac: export NODE_ENV=production</div><div class="line">windows: set NODE_ENV=production</div></pre></td></tr></table></figure>
-<p>demo如下</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//package.json</div><div class="line">&#123;</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"npmtest"</span>,</div><div class="line">    <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">    <span class="attr">"description"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"main"</span>: <span class="string">"app.js"</span>,</div><div class="line">    <span class="attr">"scripts"</span>: &#123;</div><div class="line">        <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</div><div class="line">        <span class="attr">"start"</span>: <span class="string">"better-npm-run start"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"betterScripts"</span>: &#123;</div><div class="line">        <span class="attr">"start"</span>: &#123;</div><div class="line">            <span class="attr">"command"</span>: <span class="string">"node app.js"</span>,</div><div class="line">            <span class="attr">"env"</span>: &#123;</div><div class="line">                <span class="attr">"NODE_ENV"</span>: <span class="string">"dev"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//app.js</span></div><div class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'product'</span>) &#123;</div><div class="line">    <span class="comment">// just for production code</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'production'</span>);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'dev'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/08/18/" data-id="cj8zk8fr2000bcsxl1g79nmlw" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
   
     <article id="post-17" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -129,14 +88,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>尾递归：<br>nodejs是否支持tco（tail call optimation）</p>
-<p><a href="http://stackoverflow.com/questions/23260390/node-js-tail-call-optimization-possible-or-not" target="_blank" rel="external">call optimize</a></p>
+        <p>尾递归：<br>nodejs是否支持tco（tail call optimation）<br>&lt;!−− more −−&gt;<br><a href="http://stackoverflow.com/questions/23260390/node-js-tail-call-optimization-possible-or-not" target="_blank" rel="external">call optimize</a></p>
 <p>nodejs 6.6.0是支持伪递归优化的，如下代码所示</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/11/08/17/" data-id="cj8zk8fr1000acsxl19287qtg" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/11/08/17/" data-id="cj8zkvflq0009xixlz4aiwi12" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-18" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/08/18/" class="article-date">
+  <time datetime="2016-11-08T08:39:45.000Z" itemprop="datePublished">2016-11-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/08/18/">node里面NODE_ENV有什么用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mdl可以用来设置环境变量（默认值为development）。<br>一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：<br>&lt;!−− more −−&gt;<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">linux &amp; mac: export NODE_ENV=production</div><div class="line">windows: set NODE_ENV=production</div></pre></td></tr></table></figure></p>
+<p>demo如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//package.json</div><div class="line">&#123;</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"npmtest"</span>,</div><div class="line">    <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">    <span class="attr">"description"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"main"</span>: <span class="string">"app.js"</span>,</div><div class="line">    <span class="attr">"scripts"</span>: &#123;</div><div class="line">        <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</div><div class="line">        <span class="attr">"start"</span>: <span class="string">"better-npm-run start"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"betterScripts"</span>: &#123;</div><div class="line">        <span class="attr">"start"</span>: &#123;</div><div class="line">            <span class="attr">"command"</span>: <span class="string">"node app.js"</span>,</div><div class="line">            <span class="attr">"env"</span>: &#123;</div><div class="line">                <span class="attr">"NODE_ENV"</span>: <span class="string">"dev"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//app.js</span></div><div class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'product'</span>) &#123;</div><div class="line">    <span class="comment">// just for production code</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'production'</span>);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'dev'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/11/08/18/" data-id="cj8zkvflr000axixlnoprcnf8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,8 +166,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应</p>
-<p>如下代码</p>
+        <p>关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应<br>&lt;!−− more −−&gt;<br>如下代码</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">    circle &#123;</span></div><div class="line"><span class="undefined">      fill: green;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    @<span class="keyword">media</span> (min-width: <span class="number">100px</span>) &#123;</span></div><div class="line"><span class="undefined">      circle &#123;</span></div><div class="line"><span class="undefined">        fill: blue;</span></div><div class="line"><span class="undefined">      &#125;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"50"</span> <span class="attr">cy</span>=<span class="string">"50"</span> <span class="attr">r</span>=<span class="string">"50"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>但是什么情况下这个圈应该是蓝色的呢，规范说min-width必须是viewport的宽度，但是…</p>
 <h4 id="哪个viewport"><a href="#哪个viewport" class="headerlink" title="哪个viewport"></a>哪个viewport</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span></div><div class="line">  …as above…</div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -199,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/17/16/" data-id="cj8zk8fr00009csxlh0sd9t1c" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/10/17/16/" data-id="cj8zkvflp0008xixlqnsywafd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,7 +229,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* oloo 对象链接其他对象*/</span></div><div class="line"><span class="keyword">var</span> Animal=&#123;</div><div class="line">    val:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</div><div class="line">    setVal:<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.val=val;</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Mankey=<span class="built_in">Object</span>.create(a);</div><div class="line">Mankey.val[<span class="number">0</span>]=<span class="number">3</span>;</div><div class="line"><span class="comment">/*原型继承*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">    getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line">Man.prototype=<span class="keyword">new</span> Person();</div><div class="line"><span class="keyword">var</span> man1=<span class="keyword">new</span> Man(<span class="string">'tom'</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Woman</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line">Woman.prototype=<span class="built_in">Object</span>.create(Person.prototype);</div><div class="line"><span class="keyword">var</span> woman1=<span class="keyword">new</span> Woman(<span class="string">'july'</span>);</div></pre></td></tr></table></figure>
-<p>再看个栗子</p>
+<p>&lt;!−− more −−&gt;<br>再看个栗子</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> ;<span class="comment">//true</span></div><div class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span>; <span class="comment">//true</span></div></pre></td></tr></table></figure>
 <p>为啥呢<br>instanceof 运算符</p>
 <p>instanceof是一个二元运算符，如：A instanceof B. 其中，A必须是一个合法的JavaScript对象，B必须是一个合法的JavaScript函数 (function). 判断过程如下：<br>如果函数B在对象A的原型链 (prototype chain) 中被发现，那么instanceof操作符将返回true，否则返回false.<br>例如下面的代码会返回true.</p>
@@ -254,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/30/15/" data-id="cj8zk8fqz0008csxllczchgg5" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/09/30/15/" data-id="cj8zkvfln0007xixlyy8nbw85" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,13 +283,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>DOM2 发布与2000-11-13，包含以下几块内容</p>
-<p>(dom2规范)[<a href="https://www.w3.org/TR/DOM-Level-2/" target="_blank" rel="external">https://www.w3.org/TR/DOM-Level-2/</a>]<br>DOM Level 2 核心 规定了访问和更改文档内容及结构的一个 API，此 API 同时包含用于 XML 的接口。<br>DOM Level 2 HTML 规定了操作 HTML 文档结构和内容的 API。（这部分规范仍然是工作草案）<br>DOM Level 2 Views 规定了对文档视图进行访问和更改的 API。视图是与原文档相关联的表现形式或某种备用的表现形式。<br>DOM Level 2 Style 规定了动态访问及更改内容样式表的 API。<br>DOM Level 2 Events 规定了访问文档事件的 API。<br>DOM Level 2 Traversal-Range 规定了动态遍历和识别文档中内容范围的 API。</p>
+        <p>DOM2 发布与2000-11-13，包含以下几块内容<br>&lt;!−− more −−&gt;<br>(dom2规范)[<a href="https://www.w3.org/TR/DOM-Level-2/" target="_blank" rel="external">https://www.w3.org/TR/DOM-Level-2/</a>]<br>DOM Level 2 核心 规定了访问和更改文档内容及结构的一个 API，此 API 同时包含用于 XML 的接口。<br>DOM Level 2 HTML 规定了操作 HTML 文档结构和内容的 API。（这部分规范仍然是工作草案）<br>DOM Level 2 Views 规定了对文档视图进行访问和更改的 API。视图是与原文档相关联的表现形式或某种备用的表现形式。<br>DOM Level 2 Style 规定了动态访问及更改内容样式表的 API。<br>DOM Level 2 Events 规定了访问文档事件的 API。<br>DOM Level 2 Traversal-Range 规定了动态遍历和识别文档中内容范围的 API。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/23/14/" data-id="cj8zk8fqy0007csxlgi4ydac3" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/09/23/14/" data-id="cj8zkvflk0005xixlz2h7upue" class="article-share-link">Share</a>
       
       
     </footer>
@@ -340,7 +336,7 @@
 <li>ice计算原则<ul>
 <li>选择符如果有个i(id),就在i的位置加1</li>
 <li>选择符如果有个c(class),就在c的位置加1</li>
-<li>选择符如果有个e(element),接在e的位置加1<br>demo</li>
+<li>选择符如果有个e(element),接在e的位置加1<br>&lt;!−− more −−&gt;<br>demo</li>
 </ul>
 </li>
 </ul>
@@ -359,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/14/13/" data-id="cj8zk8fqw0005csxlbxbil31t" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/09/14/13/" data-id="cj8zkvflj0004xixljwslvkuw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -391,14 +387,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>input，如果不给input设置背景颜色的话，input没有内阴影，但是，如果设置一个背景，就会产生阴影，解决办法，设置一个border</p>
-<p>jquery $(‘#test input’).select().focus();<br>safari如果选择器结果有多个，会导致每个的input都会触发blur，而chrome不会</p>
+        <p>input，如果不给input设置背景颜色的话，input没有内阴影，但是，如果设置一个背景，就会产生阴影，解决办法，设置一个border<br>&lt;!−− more −−&gt;<br>jquery $(‘#test input’).select().focus();<br>safari如果选择器结果有多个，会导致每个的input都会触发blur，而chrome不会</p>
 <p><a href="https://jsfiddle.net/liuhuiashazj/c5rw0gpc/" target="_blank" rel="external">https://jsfiddle.net/liuhuiashazj/c5rw0gpc/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/09/12/" data-id="cj8zk8fqv0004csxlxx9i5wco" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/09/09/12/" data-id="cj8zkvfli0003xixlsnvej3up" class="article-share-link">Share</a>
       
       
     </footer>
@@ -433,7 +428,7 @@
         <h4 id="什么是Electron"><a href="#什么是Electron" class="headerlink" title="什么是Electron"></a>什么是Electron</h4><ul>
 <li>Electron是一个可以使用js、html、css创建桌面应用的库</li>
 <li>可以创建mac、window、linux等应用</li>
-<li>atom基于electron开发，以前叫atom-shell</li>
+<li>atom基于electron开发，以前叫atom-shell<br>&lt;!−− more −−&gt;</li>
 </ul>
 <h4 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h4><p>Electron安装不上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error: EACCES: permission denied, rename &apos;/var/folders/v4/wr5tmnkx2_g45db_xjr78_fw0000gn/T/electron-tmp-download-2363-1473215672128/electron-v1.3.5-darwin-x64.zip&apos; -&gt; &apos;/Users/liuhui/.electron/electron-v1.3.5-darwin-x64.zip&apos;</div></pre></td></tr></table></figure></p>
 <p>解决方案：<br>直接sudo没用，要先改下/Users/liuhui/.electron的读写权限<br>然后sudo安装</p>
@@ -502,45 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/09/05/11/" data-id="cj8zk8fqu0003csxlvvlq9m2a" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-10" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/23/10/" class="article-date">
-  <time datetime="2016-08-23T08:39:45.000Z" itemprop="datePublished">2016-08-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/23/10/">资源检索</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>| 问题 |  地址|<br>| outlook对css和html支持情况  |   <a href="https://www.campaignmonitor.com/css/|" target="_blank" rel="external">https://www.campaignmonitor.com/css/|</a><br>| outlook对css和html支持情况  |   <a href="https://msdn.microsoft.com/en-us/library/|aa338201(v=office.12).aspx|" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/|aa338201(v=office.12).aspx|</a><br>| ES5/ES6/ES7兼容性 |  <a href="http://kangax.github.io/compat-table/es5/|" target="_blank" rel="external">http://kangax.github.io/compat-table/es5/|</a><br>| fildler的各种状态  |   <a href="http://docs.telerik.com/fiddler/KnowledgeBase/UIGuide|" target="_blank" rel="external">http://docs.telerik.com/fiddler/KnowledgeBase/UIGuide|</a><br>| 内存泄漏  |   <a href="https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn|" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn|</a><br>| html规范 |  <a href="https://html.spec.whatwg.org/|" target="_blank" rel="external">https://html.spec.whatwg.org/|</a><br>| 链接数限制 |   <a href="http://www.browserscope.org/?category=network&amp;v=top|" target="_blank" rel="external">http://www.browserscope.org/?category=network&amp;v=top|</a><br>| eventLoop模型 | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop|" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop|</a> </p>
-<p><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="external">how browser works</a><br><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="external">event loop&amp;concurency</a><br><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="external">event loop simulation</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/23/10/" data-id="cj8zk8fqr0001csxllamvk65f" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/09/05/11/" data-id="cj8zkvfle0001xixl4vf3pq8n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -572,12 +529,84 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：</p>
+        <p>在git中如果想忽略掉某个文件，不让这个文件提交到版本库中，可以使用修改根目录中 .gitignore 文件的方法（如无，则需自己手工建立此文件）。这个文件每一行保存了一个匹配的规则例如：<br>&lt;!−− more −−&gt;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 此为注释 – 将被 Git 忽略</div><div class="line">*.a       # 忽略所有 .a 结尾的文件</div><div class="line">!lib.a    # 但 lib.a 除外</div><div class="line">/TODO     # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</div><div class="line">build/    # 忽略 build/ 目录下的所有文件</div><div class="line">doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</div><div class="line">``` </div><div class="line">规则很简单，不做过多解释，但是有时候在项目开发过程中，突然心血来潮想把之前的某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，为什么呢？</div><div class="line">gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</div><div class="line">```bash</div><div class="line">git rm -r --cached .</div><div class="line">git add .</div><div class="line">git commit -m &apos;update .gitignore&apos;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/17/9/" data-id="cj8zk8frn000ycsxl36vnp7eg" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/08/17/9/" data-id="cj8zkvfmv000wxixljsx0eq72" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/16/8/" class="article-date">
+  <time datetime="2016-08-16T08:39:45.000Z" itemprop="datePublished">2016-08-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/16/8/">Backbone的mvc架构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>页面的html结构<br><img src="/images/2.1.png" alt="img"></p>
+<p>&lt;!−− more −−&gt;<br>整个页面可以打开两种模式的窗口</p>
+<p>文件浏览窗口(id为wrapper)<br><img src="/images/2.2.png" alt="img"></p>
+<p>新建会议窗口(id为newmeet)<br><img src="/images/2.3.png" alt="img"></p>
+<p>页面的目录结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">├── common  (通用的css、img、js、tpl)</div><div class="line">│   ├── css</div><div class="line">│   ├── imgs</div><div class="line">│   ├── js</div><div class="line">│   └── tpl</div><div class="line">├── libs    (基本库)</div><div class="line">└── views   (页面所有view集合)</div><div class="line">    ├── detail   （会议详情头部）</div><div class="line">    ├── dir      （目录详情页）</div><div class="line">    ├── doclist  （会议文档列表）</div><div class="line">    ├── edit     （会议详情编辑）</div><div class="line">    ├── file     （文件详情页）</div><div class="line">    ├── fnav     （左侧导航一）</div><div class="line">    ├── head     （头部）</div><div class="line">    ├── help     （帮助页）</div><div class="line">    ├── iboxdocs （个人文档列表）</div><div class="line">    ├── iboxleft （个人左侧目录树）</div><div class="line">    ├── items    （会议列表）</div><div class="line">    ├── lead     （引导页）</div><div class="line">    ├── nav      （左侧导航二）</div><div class="line">    ├── searchtab（搜索切换）</div><div class="line">    ├── team     （云盘文档列表）</div><div class="line">    └── teamleft （云盘左侧目录树）</div></pre></td></tr></table></figure>
+<p>路由信息</p>
+<ul>
+<li>‘meeting/:cate/:role/:product/:page’: ‘meeting’</li>
+<li>‘detail/:cate/:role/:mid’: ‘detailmeet’</li>
+<li>‘editmeet/:mid/:copy’: ‘editmeet’</li>
+<li>‘newmeet’: ‘newmeet’</li>
+<li>‘search/:tab/:word’: ‘search’</li>
+<li>‘file/:fid’: ‘file’</li>
+<li>‘dir/:fid’: ‘dir’</li>
+<li>‘help/(:index)’: ‘help’</li>
+<li>‘myfile/:fid’: ‘myfile’</li>
+<li>‘ibox’: ‘ibox’</li>
+<li>‘team/:fid’: ‘team’</li>
+</ul>
+<h4 id="路由与view对应关系"><a href="#路由与view对应关系" class="headerlink" title="路由与view对应关系"></a>路由与view对应关系</h4><p><img src="/images/2.4.png" alt="img"></p>
+<p>飘绿部分为大量通用的view（head、lead、fnav、nav）<br>剩余非通用的view，分别组成各自的页面</p>
+<h4 id="view之间继承关系"><a href="#view之间继承关系" class="headerlink" title="view之间继承关系"></a>view之间继承关系</h4><p><img src="/images/2.5.png" alt="img"></p>
+<p>页面产出通用组件</p>
+<ul>
+<li>dropdown.js(搜索下拉提示组件，事件代理等)</li>
+<li>leanModal.js(模态框组件，支持样式定义，回调函数，事件代理等)</li>
+<li>tree.js(目录树组件，支持远程数据增删改拖拽移动，支持右键菜单，事件代理等)</li>
+<li>build.sh(自动化构建脚本，版本号等，支持代码直接远程部署带测试机)</li>
+</ul>
+<h4 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h4><ul>
+<li>backbone.js</li>
+<li>requirejs</li>
+<li>zepto.js</li>
+<li>shell</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/16/8/" data-id="cj8zkvfmu000vxixl2s6451j4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -601,7 +630,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
     </div>
@@ -611,7 +640,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/资源/" style="font-size: 10px;">资源</a>
     </div>
@@ -630,7 +659,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -667,7 +696,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Babel<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
