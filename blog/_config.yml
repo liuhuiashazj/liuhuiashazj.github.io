@@ -78,6 +78,6 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:be-fe/babel.git
-  branch: gh-pages
+  repo: git@github.com:liuhuiashazj/liuhuiashazj.github.io.git
+  branch: master
   message: deploy blog
