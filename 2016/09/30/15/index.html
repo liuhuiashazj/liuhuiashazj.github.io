@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>理解javascript的constructor | 享受阳光生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1234567891011121314151617181920212223242526272829/* oloo 对象链接其他对象*/var Animal=&amp;#123;    val:[1,2,3,4],    setVal:function(val)&amp;#123;        this.val=val;        return    &amp;#125;&amp;#125;;var Mankey=Objec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解javascript的constructor">
+<meta property="og:url" content="http://yoursite.com/2016/09/30/15/index.html">
+<meta property="og:site_name" content="享受阳光生活">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829/* oloo 对象链接其他对象*/var Animal=&amp;#123;    val:[1,2,3,4],    setVal:function(val)&amp;#123;        this.val=val;        return    &amp;#125;&amp;#125;;var Mankey=Objec">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/10.1.jpg">
+<meta property="og:updated_time" content="2017-10-20T06:56:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解javascript的constructor">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829/* oloo 对象链接其他对象*/var Animal=&amp;#123;    val:[1,2,3,4],    setVal:function(val)&amp;#123;        this.val=val;        return    &amp;#125;&amp;#125;;var Mankey=Objec">
+<meta name="twitter:image" content="http://yoursite.com/images/10.1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">享受阳光生活</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">珍惜拥有，坚持不懈，努力奋斗！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-15" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/30/15/" class="article-date">
+  <time datetime="2016-09-30T08:39:45.000Z" itemprop="datePublished">2016-09-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      理解javascript的constructor
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* oloo 对象链接其他对象*/</span></div><div class="line"><span class="keyword">var</span> Animal=&#123;</div><div class="line">    val:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</div><div class="line">    setVal:<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.val=val;</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Mankey=<span class="built_in">Object</span>.create(a);</div><div class="line">Mankey.val[<span class="number">0</span>]=<span class="number">3</span>;</div><div class="line"><span class="comment">/*原型继承*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">    getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Man</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line">Man.prototype=<span class="keyword">new</span> Person();</div><div class="line"><span class="keyword">var</span> man1=<span class="keyword">new</span> Man(<span class="string">'tom'</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Woman</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line">Woman.prototype=<span class="built_in">Object</span>.create(Person.prototype);</div><div class="line"><span class="keyword">var</span> woman1=<span class="keyword">new</span> Woman(<span class="string">'july'</span>);</div></pre></td></tr></table></figure>
+<p>再看个栗子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> ;<span class="comment">//true</span></div><div class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span>; <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>为啥呢<br>instanceof 运算符</p>
+<p>instanceof是一个二元运算符，如：A instanceof B. 其中，A必须是一个合法的JavaScript对象，B必须是一个合法的JavaScript函数 (function). 判断过程如下：<br>如果函数B在对象A的原型链 (prototype chain) 中被发现，那么instanceof操作符将返回true，否则返回false.<br>例如下面的代码会返回true.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span>.__proto__.__proto__;<span class="comment">//Object &#123;&#125;</span></div><div class="line"><span class="built_in">Object</span>.__proto__;<span class="comment">//function () &#123;&#125;</span></div><div class="line"><span class="built_in">Object</span>/<span class="built_in">Function</span>/<span class="built_in">Array</span> 都是原生对象，也是构造函数，所以</div><div class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span> 为<span class="literal">true</span></div><div class="line">而<span class="built_in">Function</span>.prototype又是一个对象，所以他的构造函数是<span class="built_in">Object</span>,所以</div><div class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> 为<span class="literal">true</span></div></pre></td></tr></table></figure>
+<p>所以以下就很容易理解了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Function instanceof Function;//true</div><div class="line">Object instanceof Object;//true</div></pre></td></tr></table></figure>
+<p><img src="/images/10.1.jpg" alt="img"></p>
+<p>如下，虽然constructor可以用来检查某个实例的构造函数，但是，我们经常会重写prototype，导致constructor属性会重写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Book</span>(<span class="params"></span>) </span>&#123; </div><div class="line">&#125; </div><div class="line">Book.prototype=&#123;</div><div class="line">    getName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> myBook = <span class="keyword">new</span> Book();</div><div class="line"><span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(myBook.constructor===Book);</div><div class="line"><span class="comment">//true Book在myBook的原型链上</span></div><div class="line"><span class="built_in">console</span>.log(myBook.__proto__===Book.prototype);</div><div class="line"><span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(myBook instance <span class="keyword">of</span> Book);</div></pre></td></tr></table></figure>
+<h4 id="Object-defineProperty函数"><a href="#Object-defineProperty函数" class="headerlink" title="Object.defineProperty函数"></a>Object.defineProperty函数</h4><p>该函数可用于constructor中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Book</span>(<span class="params">name</span>) </span>&#123; </div><div class="line">  <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>, <span class="string">"name"</span>, &#123; </div><div class="line">      get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">        <span class="keyword">return</span> <span class="string">"Book: "</span> + name;       </div><div class="line">      &#125;,        </div><div class="line">      set: <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>) </span>&#123;            </div><div class="line">        name = newName;        </div><div class="line">      &#125;,               </div><div class="line">      configurable: <span class="literal">false</span>     </div><div class="line">   &#125;); </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> myBook = <span class="keyword">new</span> Book(<span class="string">"Single Page Web Applications"</span>);</div><div class="line"><span class="built_in">console</span>.log(myBook.name);    <span class="comment">// Book: Single Page Web Applications</span></div><div class="line"><span class="comment">// we cannot delete the name property because "configurable" is set to false</span></div><div class="line"><span class="keyword">delete</span> myBook.name;    </div><div class="line"><span class="built_in">console</span>.log(myBook.name);    <span class="comment">// Book: Single Page Web Applications</span></div><div class="line"><span class="comment">// but we can change the value of the name property</span></div><div class="line">myBook.name = <span class="string">"Testable JavaScript"</span>;</div><div class="line"><span class="built_in">console</span>.log(myBook.name);    <span class="comment">// Book: Testable JavaScript</span></div></pre></td></tr></table></figure></p>
+<h4 id="对象字面量优于构造函数创建"><a href="#对象字面量优于构造函数创建" class="headerlink" title="对象字面量优于构造函数创建"></a>对象字面量优于构造函数创建</h4><p>js有个9个內建对象(构造函数)，Object、Array、String、Number、Boolean、Date、Function、Error、RegExp<br>创建这几个对象的实例可以通过对象字面量或者构造函数创建。但是对象字面量的可读性强、而且他们性能更好，因为他们在编译阶段会被优化。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// a number object</span></div><div class="line"><span class="comment">// numbers have a toFixed() method</span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>(<span class="number">5</span>);</div><div class="line">obj.toFixed(<span class="number">2</span>);     <span class="comment">// 5.00</span></div><div class="line"><span class="comment">// we can achieve the same result using literals</span></div><div class="line"><span class="keyword">var</span> num = <span class="number">5</span>;</div><div class="line">num.toFixed(<span class="number">2</span>);     <span class="comment">// 5.00</span></div><div class="line"><span class="comment">// a string object</span></div><div class="line"><span class="comment">// strings have a slice() method </span></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"text"</span>);</div><div class="line">obj.slice(<span class="number">0</span>,<span class="number">2</span>);     <span class="comment">// "te"</span></div><div class="line"><span class="comment">// same as above</span></div><div class="line"><span class="keyword">var</span> string = <span class="string">"text"</span>;</div><div class="line">string.slice(<span class="number">0</span>,<span class="number">2</span>);  <span class="comment">// "te"</span></div></pre></td></tr></table></figure>
+<p>构造函数方式可能引发的诡异bug</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Object</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// Oh crap, we have redefined Object!</span></div><div class="line">    <span class="keyword">return</span> [];    <span class="comment">// return an array because we are EVIL</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();   <span class="comment">// not what we think it is</span></div></pre></td></tr></table></figure>
+<p>更多分析：<br><a href="http://stackoverflow.com/questions/14226299/javascript-object-constructor-vs-object-literal" target="_blank" rel="external">Javascript object constructor vs object literal [duplicate]</a></p>
+<h4 id="使用new创建实例"><a href="#使用new创建实例" class="headerlink" title="使用new创建实例"></a>使用new创建实例</h4><h4 id="作用域安全的构造函数"><a href="#作用域安全的构造函数" class="headerlink" title="作用域安全的构造函数"></a>作用域安全的构造函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Book</span>(<span class="params">name, year</span>) </span>&#123; </div><div class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Book)) &#123; </div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Book(name, year);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.year = year;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>js没有类，这对经常使用其它语言的人比较有障碍，但是js有constructor来实现相同的功能，constructor和普通函数一样，只是使用时多了个new。使用类让我们可以方便的实现多个具有相同属性和方法的对象。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/30/15/" data-id="cj8zk8fqz0008csxllczchgg5" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/17/16/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          （翻译）SVG和media queries
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/23/14/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Dom-level-2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/资源/" style="font-size: 10px;">资源</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/21/5/">(译文)如何实现virtual dom</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/3/">node里面NODE_ENV有什么用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/1/">资源检索</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/2/">提高工作效率的cli工具</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/24/35/">(翻译)Nodejs EventLoop&amp;Timers&amp;process.netxTick()</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Babel<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

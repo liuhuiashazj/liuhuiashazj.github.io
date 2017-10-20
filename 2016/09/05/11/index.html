@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Electron | 享受阳光生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="什么是Electron Electron是一个可以使用js、html、css创建桌面应用的库 可以创建mac、window、linux等应用 atom基于electron开发，以前叫atom-shell  坑Electron安装不上1Error: EACCES: permission denied, rename &amp;apos;/var/folders/v4/wr5tmnkx2_g45db_xjr7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Electron">
+<meta property="og:url" content="http://yoursite.com/2016/09/05/11/index.html">
+<meta property="og:site_name" content="享受阳光生活">
+<meta property="og:description" content="什么是Electron Electron是一个可以使用js、html、css创建桌面应用的库 可以创建mac、window、linux等应用 atom基于electron开发，以前叫atom-shell  坑Electron安装不上1Error: EACCES: permission denied, rename &amp;apos;/var/folders/v4/wr5tmnkx2_g45db_xjr7">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/6.1.png">
+<meta property="og:image" content="http://yoursite.com/images/6.2.png">
+<meta property="og:image" content="http://yoursite.com/images/6.3.png">
+<meta property="og:updated_time" content="2017-10-20T06:56:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Electron">
+<meta name="twitter:description" content="什么是Electron Electron是一个可以使用js、html、css创建桌面应用的库 可以创建mac、window、linux等应用 atom基于electron开发，以前叫atom-shell  坑Electron安装不上1Error: EACCES: permission denied, rename &amp;apos;/var/folders/v4/wr5tmnkx2_g45db_xjr7">
+<meta name="twitter:image" content="http://yoursite.com/images/6.1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">享受阳光生活</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">珍惜拥有，坚持不懈，努力奋斗！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-11" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/05/11/" class="article-date">
+  <time datetime="2016-09-05T08:39:45.000Z" itemprop="datePublished">2016-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Electron
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="什么是Electron"><a href="#什么是Electron" class="headerlink" title="什么是Electron"></a>什么是Electron</h4><ul>
+<li>Electron是一个可以使用js、html、css创建桌面应用的库</li>
+<li>可以创建mac、window、linux等应用</li>
+<li>atom基于electron开发，以前叫atom-shell</li>
+</ul>
+<h4 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h4><p>Electron安装不上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error: EACCES: permission denied, rename &apos;/var/folders/v4/wr5tmnkx2_g45db_xjr78_fw0000gn/T/electron-tmp-download-2363-1473215672128/electron-v1.3.5-darwin-x64.zip&apos; -&gt; &apos;/Users/liuhui/.electron/electron-v1.3.5-darwin-x64.zip&apos;</div></pre></td></tr></table></figure></p>
+<p>解决方案：<br>直接sudo没用，要先改下/Users/liuhui/.electron的读写权限<br>然后sudo安装</p>
+<h4 id="为什么重要"><a href="#为什么重要" class="headerlink" title="为什么重要"></a>为什么重要</h4><ul>
+<li>使用web语言就可以轻松写出跨平台的app</li>
+<li>而且只需要兼容最新的chrome浏览器就可以，es2015的90%的功能都能用</li>
+<li>node的300000多的模块都可以用</li>
+</ul>
+<h4 id="怎么做？"><a href="#怎么做？" class="headerlink" title="怎么做？"></a>怎么做？</h4><ul>
+<li>electron合并了chromium和node.js</li>
+<li>提供了一系列的api进行native开发，例如file dialogs,notifications,icons更多</li>
+</ul>
+<p><img src="/images/6.1.png" alt="img"></p>
+<h4 id="两个进程"><a href="#两个进程" class="headerlink" title="两个进程"></a>两个进程</h4><ul>
+<li>主进程（app的入口js),控制整个app的生命周期<ul>
+<li>可以用的api<ul>
+<li>node.js apis</li>
+<li>electron main process modules</li>
+</ul>
+</li>
+<li>用处<ul>
+<li>创建渲染进程</li>
+<li>调用native 元素</li>
+<li>启动和退出app</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>渲染进程（类似于浏览器的一个窗口，可以有多个，相互独立）<ul>
+<li>可以用的api<ul>
+<li>node.js apis</li>
+<li>dom apis</li>
+<li>electron renderer process module</li>
+</ul>
+</li>
+<li>用处<ul>
+<li>设计网页，使用html和css</li>
+<li>js交互</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="一个形象的比喻"><a href="#一个形象的比喻" class="headerlink" title="一个形象的比喻"></a>一个形象的比喻</h4><ul>
+<li>主进程相当于chrome</li>
+<li>渲染进程相当于chrome中的每个进程</li>
+</ul>
+<h4 id="两个进程之间的通信"><a href="#两个进程之间的通信" class="headerlink" title="两个进程之间的通信"></a>两个进程之间的通信</h4><p>两个之间可以通过IPC通信，如下图<br><img src="/images/6.2.png" alt="img"></p>
+<h4 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h4><ul>
+<li>electron使用和node apps同样的文件package.json</li>
+<li>electron通过这个文件来判断从哪个文件启动你的app</li>
+<li>通过electron .启动</li>
+</ul>
+<p><img src="/images/6.3.png" alt="img"></p>
+<h4 id="如何打包"><a href="#如何打包" class="headerlink" title="如何打包"></a>如何打包</h4><ul>
+<li>使用electron-packager来进行linux/mac/window的打包</li>
+<li>electron-packager ./ MyApp –version=1.3.4<h4 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h4></li>
+<li><a href="http://electron.atom.io/docs/" target="_blank" rel="external">Full Electron docs</a></li>
+</ul>
+<h4 id="main-progress"><a href="#main-progress" class="headerlink" title="main progress"></a>main progress</h4><p>打开file选择器，支持过滤，回调|dialog.showOpenDialog([browserWindow, ]options[, callback])<br>自动升级,提供调用squirrel插件|autoUpdater<br>控制远程下载,will-download事件中绑定updated/done|DownloadItem<br>支持电脑重启事件|powerMonitor<br>系统通知|notifications</p>
+<h4 id="api"><a href="#api" class="headerlink" title="api"></a>api</h4><ul>
+<li><a href="http://electron.atom.io/docs/api/" target="_blank" rel="external">api汇总</a></li>
+<li>clipboard 剪切板</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/05/11/" data-id="cj8zk8fqu0003csxlvvlq9m2a" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/09/12/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          日常小坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/23/10/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">资源检索</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/资源/" style="font-size: 10px;">资源</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/21/5/">(译文)如何实现virtual dom</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/3/">node里面NODE_ENV有什么用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/1/">资源检索</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/2/">提高工作效率的cli工具</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/24/35/">(翻译)Nodejs EventLoop&amp;Timers&amp;process.netxTick()</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Babel<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>BE-FE Babel团队博客</title>
+  <title>享受阳光生活</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="BE-FE Babel团队博客">
+<meta property="og:title" content="享受阳光生活">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="BE-FE Babel团队博客">
+<meta property="og:site_name" content="享受阳光生活">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BE-FE Babel团队博客">
+<meta name="twitter:title" content="享受阳光生活">
   
-    <link rel="alternate" href="/atom.xml" title="BE-FE Babel团队博客" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -21,7 +21,7 @@
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/babel/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   
 
 </head>
@@ -34,24 +34,28 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/babel/" id="logo">BE-FE Babel团队博客</a>
+        <a href="/" id="logo">享受阳光生活</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">珍惜拥有，坚持不懈，努力奋斗！</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/babel/">Home</a>
+          <a class="main-nav-link" href="/">Home</a>
         
-          <a class="main-nav-link" href="/babel/archives">Archives</a>
+          <a class="main-nav-link" href="/archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -62,10 +66,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-4" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-5" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/babel/2017/09/15/4/" class="article-date">
-  <time datetime="2017-09-15T08:24:11.000Z" itemprop="datePublished">2017-09-15</time>
+    <a href="/2017/09/21/5/" class="article-date">
+  <time datetime="2017-09-21T03:30:06.000Z" itemprop="datePublished">2017-09-21</time>
 </a>
     
   </div>
@@ -76,7 +80,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/babel/2017/09/15/4/">（翻译）不成为一个冒名顶替综合症患者：避免前端开发的疲惫</a>
+      <a class="article-title" href="/2017/09/21/5/">(译文)如何实现virtual dom</a>
     </h1>
   
 
@@ -84,16 +88,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我最近和一个后端开发的朋友讨论：每天我花多少时间coding或者学习工作之外技术？他给我展示了一段bob叔叔的书 “Clean code”,这里面对比了一个音乐家在音乐会的准备阶段对他们的乐器花的时间和开发者预习他们的代码<br>
-        
-          <p class="article-more-link">
-            <a href="/babel/2017/09/15/4/#more">Read More</a>
-          </p>
-        
+        <p>创建虚拟dom需要知道两件事。你不需要看深入研究React的源码。或者其它虚拟dom的源码。他们都非常繁琐也复杂。实际上虚拟dom只需要50行以内的代码就可以实现！！！</p>
+<p>这里有两个概念：</p>
+<ul>
+<li>虚拟dom是真实dom的一种呈现方式</li>
+<li>当我们改虚拟dom树，我们得到一个新的dom树，有一个算法会查找新旧dom树的差别，并且在实际dom上做最小的改变</li>
+</ul>
+<p>就是这样，现在我们开始深入研究下这两个概念。</p>
+<p>更新：本文的第二部分：虚拟dom 设置props&amp;events <a href="https://medium.com/@deathmood/write-your-virtual-dom-2-props-events-a957608f5c76" target="_blank" rel="external">here</a></p>
+<p>#DOM树的呈现<br>首先我们需要在内存中存储DOM树，并且我们能使用js对象来表示，假设我们有以下的树：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">”list”</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>怎样看起来更简单些呢？我们如何才能将上述结构转成下面的这种js对象呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123; </div><div class="line">	type: ‘ul’, </div><div class="line">	props: &#123; ‘class’: ‘list’ &#125;, </div><div class="line">	children: [</div><div class="line">		&#123; <span class="attr">type</span>: ‘li’, <span class="attr">props</span>: &#123;&#125;, <span class="attr">children</span>: [‘item <span class="number">1</span>’] &#125;,</div><div class="line">		&#123; <span class="attr">type</span>: ‘li’, <span class="attr">props</span>: &#123;&#125;, <span class="attr">children</span>: [‘item <span class="number">2</span>’] &#125;</div><div class="line">	] </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里有零点需要注意：</p>
+<ul>
+<li>使用object来表示dom元素</li>
+<li>text用js字符串表示</li>
+</ul>
+<p>但是使用这种方式来写一个大型的树是非常难得，所以我们来写一个帮助函数，这个会帮助我们更好的理解代码结构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">h</span>(<span class="params">type, props, …children</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123; type, props, children &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在我们可以这样写我们的dom<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">h(‘ul’, &#123; ‘class’: ‘list’ &#125;,</div><div class="line">  h(‘li’, &#123;&#125;, ‘item <span class="number">1</span>’),</div><div class="line">  h(‘li’, &#123;&#125;, ‘item <span class="number">2</span>’),</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>这样看起来更加清晰了，但是我们可以再深入些，听说过jsx吧，所以他是如何工作的呢？</p>
+<p>如果你阅读过jsx的官方文档，你就知道，babel会将如下代码怎么编译<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">className</span>=<span class="string">”list”</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>to</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">React.createElement(‘ul’, &#123; <span class="attr">className</span>: ‘list’ &#125;,</div><div class="line">  React.createElement(‘li’, &#123;&#125;, ‘item <span class="number">1</span>’),</div><div class="line">  React.createElement(‘li’, &#123;&#125;, ‘item <span class="number">2</span>’),</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>看起来是不是很相似？是的，假设我们能把React.createElement替换为h，那么我们就可以使用jsx编译语法，我们只需在文件的顶行添加如下注释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/** @jsx h */</div><div class="line">&lt;ul className=”list”&gt;</div><div class="line">  &lt;li&gt;item 1&lt;/li&gt;</div><div class="line">  &lt;li&gt;item 2&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
+<p>这实际上就是告诉babel “hey，编译这个jsx但是使用h 替换React.createElement”,这里你可以使用任何字符串放在h这个位置，它都会被编译</p>
+<p>所以，总结下，我们可以这样写dom</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** @jsx h */</span></div><div class="line"><span class="keyword">const</span> a = (</div><div class="line">  &lt;ul className=”list”&gt;</div><div class="line">    &lt;li&gt;item <span class="number">1</span>&lt;<span class="regexp">/li&gt;</span></div><div class="line"><span class="regexp">    &lt;li&gt;item 2&lt;/</span>li&gt;</div><div class="line">  &lt;<span class="regexp">/ul&gt;</span></div><div class="line"><span class="regexp">);</span></div></pre></td></tr></table></figure>
+<p>它将被babel转成下面这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = (</div><div class="line">  h(‘ul’, &#123; <span class="attr">className</span>: ‘list’ &#125;,</div><div class="line">    h(‘li’, &#123;&#125;, ‘item <span class="number">1</span>’),</div><div class="line">    h(‘li’, &#123;&#125;, ‘item <span class="number">2</span>’),</div><div class="line">  );</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>当’h’执行时，将会返回一个js对象（虚拟dom的呈现）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = (</div><div class="line">  &#123; <span class="attr">type</span>: ‘ul’, <span class="attr">props</span>: &#123; <span class="attr">className</span>: ‘list’ &#125;, <span class="attr">children</span>: [</div><div class="line">    &#123; <span class="attr">type</span>: ‘li’, <span class="attr">props</span>: &#123;&#125;, <span class="attr">children</span>: [‘item <span class="number">1</span>’] &#125;,</div><div class="line">    &#123; <span class="attr">type</span>: ‘li’, <span class="attr">props</span>: &#123;&#125;, <span class="attr">children</span>: [‘item <span class="number">2</span>’] &#125;</div><div class="line">  ] &#125;</div><div class="line">);</div></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/4/" data-id="cj7lnd6hm00049yxl774d8awi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/21/5/" data-id="cj8zk8frk000ucsxl8ufs6r2c" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -105,7 +135,7 @@
   
     <article id="post-3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/babel/2017/09/15/3/" class="article-date">
+    <a href="/2017/09/15/3/" class="article-date">
   <time datetime="2017-09-15T06:01:25.000Z" itemprop="datePublished">2017-09-15</time>
 </a>
     
@@ -117,7 +147,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/babel/2017/09/15/3/">node里面NODE_ENV有什么用</a>
+      <a class="article-title" href="/2017/09/15/3/">node里面NODE_ENV有什么用</a>
     </h1>
   
 
@@ -128,13 +158,13 @@
         <p>可以用来设置环境变量（默认值为development）。<br>一般我们通过检查这个值来分别对开发环境和生产环境下做不同的处理。可以在命令行中通过下面的方式设置这个值：<br>
         
           <p class="article-more-link">
-            <a href="/babel/2017/09/15/3/#more">Read More</a>
+            <a href="/2017/09/15/3/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/15/3/" data-id="cj7lnd6hj00039yxlf9oum48n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/15/3/" data-id="cj8zk8fre000ncsxlxx1n36a1" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -146,7 +176,7 @@
   
     <article id="post-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/babel/2017/09/14/1/" class="article-date">
+    <a href="/2017/09/14/1/" class="article-date">
   <time datetime="2017-09-14T08:44:50.000Z" itemprop="datePublished">2017-09-14</time>
 </a>
     
@@ -158,7 +188,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/babel/2017/09/14/1/">资源检索</a>
+      <a class="article-title" href="/2017/09/14/1/">资源检索</a>
     </h1>
   
 
@@ -215,10 +245,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/14/1/" data-id="cj7lnd6h700009yxlfao5gllj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/14/1/" data-id="cj8zk8fqn0000csxlk4w8so2v" class="article-share-link">Partager</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/babel/tags/资源/">资源</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/资源/">资源</a></li></ul>
 
     </footer>
   </div>
@@ -229,7 +259,7 @@
   
     <article id="post-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/babel/2017/09/14/2/" class="article-date">
+    <a href="/2017/09/14/2/" class="article-date">
   <time datetime="2017-09-14T08:39:45.000Z" itemprop="datePublished">2017-09-14</time>
 </a>
     
@@ -241,7 +271,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/babel/2017/09/14/2/">提高工作效率的cli工具</a>
+      <a class="article-title" href="/2017/09/14/2/">提高工作效率的cli工具</a>
     </h1>
   
 
@@ -252,17 +282,445 @@
         <p><a href="https://github.com/sourcegraph/thyme" target="_blank" rel="external">原文地址</a><br>
         
           <p class="article-more-link">
-            <a href="/babel/2017/09/14/2/#more">Read More</a>
+            <a href="/2017/09/14/2/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/14/2/" data-id="cj7lnd6hd00019yxl4bkpjsum" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/14/2/" data-id="cj8zk8fr4000dcsxlvycavqxn" class="article-share-link">Partager</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/babel/tags/工作效率/">工作效率</a></li></ul>
+    </footer>
+  </div>
+  
+</article>
 
+
+  
+    <article id="post-35" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/24/35/" class="article-date">
+  <time datetime="2017-07-24T08:39:45.000Z" itemprop="datePublished">2017-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/24/35/">(翻译)Nodejs EventLoop&amp;Timers&amp;process.netxTick()</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="external">原文地址</a></p>
+<p>什么是Event Loop</p>
+<p>eventloop允许Node.js执行不阻塞的I/O操作的一个东西（虽然js是单线程），通过卸载系统内核的一些操作。</p>
+<p>现在大部分内核都是多线程的，他们可以处理在后台处理多个操作。当其中的一个操作完成时，内核告诉Node.js，这个回调可以添加到poll queue队列中以便最终执行，我们将会解释这个话题的更多细节。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/24/35/" data-id="cj8zk8fri000scsxlgo2zjd3c" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-34" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/18/34/" class="article-date">
+  <time datetime="2017-07-18T08:39:45.000Z" itemprop="datePublished">2017-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/18/34/">事件、并发、js（翻译）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在的web app本质上都是事件驱动的，虽然浏览器内部的triggering、executing、handling event，看起来是黑盒。</p>
+<p>如下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"doStuff"</span>&gt;</span>Do Stuff<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">'doStuff'</span>)</span></div><div class="line"><span class="javascript">        .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></div><div class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="string">'Do Stuff'</span>);</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined">        );</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>事件模型大概如下图<br><img src="/images/test/33.mdNRSFCoGT.png" alt="img"></p>
+<p>From Philip Robert’s diagram</p>
+<p>以下几个点：<br>1.用户界面：用户点击do stuff按钮，很简单<br>2.Web APIS:<br>DOM API的事件中心，Web APIS是多线程区域，允许一次触发多个事件，他们在页面加载完毕后通过window全局对象可以访问到，DOM以外的的例子就是AJAX的XMLHttpRequest,和timer的setTimeout函数<br>3.Event Queue:<br>event的回调函数的下一步就是将其push到很多的events queues(也叫task queues)中,因为有很多的web api，浏览器有很多的event queues，比如network request，dom events、rendering更多</p>
+<p>关于 <a href="https://www.w3.org/TR/html5/webappapis.html#event-loop" target="_blank" rel="external">event-loop</a></p>
+<p>For example, a user agent could have one task queue for mouse and key events (the user interaction task source), and another for everything else. The user agent could then give keyboard and mouse events preference over other tasks three quarters of the time, keeping the interface responsive but not starving other task queues, and never processing events from any one task source out of order.</p>
+<p>用户代理会把3/4的时间给keyboard和mouse事件，以保持用户界面的响应<br>4.Event loop：<br>单一的event loop会选择哪个callback放到javascript的call stack中，下面是火狐中c++的伪代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(queue.waitForMessage())&#123;</div><div class="line">    queue.processNextMessage();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>5.Call stack：<br>每个函数调用，包括event 回调，都会创建一个stack frame（也叫execution object），这些stack frames会从栈顶push和pop，栈顶是当前正在执行的代码，当函数返回时，就会从栈顶pop</p>
+<p>chrome v8中stack frame的源代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">V8_EXPORT</span> <span class="title">StackFrame</span> </span>&#123;</div><div class="line"> public:</div><div class="line">    int GetLineNumber() <span class="keyword">const</span>;</div><div class="line">    int GetColumn() <span class="keyword">const</span>;</div><div class="line">    int GetScriptId() <span class="keyword">const</span>;</div><div class="line">    Local&lt;<span class="built_in">String</span>&gt; GetScriptName() <span class="keyword">const</span>;</div><div class="line">    Local&lt;<span class="built_in">String</span>&gt; GetScriptNameOrSourceURL() <span class="keyword">const</span>;</div><div class="line">    Local&lt;<span class="built_in">String</span>&gt; GetFunctionName() <span class="keyword">const</span>;</div><div class="line">    bool IsEval() <span class="keyword">const</span>;</div><div class="line">    bool IsConstructor() <span class="keyword">const</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>call stack的三个特征<br>1.单一线程<br>线程是CPU利用率的基本单位。 作为较低级别的OS结构，它们由线程ID，程序计数器，寄存器组和堆栈组成虽然JavaScript引擎本身是多线程的，但它的调用堆栈是单线程的，只允许一段代码在一个时间执行。<br>2.同步<br>JavaScript调用堆栈执行完成任务而不是任务切换，同样适用于事件。 这不是ECMAScript或WC3规格的要求。 但是有一些例外，如window.alert（）中断当前执行的任务。<br>3.非阻塞<br>当线程执行的时候，会阻塞 浏览器是非阻塞的，仍然接受诸如鼠标点击的事件，即使它们可能不会立即执行。</p>
+<p>##CPU 密集型 task<br>CPU密集型任务可能很困难，因为单一线程的原因，因为同步运行的队列，回调和线程会进入一个等待的状态</p>
+<p>下面是一个cpu密集型的例子</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"bigLoop"</span>&gt;</span>Big Loop<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"doStuff"</span>&gt;</span>Do Stuff<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">'bigLoop'</span>)</span></div><div class="line"><span class="javascript">        .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></div><div class="line"><span class="javascript">            <span class="comment">//  big loop</span></span></div><div class="line"><span class="javascript">            <span class="keyword">for</span> (<span class="keyword">var</span> array = [], i = <span class="number">0</span>; i &lt; <span class="number">10000000</span>; i++) &#123;</span></div><div class="line"><span class="undefined">                array.push(i);</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">'doStuff'</span>)</span></div><div class="line"><span class="javascript">        .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></div><div class="line"><span class="javascript">            <span class="comment">//  message</span></span></div><div class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">'do stuff'</span>);</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>codepen</p>
+<p>解决方案<br>1.方案一</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'bigLoop'</span>)</div><div class="line">   .addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> array = []</div><div class="line">       <span class="comment">// smaller loop</span></div><div class="line">       setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">5000000</span>; i++) &#123;</div><div class="line">                array.push(i);</div><div class="line">            &#125;</div><div class="line">       &#125;, <span class="number">0</span>);</div><div class="line">       <span class="comment">// smaller loop</span></div><div class="line">       setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">5000000</span>; i++) &#123;</div><div class="line">                array.push(i);</div><div class="line">            &#125;</div><div class="line">       &#125;, <span class="number">0</span>);</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<p>2.方案二<br>web worker</p>
+<p>参考资料<br><a href="http://www.w3.org/TR/html5/webappapis.html#webappapis" target="_blank" rel="external">W3C Web APIs</a><br><a href="http://www.w3.org/TR/html5/webappapis.html#event-loop" target="_blank" rel="external">W3C Event Queue (Task Queue)</a><br><a href="http://www.w3.org/TR/html5/webappapis.html#event-loops" target="_blank" rel="external">W3C Event Loop</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" target="_blank" rel="external">Concurrency modal and Event Loop, MDN</a><br><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-10.3" target="_blank" rel="external">ECMAScript 10.3 Call Stack</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/18/34/" data-id="cj8zk8fri000tcsxliyc0bvn8" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-33" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/06/33/" class="article-date">
+  <time datetime="2017-07-06T08:39:45.000Z" itemprop="datePublished">2017-07-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/06/33/">前端内存泄漏分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/memory-problems/?hl=zh-cn</a><br>内存泄漏的几种检测方式</p>
+<p>按 Shift+Esc 或者转到 Chrome 主菜单并选择 More tools &gt; Task manager，打开任务管理器。</p>
+<p><img src="/images/test/32.mdHqYNETTT.png" alt="img"></p>
+<p>Timeline记录可视化内存泄漏<br><img src="/images/test/32.md3bUgYRQd.png" alt="img"></p>
+<p>上图可以看到jsheap越来越大，在实际使用过程中，如果您看到这种 JS 堆大小或节点大小不断增大的模式，则可能存在内存泄漏。</p>
+<p>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> detachedTree1;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.createElement(<span class="string">'ul'</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">        <span class="keyword">var</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</div><div class="line">        ul.appendChild(li);</div><div class="line">    &#125;</div><div class="line">    detachedTree1 = ul;</div><div class="line">&#125;</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'grow'</span>).addEventListener(<span class="string">'click'</span>, create);</div></pre></td></tr></table></figure>
+<p>使用堆快照发现已分离的dom树内存泄漏</p>
+<p>还是上述代码<br><img src="/images/test/32.mdLCZRkQTO.png" alt="img"></p>
+<p>快照可能需要一些时间处理和加载。完成后，请从左侧面板（名称为 HEAP SNAPSHOTS）中选择该快照。</p>
+<p>在 Class filter 文本框中键入 Detached，搜索已分离的 DOM 树。</p>
+<p>以黄色突出显示的节点具有 JavaScript 代码对它们的直接引用。 以红色突出显示的节点则没有直接引用。只有属于黄色节点的树时，它们才处于活动状态。 一般而言，您需要将注意力放在黄色节点上。 修复代码，使黄色节点处于活动状态的时间不长于需要的时间，您也需要消除属于黄色节点树的红色节点。</p>
+<p>点击黄色节点对其进行进一步调查。在 Object 窗格中，您可以看到与正在引用该节点的代码相关的更多信息。 例如，在下面的屏幕截图中，您可以看到 detachedTree 变量正在引用该节点。要解决这一特定的内存泄漏，您需要研究使用 detachedTree 的代码并确保在不需要时，此代码可以移除其对节点的引用。<br><img src="/images/test/32.mdu5sawPGR.png" alt="img"></p>
+<p>使用内存分配来查看<br><img src="/images/test/32.mdcHJUtoaZ.png" alt="img"></p>
+<p>使用函数调用查看内存分配</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/07/06/33/" data-id="cj8zk8frh000rcsxl3p9r1edt" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-31" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/25/31/" class="article-date">
+  <time datetime="2017-05-25T08:39:45.000Z" itemprop="datePublished">2017-05-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/25/31/">gzip压缩</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>正常的http请求</p>
+<p><img src="/images/test/30.mdb2H0W2dg.png" alt="img"></p>
+<p>问题在哪呢？</p>
+<p>100kb非常大，实际上html是非常冗余的，html,table,div标签都有结束标签，实际上内容都一样，大量的单词是重复的，不管你怎样切分，html都不是精简的</p>
+<p>解决方案：zip</p>
+<p><img src="/images/test/30.mdj40gcEGi.png" alt="img"></p>
+<p>yahoo主页通过压缩从101kb到15kb</p>
+<p>更多细节</p>
+<p>这个交换的关键点就在于浏览器和服务器端知道发送zipped文件是ok的，这个约点有两个部分</p>
+<p>浏览器发送一个header 告诉服务器端，它支持gzip和deflate（两种压缩方式）</p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>服务器端发送一个响应，告诉他内容是压缩的</p>
+<p>Content-Encoding: gzip</p>
+<p>服务器端如果没有返回上面这个字段，则表明它不是压缩的</p>
+<p>#设置server<br>好消息是我们控制不了浏览器，它要么支持gzip要么不支持</p>
+<p>我们要做的是配置服务器端，在浏览器支持gzip的情况下，返回zipped文件</p>
+<p>apache中在.htaccess设置如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> compress text, html, javascript, css, xml:</span></div><div class="line">AddOutputFilterByType DEFLATE text/plain</div><div class="line">AddOutputFilterByType DEFLATE text/html</div><div class="line">AddOutputFilterByType DEFLATE text/xml</div><div class="line">AddOutputFilterByType DEFLATE text/css</div><div class="line">AddOutputFilterByType DEFLATE application/xml</div><div class="line">AddOutputFilterByType DEFLATE application/xhtml+xml</div><div class="line">AddOutputFilterByType DEFLATE application/rss+xml</div><div class="line">AddOutputFilterByType DEFLATE application/javascript</div><div class="line">AddOutputFilterByType DEFLATE application/x-javascript</div><div class="line"><span class="meta">#</span><span class="bash"> Or, compress certain file types by extension:</span></div><div class="line">&lt;files *.html&gt;</div><div class="line">SetOutputFilter DEFLATE</div><div class="line">&lt;/files&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/25/31/" data-id="cj8zk8frg000qcsxldolot3wq" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-30" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/23/30/" class="article-date">
+  <time datetime="2017-05-23T08:39:45.000Z" itemprop="datePublished">2017-05-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/23/30/">nodejs 与javascript 关系</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>node.js是什么？和JavaScript有什么关系？</p>
+<p>关于node.js究竟是什么，大家的问题在于</p>
+<p>node.js是不是一门语言？<br>node.js是不是一个JavaScript库函数？<br>node.js是不是一个JavaScript框架？</p>
+<p>很遗憾，这三个问题的答案都是NO，看看官方对自己的描述</p>
+<p>Node.js is a platform built on Chrome’s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.</p>
+<p>官方很明确地说node.js是一个platform，也就是一个做xxx的平台。node.js是一个可以在服务器端运行JavaScript的平台，其实这句话华也不准确，按照《JavaScript权威指南》《JavaScript高级程序设计》等书中的定义，JavaScript是由两部分组成</p>
+<p>core JavaScript<br>client JavaScript（DOM、BOM）<br>而只有core JavaScript可以在node.js上运行，所以node.js借用了JavaScript的语法，但并不能用来处理浏览器对象（BOM）及文档对象（DOM），所以node.js并不是设计为在服务器端运行解析html文档的（当然有module可以做此事），所以“在服务器端运行的JavaScript”在一定程度上误导了初学者。</p>
+<p>同时node.js并不仅仅运行core JavaScript，node.js中还有文件系统、模块包、操作系统API、网络通信、二进制类型处理等core JavaScript不具备的功能。</p>
+<p>nodejs 底层*nix 与window的区别<br><img src="/images/test/29.mddHFUETR8.png" alt="img"></p>
+<p>node w3c js关系<br><img src="/images/test/29.mdyW6KLL6S.png" alt="img"></p>
+<p>在nodejs中引入模块，需要经历3个步骤：<br>1 路径分析<br>2 文件定位<br>3 编译执行</p>
+<p>node中分为核心模块（http/fs/path）与文件模块<br>在node进程启动过程中，部分核心模块被直接加载进内存中，所以这部分核心模块引入时，文件定位及编译执行这两个步骤可以省略掉，并且在路径分析中优先判断，所以他们的加载速度是最快的。</p>
+<p>每个模块文件中都存在require、exports、module这三个变量,甚至还有filename、dirname</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.paths);</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">require</span>.extensions);</div><div class="line"><span class="built_in">console</span>.log(__filename);</div><div class="line"><span class="built_in">console</span>.log(__dirname);</div><div class="line"><span class="comment">/* *</span></div><div class="line"><span class="comment">[ '/Users/liuhui/Desktop/mylab/pkg/node_modules',</span></div><div class="line"><span class="comment">  '/Users/liuhui/Desktop/mylab/node_modules',</span></div><div class="line"><span class="comment">  '/Users/liuhui/Desktop/node_modules',</span></div><div class="line"><span class="comment">  '/Users/liuhui/node_modules',</span></div><div class="line"><span class="comment">  '/Users/node_modules',</span></div><div class="line"><span class="comment">  '/node_modules' ]</span></div><div class="line"><span class="comment">&#123; '.js': [Function], '.json': [Function], '.node': [Function] &#125;</span></div><div class="line"><span class="comment">/Users/liuhui/Desktop/mylab/pkg/module_path.js</span></div><div class="line"><span class="comment">/Users/liuhui/Desktop/mylab/pkg</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+<p>这是因为编译过程中，node对获取的js文件进行了头尾包装，在头部加上了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">exports,require,module,__filename,__dirname</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</div><div class="line">    exports.area = <span class="function"><span class="keyword">function</span>(<span class="params">radius</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.PI*radius*radius</div><div class="line">    &#125;;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">require</span>、exports、<span class="built_in">module</span>就是node对commonjs规范的实现</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/23/30/" data-id="cj8zk8frf000pcsxl7siyle0k" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-29" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/17/29/" class="article-date">
+  <time datetime="2017-05-17T08:39:45.000Z" itemprop="datePublished">2017-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/17/29/">electron在企业云盘中的应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h4><ul>
+<li>Electron是一个可以使用js、html、css创建桌面应用的库</li>
+<li>可以创建mac、window、linux等应用</li>
+<li>atom基于electron开发，以前叫atom-shell</li>
+</ul>
+<p><img src="/images/6.1.png" alt="img"></p>
+<h4 id="如何开发你的desktop应用"><a href="#如何开发你的desktop应用" class="headerlink" title="如何开发你的desktop应用"></a>如何开发你的desktop应用</h4><ul>
+<li>一个简单的 demo<br><a href="https://github.com/sindresorhus/electron-boilerplate/tree/master/boilerplate" target="_blank" rel="external">demo</a></li>
+<li>一个入口main.js（mainProcess）+ 一个index.html（renderProcess）</li>
+<li>执行 electron main.js<br>企业云盘的整体结构</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">├── build(app打包资源)</div><div class="line">├── readme.md</div><div class="line">├── release(发布路径)</div><div class="line">├── renderProcess（渲染进程）</div><div class="line">├── mainProcess（主进程）</div><div class="line">├── plugin(插件)</div><div class="line">├── certs(证书)</div><div class="line">├── build.sh(自动发版脚本)</div><div class="line">├── config.js(全局配置项)</div><div class="line">├── package.json</div><div class="line">└── windowinstall.js（window安装包生成脚本）</div></pre></td></tr></table></figure>
+<ul>
+<li>整体的结构就是按照两个进程来划分</li>
+<li>renderProcess中可以使用任何你想用的架构，企业云盘采用的是react+redux+router结构</li>
+<li>企业云盘开发环境中采用localhost:3000的实时编译调试模式，发包时采用file协议</li>
+</ul>
+<h4 id="mainProces"><a href="#mainProces" class="headerlink" title="mainProces:"></a>mainProces:</h4><h5 id="数据库采用nodejs库-nedb-mainProcess-database"><a href="#数据库采用nodejs库-nedb-mainProcess-database" class="headerlink" title="数据库采用nodejs库 nedb(mainProcess/database)"></a>数据库采用nodejs库 nedb(mainProcess/database)</h5><p>数据文件存储在应用数据下的.clouddiskdata，刚开始采用的是mongodb,后来打包发现太大，多40多M，还卡</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> Datastore = <span class="built_in">require</span>(<span class="string">'nedb'</span>);</div><div class="line"><span class="keyword">let</span> db = <span class="keyword">new</span> Datastore(&#123; <span class="attr">filename</span>: <span class="string">'path/to/datafile'</span> &#125;);</div><div class="line">db.loadDatabase(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;    <span class="comment">// Callback is optional</span></div><div class="line">  <span class="comment">// Now commands will be executed</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>注意nedb为了保证数据的持久性，每一次update或者delete操作实际上都是在最后一行添加一条数据，但是每次load database的时候，会自动合并所有的数据项，所以云盘里面可以看到每次update都调用了<br>db.loadDatabase();</p>
+<p>官方解释如下：</p>
+<p>Under the hood, NeDB’s persistence uses an append-only format, meaning that all updates and deletes actually result in lines added at the end of the datafile, for performance reasons. The database is automatically compacted (i.e. put back in the one-line-per-document format) every time you load each database within your application.</p>
+<p><a href="https://github.com/louischatriot/nedb" target="_blank" rel="external">官网</a></p>
+<h5 id="登录认证-mainProcess-uuap"><a href="#登录认证-mainProcess-uuap" class="headerlink" title="登录认证 (mainProcess/uuap)"></a>登录认证 (mainProcess/uuap)</h5><p>浏览器向server发起请求,server端进行登录，并且在head中set-cookie</p>
+<p>mainProcess通过该有效cookie发起后续所有请求</p>
+<p>renderProcess中的请求通过ipc通信方式使用nodejs的request模块来进行通信</p>
+<h5 id="浏览器中直接调起客户端，urlScheme-mainProcess-urlProtocol"><a href="#浏览器中直接调起客户端，urlScheme-mainProcess-urlProtocol" class="headerlink" title="浏览器中直接调起客户端，urlScheme(mainProcess/urlProtocol)"></a>浏览器中直接调起客户端，urlScheme(mainProcess/urlProtocol)</h5><p>1.浏览器端</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"ecloud-baidu://open"</span>&gt;</span>添加备份<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>2.mainProcess代码如下<br><img src="/images/test/28.md0uZGp9DO.png" alt="img"></p>
+<p>3.配置info.plist<br><img src="/images/test/28.mdFssiOOjv.png" alt="img"></p>
+<p>4.打包过程中也需要配置下，否则mac中不生效<br><img src="/images/test/28.mdI503ErtM.png" alt="img"></p>
+<h5 id="窗口管理器（mainProcess-windowManage）"><a href="#窗口管理器（mainProcess-windowManage）" class="headerlink" title="窗口管理器（mainProcess/windowManage）"></a>窗口管理器（mainProcess/windowManage）</h5><p>1.企业云盘总共有三个window（主页、设置页、预览页、反馈页、二次确认页）   </p>
+<h5 id="traymenu控制（mainProcess-trayMenu）"><a href="#traymenu控制（mainProcess-trayMenu）" class="headerlink" title="traymenu控制（mainProcess/trayMenu）"></a>traymenu控制（mainProcess/trayMenu）</h5><p>参考官方api写即可，大致代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> contextMenu = Menu.buildFromTemplate([</div><div class="line">    &#123;</div><div class="line">        label: <span class="string">'访问网页版'</span>,</div><div class="line">        click: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            shell.openExternal(<span class="string">'http://ecloud.baidu.com'</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;, &#123;</div><div class="line">        label: <span class="string">'反馈'</span>,</div><div class="line">        click: <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">            renderFeedBack(<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;, &#123;</div><div class="line">        label: <span class="string">'设置'</span>,</div><div class="line">        click: <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">            renderSettingWindow(<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;, &#123;</div><div class="line">        label: <span class="string">'退出'</span>,</div><div class="line">        click: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            app.quit();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">])</div></pre></td></tr></table></figure>
+<p><img src="/images/test/28.mdVNSa2xBo.png" alt="img"></p>
+<h5 id="传输控制（mainProcess-transfile-、-mainProcess-watcher）"><a href="#传输控制（mainProcess-transfile-、-mainProcess-watcher）" class="headerlink" title="传输控制（mainProcess/transfile 、 mainProcess/watcher）"></a>传输控制（mainProcess/transfile 、 mainProcess/watcher）</h5><p>本地文件增删改查检测（使用nodejs库chokidar，目前mac已迁移到Object-c的app中）</p>
+<p>关于electron中与oc app的通信方式。目前采用的是shell里面的open命令，以及web server方式<br>mainProcess中创建webserver服务，oc中通过发起http请求进行通信<br>mainProcess和oc通信采用open方式</p>
+<p>云盘接受oc的web服务</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> server = http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>&#123; </div><div class="line">        <span class="comment">//.....</span></div><div class="line">        <span class="comment">/*前端需要备份的文件*/</span></div><div class="line">        <span class="keyword">if</span> (urlObj.pathname === <span class="string">'/set/file'</span>) &#123;</div><div class="line">            response.end(<span class="string">'end'</span>);</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">        <span class="comment">/*获取我的备份下需要备份的根目录或者文件*/</span></div><div class="line">        <span class="keyword">if</span> (urlObj.pathname === <span class="string">'/get/rootpath'</span>) &#123;</div><div class="line">        &#125;</div><div class="line">&#125;).listen(<span class="number">8887</span>);</div><div class="line">        <span class="comment">//.......</span></div></pre></td></tr></table></figure>
+<p>打开oc应用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> execSync = <span class="built_in">require</span>(<span class="string">'child_process'</span>).execSync;</div><div class="line">execSync(<span class="string">'open ecloud-sync-backup-file.app'</span>, &#123;</div><div class="line">    cwd: <span class="string">`<span class="subst">$&#123;config.projectPath&#125;</span>/mainProcess/watcher/OC/ecloud-sync-backup-file`</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>md5计算，采用md5-file</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> md5File = <span class="built_in">require</span>(<span class="string">'md5-file'</span>);</div><div class="line">md5File(filePath, (err, hash2) =&gt; &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>分片：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fs.createReadStream(filePath, &#123;</div><div class="line">    start : i * limit,</div><div class="line">    end   : (i * limit + limit - <span class="number">1</span>) &gt; lastByte? lastByte: i * limit + limit - <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="系统通知："><a href="#系统通知：" class="headerlink" title="系统通知："></a>系统通知：</h5><p>mac采用 notification<br>window采用nodejs的node-notifier模块</p>
+<h5 id="自动更新客户端（mainProcess-checkUpdate）"><a href="#自动更新客户端（mainProcess-checkUpdate）" class="headerlink" title="自动更新客户端（mainProcess/checkUpdate）"></a>自动更新客户端（mainProcess/checkUpdate）</h5><p><a href="https://electron.atom.io/docs/api/auto-updater/" target="_blank" rel="external">官方文档</a></p>
+<p>官方提供了几个自动更新的项目，nuts/electron-release-server/squirrel-updates-server/squirrel-release-server,这几个项目中其中2个都是采用github来进行发布，不符合我国国情</p>
+<p>企业云采用了electron-release-server这个项目来搭建自动升级服务</p>
+<ul>
+<li><p>基于docker-compose</p>
+<ul>
+<li>中间遇到的坑，这个项目基于docker-composer 的version2 版本，最低要求docker的版本为1.9.1以上，具体可参考 <a href="https://docs.docker.com/compose/compose-file/compose-file-v2/#args" target="_blank" rel="external">https://docs.docker.com/compose/compose-file/compose-file-v2/#args</a></li>
+<li>最后采用了ubuntu的服务器，centos版本都太低</li>
+<li>开源项目里面需要简单的配置下数据库、服务器、修改资源存储的路径为永久存储</li>
+<li>公司的服务器的端口必须是8000以上，刚开始设置了个5555 怎么都不好使，能ping通，但是浏览器没法访问</li>
+</ul>
+</li>
+<li>包含了资源存储</li>
+<li>强大的api支持</li>
+<li><p>使用Squirrel来模块来完成自动升级</p>
+<ul>
+<li>mac使用.dmg和.zip</li>
+<li>window 使用.exe .nupkg<br>关于自动更新中必须要注意的几个点：</li>
+</ul>
+<ul>
+<li><p>必须要有证书</p>
+<ul>
+<li>mac通过开发者账号生成,公司苹果开发者团队，可以通过权限申请加入，地址：<a href="http://appdev.baidu.com/" target="_blank" rel="external">http://appdev.baidu.com/</a></li>
+</ul>
+</li>
+<li><p>window证书<br>ecloud.pfx,带秘钥的证书，具体可以参考 如何生成pfx的证书<br>具体方案可以参考 Auto-updating apps for Windows and OSX using Electron: The complete guide</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>自动更新提示如下<br><img src="/images/test/28.mdjmQL57oN.png" alt="img"><br><img src="/images/test/28.mdc16yuk4H.png" alt="img"></p>
+<ul>
+<li>遇到坑<br>mac中autoUpdater.quitAndInstall(); 没有自动重启应用<br>可以通过<br>/Users/liuhui/Library/Caches/com.electron.ecloud.ShipIt下的<br>ShipIt_stderr.log来查看问题所在</li>
+</ul>
+<p>window中采用squirrel安装方式后很多问题，安装过程中应用就被打开，需要处理下squirrel事件,可以参考 <a href="https://github.com/electron/windows-installer" target="_blank" rel="external">https://github.com/electron/windows-installer</a></p>
+<h4 id="flash的支持"><a href="#flash的支持" class="headerlink" title="flash的支持"></a>flash的支持</h4><p>需要添加pepper flash插件，Pepper Flash Player 是由Google维护的专用于chromium引擎的flash播放器</p>
+<p>首先是在自己电脑上找到pepper flash的插件（mac及window版本）</p>
+<p>结果如下：</p>
+<ul>
+<li>如果你有安装Chrome浏览器，可以在地址栏输入chrome://plugins/，点击右侧的详细信息，找到Adobe Flash Player条目,目前chrome已经废弃掉chrome://plugins/地址</li>
+<li>实际mac地址：/Library/Internet Plug-Ins/PepperFlashPlayer/PepperFlashPlayer.plugin<br>window地址：C:\Windows\System32\Macromed\Flash\pepflashplayer64_24_0_0_194.dll(名称和版本号可能有出入) 重命名为pepflashplayer.dll即可。</li>
+</ul>
+<p>中间遇到的坑：</p>
+<ul>
+<li>window上不好使，提示“无法加载插件”，确定为pepflashplayer64_24_0_0_194.dll的问题，去网上下载了一个</li>
+<li>chrome 53里面的flash有个闪烁的bug，浏览器bug，需要升级chrome版本<br>pepper flash引入<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> pluginName;</div><div class="line"><span class="keyword">switch</span> (process.platform) &#123;</div><div class="line">  <span class="keyword">case</span> <span class="string">'win32'</span>:</div><div class="line">    pluginName = <span class="string">'pepflashplayer.dll'</span></div><div class="line">    <span class="keyword">break</span></div><div class="line">  <span class="keyword">case</span> <span class="string">'darwin'</span>:</div><div class="line">    pluginName = <span class="string">'PepperFlashPlayer.plugin'</span></div><div class="line">    <span class="keyword">break</span></div><div class="line">  <span class="keyword">case</span> <span class="string">'linux'</span>:</div><div class="line">    pluginName = <span class="string">'libpepflashplayer.so'</span></div><div class="line">    <span class="keyword">break</span></div><div class="line">&#125;</div><div class="line">app.commandLine.appendSwitch(<span class="string">'ppapi-flash-path'</span>, path.join(__dirname+<span class="string">'/plugins/'</span>, pluginName))</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="网络检测-mainProcess-network"><a href="#网络检测-mainProcess-network" class="headerlink" title="网络检测(mainProcess/network)"></a>网络检测(mainProcess/network)</h4><p>网络监测刚开始采用的 <a href="https://developer.mozilla.org/en-US/docs/Online_and_offline_events" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Online_and_offline_events</a><br>监测很准确，这种检测仅仅针对lan是否有连接，实际情况是很多时候网络是连着的，但是不能上网<br>后面换成nodejs的方案</p>
+<h5 id="renderProcess"><a href="#renderProcess" class="headerlink" title="renderProcess"></a>renderProcess</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">├── bin</div><div class="line">│   ├── compile.js</div><div class="line">│   └── server.js</div><div class="line">├── build</div><div class="line">│   ├── dll</div><div class="line">│   ├── package.json</div><div class="line">│   ├── webpack-compiler.js</div><div class="line">│   ├── webpack.config.js</div><div class="line">│   └── webpack.dll.config.js</div><div class="line">├── config</div><div class="line">│   └── index.js</div><div class="line">├── package.json</div><div class="line">├── server</div><div class="line">│   └── main.js</div><div class="line">└── src</div><div class="line">    ├── components 组件</div><div class="line">    ├── containers 容器</div><div class="line">    ├── index.html 入口html</div><div class="line">    ├── ipcCenter.js 消息中心</div><div class="line">    ├── layouts 布局</div><div class="line">    ├── main.js 入口js</div><div class="line">    ├── routes 路由</div><div class="line">    ├── static 静态js</div><div class="line">    ├── statichtml 其他入口html</div><div class="line">    ├── store 通用的store</div><div class="line">    └── styles 样式</div></pre></td></tr></table></figure>
+<h5 id="两个进程"><a href="#两个进程" class="headerlink" title="两个进程"></a>两个进程</h5><p><a href="https://electron.atom.io/docs/" target="_blank" rel="external">官方网站</a></p>
+<ul>
+<li>electron合并了chromium和node.js</li>
+<li>提供了一系列的api进行native开发，例如file dialogs,notifications,icons更多</li>
+</ul>
+<p>中间的坑：</p>
+<ul>
+<li><p>可以看到官方网站提供了mainProcess和renderProcess区分了接口，但是这两个api并不是完全独立的，renderProces提供的remote模块可以获取到mainProcess到所有的api，详细见接口 接口文档<br>企业云盘在mainProcess里面定义了整个app通用的全局变量：</p>
+</li>
+<li><p>虽然renderProcess中可以访问到mainProcess里面的全局变量，但是renderProcess里面修改并不会影响到mainPorcess里面的变量</p>
+</li>
+</ul>
+<h4 id="打包方式"><a href="#打包方式" class="headerlink" title="打包方式"></a>打包方式</h4><p>打包方式，企业云盘用过2种</p>
+<ul>
+<li><p>electron-package</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">"build": "electron-packager ./ clouddisk --platform=darwin,win32 --arch=x64 --prune --overwrite --version=1.4.13 --ignore renderProcess/node_modules --icon ./icon",</div><div class="line">"buildwin": "electron-packager ./ clouddisk --platform=win32 --arch=x64 --prune --overwrite --version=1.4.13 --ignore renderProcess/node_modules --icon ./icon",</div><div class="line">"buildmac": "electron-packager ./ clouddisk --platform=darwin --arch=x64 --prune --overwrite --version=1.4.3 --ignore renderProcess/node_modules --icon ./icon",</div></pre></td></tr></table></figure>
+</li>
+<li><p>electron-builder</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">"build": &#123;</div><div class="line">    "appId": "com.electron.ecloud",</div><div class="line">    "productName": "ecloud",</div><div class="line">    "mac": &#123;</div><div class="line">      "extendInfo": "build/info.plist"</div><div class="line">    &#125;,</div><div class="line">    // ...</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这两种打包方式的区别：<br>electron-package 仅能打出应用程序，无法打出安装包，配置项没有electron-builder那么灵活</p>
+<p>electron-builder 支持非常强大的配置，可以参考 官网</p>
+<p>需要注意的是自动更新需要打出nupkg的包，electron-builder也是支持的</p>
+<p><img src="/images/test/28.mdEjTOVah6.png" alt="img"></p>
+<p>自动更新依赖于squirrel模块，这个模块决定了window的打包方式必须是squirrel的安装包，从而决定了不一样的window安装包（nsis或者squirrel）</p>
+<p>squirrel安装包依赖于net 4.5</p>
+<h4 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h4><ul>
+<li><p>抓包<br>企业云盘里面所有的请求都基于node的request模块，所以给request设置下代理即可，如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 只能代理到http</span></div><div class="line"><span class="built_in">require</span>(<span class="string">'./mainProcess/request'</span>).defaults(&#123; <span class="attr">proxy</span>: <span class="string">'http://127.0.0.1:8888'</span> &#125;) </div><div class="line"><span class="comment">// https如下</span></div><div class="line"><span class="keyword">let</span> useProxy=<span class="number">1</span>;</div><div class="line"><span class="keyword">if</span>(useProxy)&#123;</div><div class="line">    process.env.https_proxy = <span class="string">"http://127.0.0.1:8888"</span>;</div><div class="line">    process.env.http_proxy = <span class="string">"http://127.0.0.1:8888"</span>;</div><div class="line">    process.env.NODE_TLS_REJECT_UNAUTHORIZED = <span class="string">"0"</span>;</div><div class="line">&#125;</div><div class="line"><span class="string">``</span><span class="string">` </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">- 调试renderProcess 打开browser window的控制台</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">`</span><span class="string">``</span> js</div><div class="line">/localhost/.test(appUrl) &amp;&amp; win.webContents.openDevTools();</div></pre></td></tr></table></figure>
+</li>
+<li><p>调试mainProcess<br>console.log直接会在terminal中打出，另外全局有写一个小工具debugInRender,这个工具会将mainProcess的调试信息打印在renderProcess的控制台中</p>
+</li>
+<li><p>调试用户的电脑<br>企业云盘-显示包内容-contents-resources-app里面，修改代码重启可生效，<br>当然云盘在打包的时候可以压缩所有代码为asar格式的，只需要在package的配置中添加</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">"asar": true</div></pre></td></tr></table></figure>
+<p>mac中crash情况debugger<br><a href="https://electron.atom.io/docs/development/debugging-instructions-macos/" target="_blank" rel="external">https://electron.atom.io/docs/development/debugging-instructions-macos/</a></p>
+<p>官方给出的调试方案<br><a href="https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md" target="_blank" rel="external">https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md</a></p>
+<p>使用visual studio code进行调试<br>详细参考 <a href="https://www.youtube.com/watch?v=nuZIeJ0ljgo" target="_blank" rel="external">https://www.youtube.com/watch?v=nuZIeJ0ljgo</a><br>具体的launch.json配置如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">"program": "$&#123;workspaceRoot&#125;/main.js",</div><div class="line">"runtimeExecutable":"/Users/liuhui/.tnvm/versions/node/v6.6.0/bin/electron",</div><div class="line">"runtimeArgs":[</div><div class="line">    <span class="string">"-enable-logging"</span></div><div class="line">],</div><div class="line">"env":&#123;</div><div class="line">    "NODE_ENV": "development",</div><div class="line">    "DEBUG": "app:*"</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://nulab-inc.com/blog/typetalk/3-necessary-things-to-correctly-release-a-product-based-on-the-electron-app/" target="_blank" rel="external">electron 文章</a></p>
+<p><a href="https://github.com/electron/electron/blob/master/docs/development/atom-shell-vs-node-webkit.md" target="_blank" rel="external">electron和nw区别</a></p>
+<p>相关资源</p>
+<p><a href="https://electron.atom.io/docs/" target="_blank" rel="external">https://electron.atom.io/docs/</a><br><a href="https://github.com/electron-userland/electron-builder" target="_blank" rel="external">https://github.com/electron-userland/electron-builder</a><br><a href="https://github.com/electron/windows-installer" target="_blank" rel="external">https://github.com/electron/windows-installer</a><br><a href="https://github.com/ArekSredzki/electron-release-server" target="_blank" rel="external">https://github.com/ArekSredzki/electron-release-server</a><br><a href="https://github.com/electron/electron/blob/master/docs/development/atom-shell-vs-node-webkit.md" target="_blank" rel="external">https://github.com/electron/electron/blob/master/docs/development/atom-shell-vs-node-webkit.md</a><br><a href="https://medium.com/developers-writing/building-a-desktop-application-with-electron-204203eeb658" target="_blank" rel="external">https://medium.com/developers-writing/building-a-desktop-application-with-electron-204203eeb658</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/17/29/" data-id="cj8zk8frf000ocsxl2010m150" class="article-share-link">Partager</a>
+      
+      
     </footer>
   </div>
   
@@ -271,6 +729,10 @@
 
   
 
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -280,9 +742,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/babel/tags/工作效率/">工作效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/babel/tags/资源/">资源</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
     </div>
   </div>
 
@@ -290,9 +752,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
-      <a href="/babel/tags/工作效率/" style="font-size: 10px;">工作效率</a> <a href="/babel/tags/资源/" style="font-size: 10px;">资源</a>
+      <a href="/tags/资源/" style="font-size: 10px;">资源</a>
     </div>
   </div>
 
@@ -301,7 +763,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/babel/archives/2017/09/">September 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
     </div>
   </div>
 
@@ -309,24 +771,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/babel/2017/09/15/4/">（翻译）不成为一个冒名顶替综合症患者：避免前端开发的疲惫</a>
+            <a href="/2017/09/21/5/">(译文)如何实现virtual dom</a>
           </li>
         
           <li>
-            <a href="/babel/2017/09/15/3/">node里面NODE_ENV有什么用</a>
+            <a href="/2017/09/15/3/">node里面NODE_ENV有什么用</a>
           </li>
         
           <li>
-            <a href="/babel/2017/09/14/1/">资源检索</a>
+            <a href="/2017/09/14/1/">资源检索</a>
           </li>
         
           <li>
-            <a href="/babel/2017/09/14/2/">提高工作效率的cli工具</a>
+            <a href="/2017/09/14/2/">提高工作效率的cli工具</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/24/35/">(翻译)Nodejs EventLoop&amp;Timers&amp;process.netxTick()</a>
           </li>
         
       </ul>
@@ -342,16 +808,16 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Babel<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
     </div>
     <nav id="mobile-nav">
   
-    <a href="/babel/" class="mobile-nav-link">Home</a>
+    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/babel/archives" class="mobile-nav-link">Archives</a>
+    <a href="/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
@@ -359,11 +825,11 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/babel/fancybox/jquery.fancybox.css">
-  <script src="/babel/fancybox/jquery.fancybox.pack.js"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/babel/js/script.js"></script>
+<script src="/js/script.js"></script>
 
   </div>
 </body>

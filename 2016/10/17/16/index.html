@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>（翻译）SVG和media queries | 享受阳光生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应 如下代码 12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green;    &amp;#125;    @me">
+<meta property="og:type" content="article">
+<meta property="og:title" content="（翻译）SVG和media queries">
+<meta property="og:url" content="http://yoursite.com/2016/10/17/16/index.html">
+<meta property="og:site_name" content="享受阳光生活">
+<meta property="og:description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应 如下代码 12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green;    &amp;#125;    @me">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/11.1.png">
+<meta property="og:updated_time" content="2017-10-20T06:56:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="（翻译）SVG和media queries">
+<meta name="twitter:description" content="关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应 如下代码 12345678910111213&amp;lt;svg width=&quot;100&quot; height=&quot;100&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&amp;gt;  &amp;lt;style&amp;gt;    circle &amp;#123;      fill: green;    &amp;#125;    @me">
+<meta name="twitter:image" content="http://yoursite.com/images/11.1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">享受阳光生活</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">珍惜拥有，坚持不懈，努力奋斗！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-16" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/17/16/" class="article-date">
+  <time datetime="2016-10-17T08:39:45.000Z" itemprop="datePublished">2016-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      （翻译）SVG和media queries
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于SVG最棒的一件事就是，你可以使用media queries来添加图片响应</p>
+<p>如下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">    circle &#123;</span></div><div class="line"><span class="undefined">      fill: green;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="css">    @<span class="keyword">media</span> (min-width: <span class="number">100px</span>) &#123;</span></div><div class="line"><span class="undefined">      circle &#123;</span></div><div class="line"><span class="undefined">        fill: blue;</span></div><div class="line"><span class="undefined">      &#125;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">"50"</span> <span class="attr">cy</span>=<span class="string">"50"</span> <span class="attr">r</span>=<span class="string">"50"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>但是什么情况下这个圈应该是蓝色的呢，规范说min-width必须是viewport的宽度，但是…</p>
+<h4 id="哪个viewport"><a href="#哪个viewport" class="headerlink" title="哪个viewport"></a>哪个viewport</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"circle.svg"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span>&gt;</span></div><div class="line">  …as above…</div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>如上，哪个圆是蓝色的圆（有可能被裁剪的）,如上，哪个viewport会被使用<br>会是以下的么：</p>
+<ul>
+<li>主document的大小</li>
+<li>svg上面的width/height/viewBox属性</li>
+<li>img上面的width/height属性</li>
+<li>img的layout</li>
+</ul>
+<p>实际结果如下<br><img src="/images/11.1.png" alt="Alt text"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># 大多数浏览器会这样解析</div><div class="line">对于&lt;img&gt;,svg会scale到图片大小，svg的viewport就是img的大小</div><div class="line">所以第一个图片使用的viewport是50*50，所以第一个是绿色的</div><div class="line">第二个图片使用的viewport是100*100，因此第二个是蓝色的</div><div class="line">对于&lt;iframe&gt;，svg的viewport是iframe的大小</div><div class="line">所以第三个是绿色，第四个是蓝色</div><div class="line">对于&lt;svg&gt;,svg没有它自己的viewport，这是父级的一部分，这意味着style是被父级拥有的，作用域不是SVG。</div><div class="line"># firefox怎么解析的呢</div><div class="line">对于&lt;img&gt;,viewport,是device pixels里面的渲染大小，意味着，页面的viewport</div><div class="line"># draw svg到canvas</div><div class="line">可以draw&lt;img&gt;标签里面的内容到&lt;canvas&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">canvas2dContext.drawImage(img, x, y, width, height);</div></pre></td></tr></table></figure>
+<p>那么这种情况下，什么时候circle应该是蓝色的呢</p>
+<ul>
+<li>主窗口的css大小</li>
+<li>svg的width/height/viewBox属性</li>
+<li>img的width/height</li>
+<li>img 的css layout</li>
+<li>canvas 的像素大小</li>
+<li>canvas的 css layout</li>
+<li>drawImage调用时指定的width/height</li>
+<li>drawImage调用时指定的width/height,乘以transfrom的倍数</li>
+</ul>
+<p><a href="https://liuhuiashazj.github.io/demo/svg/index.html" target="_blank" rel="external">svg demo</a><br><a href="https://jakearchibald.com/2016/svg-media-queries/" target="_blank" rel="external">svg-media-queries</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/10/17/16/" data-id="cj8zk8fr00009csxlh0sd9t1c" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/08/17/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          es6尾递归优化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/30/15/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">理解javascript的constructor</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/资源/" style="font-size: 10px;">资源</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/21/5/">(译文)如何实现virtual dom</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/3/">node里面NODE_ENV有什么用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/1/">资源检索</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/2/">提高工作效率的cli工具</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/24/35/">(翻译)Nodejs EventLoop&amp;Timers&amp;process.netxTick()</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Babel<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

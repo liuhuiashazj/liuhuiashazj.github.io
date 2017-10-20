@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>nodejs 与javascript 关系 | 享受阳光生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="node.js是什么？和JavaScript有什么关系？ 关于node.js究竟是什么，大家的问题在于 node.js是不是一门语言？node.js是不是一个JavaScript库函数？node.js是不是一个JavaScript框架？ 很遗憾，这三个问题的答案都是NO，看看官方对自己的描述 Node.js is a platform built on Chrome’s JavaScript ru">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs 与javascript 关系">
+<meta property="og:url" content="http://yoursite.com/2017/05/23/30/index.html">
+<meta property="og:site_name" content="享受阳光生活">
+<meta property="og:description" content="node.js是什么？和JavaScript有什么关系？ 关于node.js究竟是什么，大家的问题在于 node.js是不是一门语言？node.js是不是一个JavaScript库函数？node.js是不是一个JavaScript框架？ 很遗憾，这三个问题的答案都是NO，看看官方对自己的描述 Node.js is a platform built on Chrome’s JavaScript ru">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/test/29.mddHFUETR8.png">
+<meta property="og:image" content="http://yoursite.com/images/test/29.mdyW6KLL6S.png">
+<meta property="og:updated_time" content="2017-10-20T06:56:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs 与javascript 关系">
+<meta name="twitter:description" content="node.js是什么？和JavaScript有什么关系？ 关于node.js究竟是什么，大家的问题在于 node.js是不是一门语言？node.js是不是一个JavaScript库函数？node.js是不是一个JavaScript框架？ 很遗憾，这三个问题的答案都是NO，看看官方对自己的描述 Node.js is a platform built on Chrome’s JavaScript ru">
+<meta name="twitter:image" content="http://yoursite.com/images/test/29.mddHFUETR8.png">
+  
+    <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">享受阳光生活</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">珍惜拥有，坚持不懈，努力奋斗！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-30" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/23/30/" class="article-date">
+  <time datetime="2017-05-23T08:39:45.000Z" itemprop="datePublished">2017-05-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nodejs 与javascript 关系
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>node.js是什么？和JavaScript有什么关系？</p>
+<p>关于node.js究竟是什么，大家的问题在于</p>
+<p>node.js是不是一门语言？<br>node.js是不是一个JavaScript库函数？<br>node.js是不是一个JavaScript框架？</p>
+<p>很遗憾，这三个问题的答案都是NO，看看官方对自己的描述</p>
+<p>Node.js is a platform built on Chrome’s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.</p>
+<p>官方很明确地说node.js是一个platform，也就是一个做xxx的平台。node.js是一个可以在服务器端运行JavaScript的平台，其实这句话华也不准确，按照《JavaScript权威指南》《JavaScript高级程序设计》等书中的定义，JavaScript是由两部分组成</p>
+<p>core JavaScript<br>client JavaScript（DOM、BOM）<br>而只有core JavaScript可以在node.js上运行，所以node.js借用了JavaScript的语法，但并不能用来处理浏览器对象（BOM）及文档对象（DOM），所以node.js并不是设计为在服务器端运行解析html文档的（当然有module可以做此事），所以“在服务器端运行的JavaScript”在一定程度上误导了初学者。</p>
+<p>同时node.js并不仅仅运行core JavaScript，node.js中还有文件系统、模块包、操作系统API、网络通信、二进制类型处理等core JavaScript不具备的功能。</p>
+<p>nodejs 底层*nix 与window的区别<br><img src="/images/test/29.mddHFUETR8.png" alt="img"></p>
+<p>node w3c js关系<br><img src="/images/test/29.mdyW6KLL6S.png" alt="img"></p>
+<p>在nodejs中引入模块，需要经历3个步骤：<br>1 路径分析<br>2 文件定位<br>3 编译执行</p>
+<p>node中分为核心模块（http/fs/path）与文件模块<br>在node进程启动过程中，部分核心模块被直接加载进内存中，所以这部分核心模块引入时，文件定位及编译执行这两个步骤可以省略掉，并且在路径分析中优先判断，所以他们的加载速度是最快的。</p>
+<p>每个模块文件中都存在require、exports、module这三个变量,甚至还有filename、dirname</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.paths);</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">require</span>.extensions);</div><div class="line"><span class="built_in">console</span>.log(__filename);</div><div class="line"><span class="built_in">console</span>.log(__dirname);</div><div class="line"><span class="comment">/* *</span></div><div class="line"><span class="comment">[ '/Users/liuhui/Desktop/mylab/pkg/node_modules',</span></div><div class="line"><span class="comment">  '/Users/liuhui/Desktop/mylab/node_modules',</span></div><div class="line"><span class="comment">  '/Users/liuhui/Desktop/node_modules',</span></div><div class="line"><span class="comment">  '/Users/liuhui/node_modules',</span></div><div class="line"><span class="comment">  '/Users/node_modules',</span></div><div class="line"><span class="comment">  '/node_modules' ]</span></div><div class="line"><span class="comment">&#123; '.js': [Function], '.json': [Function], '.node': [Function] &#125;</span></div><div class="line"><span class="comment">/Users/liuhui/Desktop/mylab/pkg/module_path.js</span></div><div class="line"><span class="comment">/Users/liuhui/Desktop/mylab/pkg</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+<p>这是因为编译过程中，node对获取的js文件进行了头尾包装，在头部加上了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">exports,require,module,__filename,__dirname</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</div><div class="line">    exports.area = <span class="function"><span class="keyword">function</span>(<span class="params">radius</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.PI*radius*radius</div><div class="line">    &#125;;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">require</span>、exports、<span class="built_in">module</span>就是node对commonjs规范的实现</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/23/30/" data-id="cj8zk8frf000pcsxl7siyle0k" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/25/31/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          gzip压缩
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/17/29/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">electron在企业云盘中的应用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/资源/" style="font-size: 10px;">资源</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/21/5/">(译文)如何实现virtual dom</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/3/">node里面NODE_ENV有什么用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/1/">资源检索</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/2/">提高工作效率的cli工具</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/24/35/">(翻译)Nodejs EventLoop&amp;Timers&amp;process.netxTick()</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Babel<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
