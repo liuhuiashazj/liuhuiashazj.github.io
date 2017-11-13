@@ -1,0 +1,25 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+	<span id="span">【消息称Facebook公司营收创新高】外电报道，据消息人士透露，社交网站Facebook2011年上半年营收为16亿美元，净利润达5亿美元。其中，16亿美元的营收入不近创下公司营收新高，也使得这家世界上最大的社交网络公司的营收入同比增加了近一倍。</span>
+	JS代码：
+	<script>
+		document.getElementById("span").onclick = function() {
+			var objRectList = this.getClientRects(), i = 0, length = objRectList.length;
+			var string = "有" + length + "个矩形\r\n";
+			for (var i=0; i<length; i+=1) {
+				string = string + "第"+ (i+1) +"个矩形： top:" + objRectList[i].top + ", right:" + objRectList[i].right + ", bottom:" + objRectList[i].bottom + ", left:" + objRectList[i].left + "\r\n";
+			}
+			alert(string);
+		};
+	</script>
+</body>
+
+</html>
