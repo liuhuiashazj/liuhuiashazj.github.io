@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ECMA 5规范 | 享受阳光生活</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[ECMA5原文](https://www.ecma-international.org/ecma-262/5.1/#sec-8.12.8)ECMA6原文 第8章类型第9章类型转换相关ToNumber抽象操作 ToNumber(input) Undefined 返回NaN Null 返回+0 Boolean true是1，false是+0 Number 不变 String 如果input不能使用S">
+<meta name="keywords" content="双等号,==">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMA 5规范">
+<meta property="og:url" content="http://yoursite.com/2017/10/28/38/index.html">
+<meta property="og:site_name" content="享受阳光生活">
+<meta property="og:description" content="[ECMA5原文](https://www.ecma-international.org/ecma-262/5.1/#sec-8.12.8)ECMA6原文 第8章类型第9章类型转换相关ToNumber抽象操作 ToNumber(input) Undefined 返回NaN Null 返回+0 Boolean true是1，false是+0 Number 不变 String 如果input不能使用S">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-28T10:39:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ECMA 5规范">
+<meta name="twitter:description" content="[ECMA5原文](https://www.ecma-international.org/ecma-262/5.1/#sec-8.12.8)ECMA6原文 第8章类型第9章类型转换相关ToNumber抽象操作 ToNumber(input) Undefined 返回NaN Null 返回+0 Boolean true是1，false是+0 Number 不变 String 如果input不能使用S">
+  
+    <link rel="alternate" href="/atom.xml" title="享受阳光生活" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">享受阳光生活</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">珍惜拥有，坚持不懈，努力奋斗！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-38" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/28/38/" class="article-date">
+  <time datetime="2017-10-27T16:00:00.000Z" itemprop="datePublished">2017-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ECMA 5规范
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[ECMA5原文]<br>(<a href="https://www.ecma-international.org/ecma-262/5.1/#sec-8.12.8" target="_blank" rel="external">https://www.ecma-international.org/ecma-262/5.1/#sec-8.12.8</a>)<br><a href="https://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive" target="_blank" rel="external">ECMA6原文</a></p>
+<h2 id="第8章类型"><a href="#第8章类型" class="headerlink" title="第8章类型"></a>第8章类型</h2><h2 id="第9章类型转换相关"><a href="#第9章类型转换相关" class="headerlink" title="第9章类型转换相关"></a>第9章类型转换相关</h2><h3 id="ToNumber抽象操作-ToNumber-input"><a href="#ToNumber抽象操作-ToNumber-input" class="headerlink" title="ToNumber抽象操作 ToNumber(input)"></a>ToNumber抽象操作 ToNumber(input)</h3><ul>
+<li>Undefined 返回NaN</li>
+<li>Null 返回+0</li>
+<li>Boolean true是1，false是+0</li>
+<li>Number 不变</li>
+<li>String 如果input不能使用StringNumbericLiteral解析，则返回NaN<ul>
+<li>StringNumbericLiteral包含以下合法字符</li>
+<li>十六进制表示 0x HexDigit或者0X hexDigit,hexDigit包含(0123456789abcdefABCDEF)</li>
+<li>有标识的整数 “+” “-“</li>
+<li>指数 “e”、”E”</li>
+<li>小数点 “.”</li>
+</ul>
+</li>
+<li>Object 返回ToNumber(ToPrimitive(input,Number))</li>
+</ul>
+<h3 id="ToString抽象操作-ToString-input"><a href="#ToString抽象操作-ToString-input" class="headerlink" title="ToString抽象操作 ToString(input)"></a>ToString抽象操作 ToString(input)</h3><ul>
+<li>Undefined 返回”undefined”</li>
+<li>Null 返回’null’</li>
+<li>Boolean 返回’true’或则’false’</li>
+<li>Number 如下<ul>
+<li>NaN 返回’NaN’</li>
+<li>+0或者-0 返回’0’</li>
+<li>如果input小于0, 返回’-‘+ToString(-input)</li>
+<li>如果input是无限的，则返回’Infinity’</li>
+<li>否则转实际的值为String</li>
+</ul>
+</li>
+<li>Object ToString(ToPrimitve(input,String))</li>
+</ul>
+<h3 id="ToBoolean抽象操作-ToBoolean-input"><a href="#ToBoolean抽象操作-ToBoolean-input" class="headerlink" title="ToBoolean抽象操作 ToBoolean(input)"></a>ToBoolean抽象操作 ToBoolean(input)</h3><ul>
+<li>Undefined 返回false</li>
+<li>Null 返回 false</li>
+<li>Boolean 不变</li>
+<li>Number +0，-0，NaN返回false,其他返回true</li>
+<li>String 空字符串返回false，否则返回true</li>
+<li>Object 返回true</li>
+</ul>
+<h3 id="ToPrimitive操作-隐式装箱"><a href="#ToPrimitive操作-隐式装箱" class="headerlink" title="ToPrimitive操作(隐式装箱)"></a>ToPrimitive操作(隐式装箱)</h3><ul>
+<li>Undefined 不变</li>
+<li>Null 不变</li>
+<li>Boolean 不变</li>
+<li>Number 不变</li>
+<li>String 不变</li>
+<li>Object 通过调用内部的DefaultValue方法得到，可以传递PreferredType参数(默认是default，还有string、number)，具体如下，<ul>
+<li>如果有toString方法，并且toString返回的是一个primitive值，则直接返回这个值</li>
+<li>如果有valueOf方法，并且valueOf返回的是一个值，则直接返回这个值</li>
+<li>报TypeError错误<br>注意根据hint值不一样，下面的toString方法和valueOf方法顺序相反，如果没有hint，则hint默认是Number，另外如果数组对象实现了自己的DefaultValue的方法，则必须保证return的是primitive值<br>另外注意Object可以自行定义toPrimitive方法（ES6补充），如下demo</li>
+</ul>
+</li>
+</ul>
+<h4 id="ToNumber-ToString对对象转换时都会调用ToPrimitve抽象操作，ToBoolean不会调用，直接返回true"><a href="#ToNumber-ToString对对象转换时都会调用ToPrimitve抽象操作，ToBoolean不会调用，直接返回true" class="headerlink" title="ToNumber,ToString对对象转换时都会调用ToPrimitve抽象操作，ToBoolean不会调用，直接返回true"></a>ToNumber,ToString对对象转换时都会调用ToPrimitve抽象操作，ToBoolean不会调用，直接返回true</h4><p>举个例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// An object with Symbol.toPrimitive property.</span></div><div class="line"><span class="keyword">var</span> obj2 = &#123;</div><div class="line">  [<span class="built_in">Symbol</span>.toPrimitive](hint) &#123;</div><div class="line">    <span class="keyword">if</span> (hint == <span class="string">'number'</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (hint == <span class="string">'string'</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">'hello'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.log(+obj2);     <span class="comment">// 10        -- hint is "number"</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;obj2&#125;</span>`</span>); <span class="comment">// "hello"   -- hint is "string"</span></div><div class="line"><span class="built_in">console</span>.log(obj2 + <span class="string">''</span>); <span class="comment">// "true"    -- hint is "default"</span></div></pre></td></tr></table></figure></p>
+<h3 id="ToObject抽象操作"><a href="#ToObject抽象操作" class="headerlink" title="ToObject抽象操作"></a>ToObject抽象操作</h3><ul>
+<li>Undefined 返回TypeError</li>
+<li>Null 返回TypeError</li>
+<li>Boolean 创建一个Boolean对象，并设置内部属性PrimitiveValue为该值</li>
+<li>Number 创建一个Number对象，并设置内部属性PrimitiveValue为改值</li>
+<li>String 创建一个String对象，并设置内部属性PrimitiveValue为改值</li>
+<li>Object 不变</li>
+</ul>
+<h2 id="第11章-表达式"><a href="#第11章-表达式" class="headerlink" title="第11章 表达式"></a>第11章 表达式</h2><h3 id="11-4-一元操作符delete、void、typeof、-、–、-、-、-、"><a href="#11-4-一元操作符delete、void、typeof、-、–、-、-、-、" class="headerlink" title="11.4 一元操作符delete、void、typeof、++、–、+、-、~、!"></a>11.4 一元操作符delete、void、typeof、++、–、+、-、~、!</h3><h4 id="typeof操作"><a href="#typeof操作" class="headerlink" title="typeof操作"></a>typeof操作</h4><ul>
+<li>Undefined 返回’undefined’</li>
+<li>Null 返回’object’</li>
+<li>Boolean 返回 ‘boolean’</li>
+<li>Number 返回’number’</li>
+<li>String 返回’string’</li>
+<li>Object (native and does not implement [[Call]]) 返回’object’</li>
+<li>Object (native or host and does implement [[Call]]) 返回’function’</li>
+<li>Object (host and does not implement [[Call]]) 看实现</li>
+</ul>
+<p>名词解释</p>
+<ul>
+<li>native object（ECMAScript定义实现的，例如Object、Date、Math、parseInt、eval等）</li>
+<li>host object（宿主环境实现的，例如window、document、location、history、setTimeout）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Function</span>);  <span class="comment">// function </span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.constructor); </div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Function</span>.constructor);</div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Function</span>.prototype); <span class="comment">// Function</span></div></pre></td></tr></table></figure>
+<h3 id="11-5-多元操作符-、-、"><a href="#11-5-多元操作符-、-、" class="headerlink" title="11.5 多元操作符*、/、%"></a>11.5 多元操作符*、/、%</h3><h3 id="11-6-加法操作符-、"><a href="#11-6-加法操作符-、" class="headerlink" title="11.6 加法操作符 +、-"></a>11.6 加法操作符 +、-</h3><h3 id="11-7-位操作-lt-lt-、-gt-gt-、-gt-gt-gt"><a href="#11-7-位操作-lt-lt-、-gt-gt-、-gt-gt-gt" class="headerlink" title="11.7 位操作 &lt;&lt;、&gt;&gt;、&gt;&gt;&gt;"></a>11.7 位操作 &lt;&lt;、&gt;&gt;、&gt;&gt;&gt;</h3><h3 id="11-8-关系操作-lt-、-gt-、-lt-、-gt"><a href="#11-8-关系操作-lt-、-gt-、-lt-、-gt" class="headerlink" title="11.8 关系操作 &lt;、&gt;、&lt;=、&gt;="></a>11.8 关系操作 &lt;、&gt;、&lt;=、&gt;=</h3><h3 id="11-9-相等操作-、-、-、"><a href="#11-9-相等操作-、-、-、" class="headerlink" title="11.9 相等操作 ==、!=、===、!=="></a>11.9 相等操作 ==、!=、===、!==</h3><h4 id="抽象相等比较算法-x-y"><a href="#抽象相等比较算法-x-y" class="headerlink" title="抽象相等比较算法(x == y)"></a>抽象相等比较算法(x == y)</h4><ul>
+<li><p>如果类型相等</p>
+<ul>
+<li>如果x是undefined return true</li>
+<li>如果x是null return true</li>
+<li>如果是Number<ul>
+<li>NaN != NaN</li>
+<li>x和y的value相等，return true</li>
+<li>+0 == -0</li>
+<li>return false</li>
+</ul>
+</li>
+<li>如果是String<ul>
+<li>如果x和y是一样的长度和一样的字符串，return true，否则返回false</li>
+</ul>
+</li>
+<li>如果是Boolean<ul>
+<li>值一样true，否则false</li>
+</ul>
+</li>
+<li>如果Oobject<ul>
+<li>同一个引用return true，否则返回false</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>x或者y分别是null和undefined，return true</p>
+</li>
+<li>x、y分别是number和string类型，将string类型转为number类型</li>
+<li>x、y中有一个boolean类型，则首先将boolean转为字符串再递归执行==，ToNumber(x) == y</li>
+<li>如果x是String、Number,y是object，则执行x == ToPrimitive(y)</li>
+<li>反之亦然</li>
+<li>return false</li>
+</ul>
+<h4 id="抽象不等操作-x-y"><a href="#抽象不等操作-x-y" class="headerlink" title="抽象不等操作 x != y"></a>抽象不等操作 x != y</h4><ul>
+<li>使r = x==y，如果r是true返回false，否则返回true</li>
+</ul>
+<h4 id="严格相等操作-x-y"><a href="#严格相等操作-x-y" class="headerlink" title="严格相等操作 x===y"></a>严格相等操作 x===y</h4><ul>
+<li>如果类型不等直接返回false</li>
+<li>如果是Undefined、Null类型，返回true</li>
+<li>如果是Number类型，如果有NaN 返回false，+0===-0，相等返回true，其他返回false</li>
+<li>如果是String类型，x和y完全相等返回true，否则返回false</li>
+<li>如果是Boolean，x和y一样返回true，否则返回false</li>
+<li>如果是引用类型，x和y引用同一个object返回true，否则返回false</li>
+</ul>
+<h3 id="严格不相等操作-x-y"><a href="#严格不相等操作-x-y" class="headerlink" title="严格不相等操作 x!==y"></a>严格不相等操作 x!==y</h3><ul>
+<li>同上操作后，最后执行相反操作!(x===y)</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/10/28/38/" data-id="cj9y6yqva000w6qxlwa0fi50x" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/">==</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/双等号/">双等号</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/30/39/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          CORS
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/23/37/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">webpack编译分析</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/">==</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CORS/">CORS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rich-text-editor/">rich text editor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wysiwyg/">wysiwyg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/双等号/">双等号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式/">响应式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/源码/">源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/资源/">资源</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/" style="font-size: 10px;">==</a> <a href="/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/tags/Electron/" style="font-size: 10px;">Electron</a> <a href="/tags/rich-text-editor/" style="font-size: 10px;">rich text editor</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/wysiwyg/" style="font-size: 10px;">wysiwyg</a> <a href="/tags/双等号/" style="font-size: 10px;">双等号</a> <a href="/tags/响应式/" style="font-size: 10px;">响应式</a> <a href="/tags/源码/" style="font-size: 20px;">源码</a> <a href="/tags/资源/" style="font-size: 10px;">资源</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/11/13/41/">编辑器调研</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/07/40/">Vue响应式</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/30/39/">CORS</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/28/38/">ECMA 5规范</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/23/37/">webpack编译分析</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Babel<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
