@@ -6,7 +6,7 @@
 title: 享受阳光生活
 subtitle: 珍惜拥有，坚持不懈，努力奋斗！
 description:
-author: Babel
+author: liuhuiashazj
 language:  zh-Hans
 timezone:
 
@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: landscape
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
